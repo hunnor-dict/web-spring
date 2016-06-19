@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:with="subtitle=#{error.title},description=#{error.description}">
+
+	<head th:replace="layout/header :: header"> </head>
+
+	<body>
+
+		<div class="container">
+
+			<nav th:replace="layout/navigation :: navigation"> </nav>
+
+			<div class="page-header">
+				<h1 th:text="#{error.title}"> </h1>
+			</div>
+
+		</div>
+
+		<div th:replace="layout/footer :: scripts"> </div>
+
+	</body>
+
+</html>

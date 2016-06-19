@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName>HunNor</ShortName>
+	<Description>HunNor norvég-magyar szótár</Description>
+	<Tags>HunNor</Tags>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Image height="16" type="image/x-icon" width="16">http://dict.hunnor.net/favicon.ico</Image>
+	<Image height="64" type="image/png" width="64">http://dict.hunnor.net/img/hunnor.64.png</Image>
+	<Url template="http://dict.hunnor.net/?term={searchTerms}" type="text/html"/>
+	<Url rel="suggestions" template="http://dict.hunnor.net/opensearch/suggest?term={searchTerms}" type="application/x-suggestions+json"/>
+	<AdultContent>false</AdultContent>
+	<moz:SearchForm>http://dict.hunnor.net/</moz:SearchForm>
+</OpenSearchDescription>

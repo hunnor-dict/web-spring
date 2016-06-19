@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:with="subtitle=#{contrib.title},description=#{contrib.description}">
+
+	<head th:replace="layout/header :: header"> </head>
+
+	<body>
+
+		<div class="container">
+
+			<nav th:replace="layout/navigation :: navigation"> </nav>
+
+			<div th:if="${hasInput}">
+				<div th:if="${captchaValid}">
+					<div th:if="${messageSent}">
+						<div class="alert alert-success" role="alert" th:text="#{contrib.form.sent}"> </div>
+					</div>
+					<div th:unless="${messageSent}">
+						<div class="alert alert-danger" role="alert" th:text="#{contrib.send.error}"> </div>
+					</div>
+				</div>
+				<div th:unless="${captchaValid}">
+					<div class="alert alert-warning" role="alert" th:text="#{contrib.captcha.invalid}"> </div>
+				</div>
+			</div>
+
+			<div class="page-header">
+				<h1 th:text="#{contrib.title}"> </h1>
+			</div>
+
+			<p th:text="#{contrib.info}"> </p>
+
+			<form th:replace="views/contrib/form :: contribForm"> </form>
+
+		</div>
+
+	</body>
+
+</html>

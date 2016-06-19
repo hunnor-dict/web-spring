@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<form id="contrib-form" method="post" th:action="@{/contrib}" th:fragment="contribForm" th:object="${contrib}">
+
+			<p class="field-label" th:text="#{contrib.spelling.label} + ':'"> </p>
+			<p class="field-description" th:text="#{contrib.spelling.description}"> </p>
+			<div class="input-group contrib-input">
+				<span class="input-group-addon"></span>
+				<input aria-describedby="" class="form-control" name="spelling" type="text" th:field="*{spelling}"/>
+			</div>
+
+			<p class="field-label" th:text="#{contrib.pos.label} + ':'"> </p>
+			<p class="field-description" th:text="#{contrib.pos.description}"> </p>
+			<div class="input-group contrib-input">
+				<span class="input-group-addon"></span>
+				<input aria-describedby="" class="form-control" name="pos" type="text" th:field="*{pos}"/>
+			</div>
+
+			<p class="field-label" th:text="#{contrib.infl.label} + ':'"> </p>
+			<p class="field-description" th:text="#{contrib.infl.description}"> </p>
+			<div class="input-group contrib-input">
+				<span class="input-group-addon"></span>
+				<input aria-describedby="" class="form-control" name="infl" type="text" th:field="*{infl}"/>
+			</div>
+
+			<p class="field-label" th:text="#{contrib.trans.label} + ':'" ></p>
+			<p class="field-description" th:text="#{contrib.trans.description}"> </p>
+			<textarea name="trans" rows="5" style="width: 100%" th:field="*{trans}"></textarea>
+
+			<p class="field-label" th:text="#{contrib.comments.label} + ':'"> </p>
+			<p class="field-description" th:text="#{contrib.comments.description}"> </p>
+			<textarea name="comments" rows="5" style="width: 100%" th:field="*{comments}"></textarea>
+
+			<div class="g-recaptcha" data-sitekey="6LclhBITAAAAALvsS2ckvn-EElKG7Kcun-X2LJ8f" style="margin-top: 1em;"> </div>
+
+			<button class="btn btn-default" type="submit" th:text="#{contrib.submit}" style="margin-top: 1em;"> </button>
+
+		</form>
+
+	</body>
+
+</html>

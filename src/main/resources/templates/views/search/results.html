@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<div th:fragment="searchResults">
+
+			<div th:if="${responses.get(hu).results.size()} > 0">
+				<div class="alert alert-success" role="alert">
+					<p th:utext="#{search.num.hu.results(${responses.get(hu).results.size()}, ${term})}"> </p>
+				</div>
+				<div class="panel panel-default entry view-inline" th:each="result: ${responses.get(hu).results}">
+					<div class="panel-body">
+						<div th:replace="views/search/settings :: searchSettings"> </div>
+						<hr/>
+						<div th:utext="${result.html}"> </div>
+					</div>
+				</div>
+			</div>
+
+			<div th:if="${responses.get(nb).results.size()} > 0">
+				<div class="alert alert-success" role="alert">
+					<p th:utext="#{search.num.nb.results(${responses.get(nb).results.size()}, ${term})}"> </p>
+				</div>
+				<div class="panel panel-default entry view-inline" th:each="result: ${responses.get(nb).results}">
+					<div class="panel-body">
+						<div th:replace="views/search/settings :: searchSettings"> </div>
+						<hr/>
+						<div th:utext="${result.html}"> </div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

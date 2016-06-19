@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<div class="alert alert-danger" role="alert" th:fragment="noResults">
+			<span th:utext="#{search.no.match(${term})}"> </span>
+		</div>
+
+	</body>
+
+</html>

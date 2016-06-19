@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" th:with="subtitle=#{about.title},description=#{about.description}">
+
+	<head th:replace="layout/header :: header"> </head>
+
+	<body>
+
+		<div class="container">
+
+			<nav th:replace="layout/navigation :: navigation"> </nav>
+
+			<div id="fb-root"> </div>
+			<script th:inline="javascript">
+				/*<![CDATA[*/
+				(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=111270115577888";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+				/*]]>*/
+			</script>
+			<div class="page-header">
+				<h1 th:text="#{about.title}"> </h1>
+			</div>
+			<section>
+				<p>A HunNor egy magyarországi és norvégiai önkéntesek által létrehozott norvég-magyar közösségi szótár. A szótár felhasználását a <a href="http://www.gnu.hu/gplv3.html" style="font-weight: bold;">GNU Általános Nyilvános Licenc</a> szabályozza. A szótár jelenleg <span th:text="${nb}">0</span> norvég-magyar és <span th:text="${hu}">0</span> magyar-norvég szócikket tartalmaz.</p>
+			</section>
+			<section>
+				<div class="fb-page" data-href="https://www.facebook.com/hunnor.dict" data-hide-cover="true" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/hunnor.dict"><a href="https://www.facebook.com/hunnor.dict">HunNor szótár</a></blockquote></div></div>
+			</section>
+			<section>
+				<h3>Adatvédelem</h3>
+				<p>A szótár webszervere naplózza a látogatók IP-címét és szoftverkörnyezetét. A naplófájlokhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
+				<p>A szótár minden keresésnél naplózza a keresett kifejezést, és hogy a keresés adott-e találatot. A naplóhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
+			</section>
+			<section>
+				<h3>Kapcsolat</h3>
+				<p style="font-weight: bold;">» <a href="https://www.facebook.com/HunNor.Dict">A szótár Facebook oldala</a><br/>» <a href="/contrib" th:href="@{/contrib}">Űrlap új szó beküldéséhez</a></p>
+			</section>
+			<section>
+				<h3>Fejlesztőknek</h3>
+				<p>» <a href="https://github.com/hunnor-dict"><strong>Forráskód</strong> (GitHub)</a><br/>» <a href="https://www.dropbox.com/sh/uhy910gjhy0it3y/Nf16NNjj3t"><strong>Adatbázisok</strong> (Dropbox)</a></p>
+			</section>
+			<section>
+				<h3>Források</h3>
+				<p>» Norvég szólista: <a href="http://www.edd.uio.no/prosjekt/ordbanken/" style="font-weight: bold;">Norsk ordbank</a> és <a href="http://torvald.aksis.uib.no/nta/" style="font-weight: bold;">Norsk tekstarkiv</a> <em>(GNU GPL)</em><br/>» Sablon: <a href="http://getbootstrap.com/" style="font-weight: bold;">Twitter Bootstrap</a> <em>(MIT)</em></p>
+			</section>
+
+		</div>
+
+		<div th:replace="layout/footer :: scripts"> </div>
+
+	</body>
+
+</html>

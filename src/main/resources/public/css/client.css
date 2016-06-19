@@ -1,0 +1,28 @@
+a {
+	color: #333;
+}
+
+a:hover {
+	color: #333;
+}
+
+a:active {
+	color: #333;
+}
+
+a:visited {
+	color: #333;
+}
+
+div.alert-warning a.alert-link {
+	color: #8a6d3b;
+}
+
+hr {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+ol, ul {
+	margin-bottom: 0;
+}

@@ -1,0 +1,90 @@
+a.switch-view-inline {
+	font-weight: bold;
+}
+
+img.autocomplete-flag {
+	margin-left: .5em;
+}
+
+div.view-inline ol.sense li ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+div.view-inline ol.sense li ul li {
+	display: inline;
+}
+
+div.view-inline ul.eg {
+	display: inline;
+	padding-left: 0;
+}
+
+div.view-inline ul.eg li {
+	display: inline;
+}
+
+div.view-tree .glue {
+	display: none;
+}
+
+li.eg {
+	list-style-type: none;
+}
+
+li.lbl {
+	font-style: italic;
+}
+
+ol.senseGrp {
+	font-size: 120%;
+}
+
+ol.single, ul.single {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+div.switch-container {
+	color: #808080;
+	font-style: italic;
+}
+
+div.switch-container a {
+	color: #808080;
+	text-decoration: none;
+}
+
+div.switch-container a:hover {
+	text-decoration: underline;
+}
+
+span.bob {
+	display: none;
+}
+
+span.hl {
+	background-color: yellow;
+}
+
+span.orth {
+	font-size: 120%;
+	font-weight: bold;
+}
+
+span.orth span.hl {
+	background-color: #ffffff;
+}
+
+span.q {
+	font-weight: bold;
+}
+
+ul.form {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+ul.ui-autocomplete li.suggestion {
+	font-style: italic;
+}

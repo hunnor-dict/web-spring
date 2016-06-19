@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<form id="search-form" th:fragment="searchForm">
+
+			<div class="jumbotron" style="margin-bottom: 20px; padding: 20px;">
+				<div class="input-group">
+					<input class="form-control" id="search-term" name="term" type="text" th:value="${term}"/>
+					<span class="input-group-btn">
+						<input class="btn btn-default" id="search-submit" type="submit" value="Keresés"/>
+					</span>
+				</div>
+			</div>
+
+			<div class="input-group" style="margin-bottom: 20px;">
+				<span th:text="#{search.match.label}"></span>:
+				<label class="radio-inline">
+					<input th:checked="${match == null or match == '' or match == 'roots'}" id="match-roots" name="match" type="radio" value="roots"/>
+					<span th:text="#{search.match.roots}"></span>
+				</label>
+				<label class="radio-inline">
+					<input th:checked="${match == 'forms'}" id="match-forms" name="match" type="radio" value="forms"/>
+					<span th:text="#{search.match.forms}"></span>
+				</label>
+				<label class="radio-inline">
+					<input th:checked="${match == 'full'}" id="match-full" name="match" type="radio" value="full"/>
+					<span th:text="#{search.match.full}"></span>
+				</label>
+			</div>
+
+		</form>
+
+	</body>
+
+</html>
