@@ -3,6 +3,14 @@
 
 	<body>
 
+		<div th:fragment="flags">
+			<hr/>
+			<div id="flags">
+				<a class="flag" href="/?lang=hu"><img src="/img/flag.hu.png" th:src="@{/img/flag.hu.png}"/></a>
+				<a class="flag" href="/?lang=nb"><img src="/img/flag.nb.png" th:src="@{/img/flag.nb.png}"/></a>
+			</div>
+		</div>
+
 		<div th:fragment="scripts">
 
 			<script src="/jquery-1.12.4/jquery.min.js" type="text/javascript"> </script>

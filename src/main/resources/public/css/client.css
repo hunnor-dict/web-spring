@@ -18,6 +18,10 @@ div.alert-warning a.alert-link {
 	color: #8a6d3b;
 }
 
+div.container {
+	margin-bottom: 1em;
+}
+
 hr {
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -25,4 +29,12 @@ hr {
 
 ol, ul {
 	margin-bottom: 0;
+}
+
+#flags {
+	text-align: center;
+}
+
+.flag {
+	margin: 0 .5em;
 }
