@@ -1,10 +1,12 @@
 package net.hunnor.dict.web;
 
+import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -89,6 +91,14 @@ public final class ApplicationController {
 
 		boolean hasCaptcha = true;
 		model.addAttribute("hasCaptcha", hasCaptcha);
+
+		String captchaLang = "hu";
+		Locale locale = LocaleContextHolder.getLocale();
+		if ("no".equals(locale.getLanguage())
+				|| "nb".equals(locale.getLanguage())) {
+			captchaLang = "no";
+		}
+		model.addAttribute("captchaLang", captchaLang);
 
 		boolean hasInput = contrib.hasInput();
 		model.addAttribute("hasInput", hasInput);
