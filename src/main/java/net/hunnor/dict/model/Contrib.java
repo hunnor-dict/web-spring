@@ -11,11 +11,6 @@ public final class Contrib {
 	private String spelling;
 
 	/**
-	 * The part of speech the word belongs to.
-	 */
-	private String pos;
-
-	/**
 	 * Inflected forms of the word.
 	 */
 	private String infl;
@@ -53,7 +48,6 @@ public final class Contrib {
 			final String c) {
 		super();
 		this.spelling = s;
-		this.pos = p;
 		this.infl = i;
 		this.trans = t;
 		this.comments = c;
@@ -73,22 +67,6 @@ public final class Contrib {
 	 */
 	public void setSpelling(final String s) {
 		this.spelling = s;
-	}
-
-	/**
-	 * Return the part of speech the word belongs to.
-	 * @return the part of speech the word belongs to
-	 */
-	public String getPos() {
-		return pos;
-	}
-
-	/**
-	 * Set the part of speech of the word.
-	 * @param p the part of speech to set
-	 */
-	public void setPos(final String p) {
-		this.pos = p;
 	}
 
 	/**
@@ -145,9 +123,6 @@ public final class Contrib {
 	 */
 	public boolean hasInput() {
 		if (spelling != null && !spelling.isEmpty()) {
-			return true;
-		}
-		if (pos != null && !pos.isEmpty()) {
 			return true;
 		}
 		if (infl != null && !infl.isEmpty()) {

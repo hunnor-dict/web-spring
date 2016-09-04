@@ -71,8 +71,6 @@ public class GoogleMailerService implements MailerService {
 			sb.append("Javaslat:\n");
 			sb.append("-> helyesírás: ").append(contrib.getSpelling())
 					.append("\n");
-			sb.append("-> szófaj: ").append(contrib.getPos())
-					.append("\n");
 			sb.append("-> ragozás: ").append(contrib.getInfl())
 					.append("\n");
 			sb.append("-> fordítás: ").append(contrib.getTrans())

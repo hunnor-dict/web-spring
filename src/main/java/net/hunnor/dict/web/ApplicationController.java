@@ -125,7 +125,6 @@ public final class ApplicationController {
 				}
 				model.addAttribute("messageSent", messageSent);
 				contrib.setSpelling(null);
-				contrib.setPos(null);
 				contrib.setInfl(null);
 				contrib.setTrans(null);
 				contrib.setComments(null);
