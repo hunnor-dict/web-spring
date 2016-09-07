@@ -35,14 +35,12 @@ public final class Contrib {
 	/**
 	 * Constructor with all fields.
 	 * @param s the spelling of the new instance
-	 * @param p the part of speech of the new instance
 	 * @param i the inflection of the new instance
 	 * @param t the translation of the new instance
 	 * @param c the comments of the new instance
 	 */
 	public Contrib(
 			final String s,
-			final String p,
 			final String i,
 			final String t,
 			final String c) {

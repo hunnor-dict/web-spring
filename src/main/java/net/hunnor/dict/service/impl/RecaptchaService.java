@@ -62,17 +62,17 @@ public final class RecaptchaService implements CaptchaService {
 
 	/**
 	 * Code from a reCAPTCHA tutorial.
+	 */
+	private final RestTemplate restTemplate;
+
+	/**
+	 * Code from a reCAPTCHA tutorial.
 	 * @param template parameter
 	 */
 	@Autowired
 	public RecaptchaService(final RestTemplate template) {
 		this.restTemplate = template;
 	}
-
-	/**
-	 * Code from a reCAPTCHA tutorial.
-	 */
-	private final RestTemplate restTemplate;
 
 	@Override
 	public boolean isResponseValid(

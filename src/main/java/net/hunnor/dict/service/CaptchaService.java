@@ -5,12 +5,13 @@ import net.hunnor.dict.model.CaptchaException;
 /**
  * Service for processing CAPTCHA requests.
  */
+@FunctionalInterface
 public interface CaptchaService {
 
 	/**
 	 * Validate the CAPTCHA response.
-	 * @param remoteIp TODO
-	 * @param response TODO
+	 * @param remoteIp the remote IP
+	 * @param response the response
 	 * @return true if the CAPTCHA response is valid, false otherwise
 	 * @throws CaptchaException if validation fails
 	 */

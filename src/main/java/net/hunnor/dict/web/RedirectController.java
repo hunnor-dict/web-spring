@@ -25,7 +25,7 @@ public class RedirectController {
 					"/gramm/*"},
 			method = RequestMethod.GET)
 	public final String redirect() {
-		return "redirect:/";
+		return ViewConstants.REDIRECT;
 	}
 
 }

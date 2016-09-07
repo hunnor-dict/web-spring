@@ -1,7 +1,6 @@
 package net.hunnor.dict.service.impl;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
@@ -81,9 +80,6 @@ public class GoogleMailerService implements MailerService {
 
 			javaMailSender.send(message);
 
-		} catch (AddressException e) {
-			LOGGER.error(e.getMessage(), e);
-			throw new MailerException();
 		} catch (MessagingException e) {
 			LOGGER.error(e.getMessage(), e);
 			throw new MailerException();

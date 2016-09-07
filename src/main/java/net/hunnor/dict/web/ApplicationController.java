@@ -65,12 +65,12 @@ public final class ApplicationController {
 	public String about(final Model model) {
 		try {
 			Map<Language, Long> counts = searchService.counts();
-			model.addAttribute("hu", counts.get(Language.hu));
-			model.addAttribute("nb", counts.get(Language.nb));
+			model.addAttribute("hu", counts.get(Language.HU));
+			model.addAttribute("nb", counts.get(Language.NB));
 		} catch (SearchException e) {
 			LOGGER.error(e.getMessage(), e);
 		}
-		return "views/about/index";
+		return ViewConstants.ABOUT_VIEW;
 	}
 
 	/**
@@ -84,7 +84,7 @@ public final class ApplicationController {
 			value = "/contrib",
 			method = {RequestMethod.GET, RequestMethod.POST})
 	public String contrib(
-			final @ModelAttribute Contrib contrib,
+			@ModelAttribute final Contrib contrib,
 			@RequestParam(value = "g-recaptcha-response", required = false)
 					final String captchaResponse,
 			final Model model) {
@@ -134,7 +134,7 @@ public final class ApplicationController {
 		}
 
 		model.addAttribute("contrib", contrib);
-		return "views/contrib/index";
+		return ViewConstants.CONTRIB_VIEW;
 
 	}
 
@@ -146,7 +146,7 @@ public final class ApplicationController {
 			value = "/download",
 			method = RequestMethod.GET)
 	public String download() {
-		return "views/download/index";
+		return ViewConstants.DOWNLOAD_VIEW;
 	}
 
 	/**
@@ -169,14 +169,14 @@ public final class ApplicationController {
 							searchService.search(term, match);
 					model.addAttribute("term", term);
 					model.addAttribute("match", match);
-					model.addAttribute("hu", Language.hu);
-					model.addAttribute("nb", Language.nb);
+					model.addAttribute("hu", Language.HU);
+					model.addAttribute("nb", Language.NB);
 					model.addAttribute("responses", responses);
 				} catch (SearchException e) {
 					LOGGER.error(e.getMessage(), e);
 				}
 			}
-		return "views/search/index";
+		return ViewConstants.SEARCH_VIEW;
 	}
 
 }

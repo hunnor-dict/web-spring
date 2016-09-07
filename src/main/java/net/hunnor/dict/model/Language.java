@@ -8,11 +8,11 @@ public enum Language {
 	/**
 	 * Hungarian.
 	 */
-	hu,
+	HU,
 
 	/**
 	 * Norwegian.
 	 */
-	nb;
+	NB;
 
 }

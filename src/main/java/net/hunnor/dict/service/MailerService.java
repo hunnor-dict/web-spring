@@ -6,6 +6,7 @@ import net.hunnor.dict.model.MailerException;
 /**
  * Service for sending e-mails.
  */
+@FunctionalInterface
 public interface MailerService {
 
 	/**

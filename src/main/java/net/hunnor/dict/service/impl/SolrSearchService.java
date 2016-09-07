@@ -30,6 +30,9 @@ import org.apache.solr.client.solrj.response.TermsResponse.Term;
 import org.apache.solr.client.solrj.util.ClientUtils;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.params.CommonParams;
+import org.apache.solr.common.params.HighlightParams;
+import org.apache.solr.common.params.TermsParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,6 +74,11 @@ public final class SolrSearchService implements SearchService {
 	 */
 	@Value("${net.hunnor.dict.search.solr.cores}")
 	private String[] cores;
+
+	/**
+	 * Constants prefix for core names.
+	 */
+	private static final String CORE_NAME_PREFIX = "hunnor.";
 
 	/**
 	 * The maximum number of results to return.
@@ -158,20 +166,18 @@ public final class SolrSearchService implements SearchService {
 		Map<Language, Long> counts = new TreeMap<>();
 
 		SolrQuery solrQuery = new SolrQuery();
-		solrQuery.set("q", "*:*");
-		solrQuery.set("omitHeader", true);
-		solrQuery.set("rows", 0);
+		solrQuery.set(CommonParams.Q, "*:*");
+		solrQuery.set(CommonParams.OMIT_HEADER, true);
+		solrQuery.set(CommonParams.ROWS, 0);
 
 		for (Language language: Language.values()) {
 			try {
-				QueryResponse queryResponse =
-						solrClient.query("hunnor." + language, solrQuery);
+				QueryResponse queryResponse = solrClient.query(
+						(CORE_NAME_PREFIX + language).toLowerCase(),
+						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
 				counts.put(language, solrDocumentList.getNumFound());
-			} catch (SolrServerException e) {
-				LOGGER.error(e.getMessage(), e);
-				throw new SearchException();
-			} catch (IOException e) {
+			} catch (SolrServerException | IOException e) {
 				LOGGER.error(e.getMessage(), e);
 				throw new SearchException();
 			}
@@ -187,12 +193,12 @@ public final class SolrSearchService implements SearchService {
 			final String match) throws SearchException {
 
 		SolrQuery baseQuery = new SolrQuery();
-		baseQuery.set("fl", "id,html");
-		baseQuery.set("hl", true);
-		baseQuery.set("hl.fl", "html");
-		baseQuery.set("omitHeader", true);
-		baseQuery.set("rows", maxCount);
-		baseQuery.set("sort", "sort asc");
+		baseQuery.set(CommonParams.FIELD, "id,html");
+		baseQuery.set(HighlightParams.HIGHLIGHT, true);
+		baseQuery.set(HighlightParams.FIELDS, "html");
+		baseQuery.set(CommonParams.OMIT_HEADER, true);
+		baseQuery.set(CommonParams.ROWS, maxCount);
+		baseQuery.set(CommonParams.SORT, "sort asc");
 
 		String escapedTerm = ClientUtils.escapeQueryChars(term);
 		if (escapedTerm.contains(" ")) {
@@ -209,23 +215,23 @@ public final class SolrSearchService implements SearchService {
 			responses.put(language, response);
 		}
 
-		Boolean hasResults = false;
+		boolean hasResults;
 
 		// Phase 1
 		SolrQuery p1Query = baseQuery.getCopy();
-		p1Query.set("q", "roots:" + escapedTerm);
+		p1Query.set(CommonParams.Q, "roots:" + escapedTerm);
 		hasResults = searchPhase(responses, p1Query, true);
 
 		// Phase 2
 		if (!hasResults || "forms".equals(match) || "full".equals(match)) {
 			SolrQuery p2Query = baseQuery.getCopy();
-			p2Query.set("q", "forms:" + escapedTerm);
+			p2Query.set(CommonParams.Q, "forms:" + escapedTerm);
 			hasResults = searchPhase(responses, p2Query, true);
 		}
 
 		if (!hasResults || "full".equals(match)) {
 			SolrQuery p3Query = baseQuery.getCopy();
-			p3Query.set("q", "trans:" + escapedTerm
+			p3Query.set(CommonParams.Q, "trans:" + escapedTerm
 					+ " egTrans:" + escapedTerm);
 			hasResults = searchPhase(responses, p3Query, true);
 		}
@@ -265,8 +271,9 @@ public final class SolrSearchService implements SearchService {
 
 			try {
 
-				QueryResponse queryResponse =
-						solrClient.query("hunnor." + language, solrQuery);
+				QueryResponse queryResponse = solrClient.query(
+						(CORE_NAME_PREFIX + language).toLowerCase(),
+						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
 				long numFound = solrDocumentList.getNumFound();
 
@@ -316,10 +323,7 @@ public final class SolrSearchService implements SearchService {
 
 				}
 
-			} catch (SolrServerException e) {
-				LOGGER.error(e.getMessage(), e);
-				throw new SearchException();
-			} catch (IOException e) {
+			} catch (SolrServerException | IOException e) {
 				LOGGER.error(e.getMessage(), e);
 				throw new SearchException();
 			}
@@ -335,7 +339,7 @@ public final class SolrSearchService implements SearchService {
 			final String searchTerm) throws SearchException {
 
 		Map<String, Autocomplete> suggestions =
-				new TreeMap<String, Autocomplete>(collator);
+				new TreeMap<>(collator);
 
 		if (searchTerm != null && searchTerm.length() <= suggestionsMaxLength) {
 
@@ -355,7 +359,7 @@ public final class SolrSearchService implements SearchService {
 
 		}
 
-		return new ArrayList<Autocomplete>(suggestions.values());
+		return new ArrayList<>(suggestions.values());
 
 	}
 
@@ -373,18 +377,16 @@ public final class SolrSearchService implements SearchService {
 
 			SolrQuery solrQuery = new SolrQuery();
 			solrQuery.setRequestHandler("/suggest");
-			solrQuery.set("q", q);
-			solrQuery.set("omitHeader", true);
+			solrQuery.set(CommonParams.Q, q);
+			solrQuery.set(CommonParams.OMIT_HEADER, true);
 			solrQuery.set("suggest.count", suggestionsMaxCount);
-			solrQuery.set("terms.prefix", q);
+			solrQuery.set(TermsParams.TERMS_PREFIX_STR, q);
 			try {
-				QueryResponse response =
-						solrClient.query("hunnor." + language, solrQuery);
+				QueryResponse response = solrClient.query(
+								(CORE_NAME_PREFIX + language).toLowerCase(),
+								solrQuery);
 				responses.put(language, response);
-			} catch (SolrServerException e) {
-				LOGGER.error(e.getMessage(), e);
-				throw new SearchException();
-			} catch (IOException e) {
+			} catch (SolrServerException | IOException e) {
 				LOGGER.error(e.getMessage(), e);
 				throw new SearchException();
 			}
@@ -411,7 +413,7 @@ public final class SolrSearchService implements SearchService {
 				suggestion = new Autocomplete();
 				suggestion.setValue(t);
 				suggestion.setPrefix(true);
-				Set<Language> languages = new TreeSet<Language>();
+				Set<Language> languages = new TreeSet<>();
 				languages.add(language);
 				suggestion.setLanguages(languages);
 				suggestions.put(t, suggestion);
@@ -445,7 +447,7 @@ public final class SolrSearchService implements SearchService {
 					suggestion = new Autocomplete();
 					suggestion.setValue(suggestedTerm);
 					suggestion.setPrefix(false);
-					Set<Language> languages = new TreeSet<Language>();
+					Set<Language> languages = new TreeSet<>();
 					languages.add(language);
 					suggestion.setLanguages(languages);
 					suggestions.put(suggestedTerm, suggestion);
