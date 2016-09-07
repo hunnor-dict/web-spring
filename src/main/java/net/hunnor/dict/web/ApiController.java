@@ -79,8 +79,10 @@ public final class ApiController {
 		results.add(term);
 
 		List<String> suggestions = new ArrayList<>();
-		for (Autocomplete autocomplete: autocompletes) {
-			suggestions.add(autocomplete.getValue());
+		if (autocompletes != null) {
+			for (Autocomplete autocomplete: autocompletes) {
+				suggestions.add(autocomplete.getValue());
+			}
 		}
 		results.add(suggestions);
 
