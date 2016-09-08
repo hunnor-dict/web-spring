@@ -267,7 +267,6 @@ public final class SolrSearchService implements SearchService {
 
 		for (Language language: Language.values()) {
 			Response response = responses.get(language);
-			Set<Result> resultSet = response.getResults();
 
 			try {
 
@@ -277,49 +276,15 @@ public final class SolrSearchService implements SearchService {
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
 				long numFound = solrDocumentList.getNumFound();
 
-				if (numFound == 0) {
+				if (numFound == 0 && spellCheck) {
 
-					if (spellCheck) {
-						SpellCheckResponse spellCheckResponse =
-								queryResponse.getSpellCheckResponse();
-						if (spellCheckResponse != null) {
-							List<Suggestion> suggestionList =
-									spellCheckResponse.getSuggestions();
-							for (Suggestion suggestion: suggestionList) {
-								List<String> alternatives =
-										suggestion.getAlternatives();
-								for (String alternative: alternatives) {
-									response.getSuggestions().add(alternative);
-								}
-							}
-						}
-					}
+					getSuggestions(queryResponse, response);
 
 				} else {
 
 					hasResults = true;
 
-					Map<String, Map<String, List<String>>> highlighting =
-							queryResponse.getHighlighting();
-					for (SolrDocument solrDocument: solrDocumentList) {
-						String id = solrDocument.getFieldValue("id").toString();
-						String html = solrDocument
-								.getFieldValue("html").toString();
-						if (highlighting != null) {
-							Map<String, List<String>> highlightingMap =
-									highlighting.get(id);
-							if (highlightingMap != null) {
-								List<String> fragments =
-										highlightingMap.get("html");
-								if (fragments != null
-										&& fragments.size() == 1) {
-									html = fragments.get(0);
-								}
-							}
-						}
-						Result result = new Result(id, html);
-						resultSet.add(result);
-					}
+					getResults(queryResponse, response);
 
 				}
 
@@ -332,6 +297,74 @@ public final class SolrSearchService implements SearchService {
 
 		return hasResults;
 
+	}
+
+	/**
+	 * Add spell checker results to the response.
+	 * @param queryResponse the query response with the spell checker results
+	 * @param response the response
+	 */
+	private void getSuggestions(
+			final QueryResponse queryResponse, final Response response) {
+		SpellCheckResponse spellCheckResponse =
+				queryResponse.getSpellCheckResponse();
+		if (spellCheckResponse != null) {
+			List<Suggestion> suggestionList =
+					spellCheckResponse.getSuggestions();
+			for (Suggestion suggestion: suggestionList) {
+				List<String> alternatives =
+						suggestion.getAlternatives();
+				for (String alternative: alternatives) {
+					response.getSuggestions().add(alternative);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Add results to the response.
+	 * @param queryResponse the query response with the results
+	 * @param response the response
+	 */
+	private void getResults(
+			final QueryResponse queryResponse,
+			final Response response) {
+		Set<Result> resultSet = response.getResults();
+		SolrDocumentList solrDocumentList = queryResponse.getResults();
+		Map<String, Map<String, List<String>>> highlighting =
+				queryResponse.getHighlighting();
+		for (SolrDocument solrDocument: solrDocumentList) {
+			Result result = getResultFromDocument(solrDocument, highlighting);
+			resultSet.add(result);
+		}
+	}
+
+	/**
+	 * Build a result from a Solr document, or optionally
+	 * from the set of highlighted content.
+	 * @param solrDocument the Solr document
+	 * @param highlighting the set of highlighted content
+	 * @return the result with data from the Solr document
+	 */
+	private Result getResultFromDocument(
+			final SolrDocument solrDocument,
+			final Map<String, Map<String, List<String>>> highlighting) {
+		String id = solrDocument.getFieldValue("id").toString();
+		String html = solrDocument
+				.getFieldValue("html").toString();
+		if (highlighting != null) {
+			Map<String, List<String>> highlightingMap =
+					highlighting.get(id);
+			if (highlightingMap != null) {
+				List<String> fragments =
+						highlightingMap.get("html");
+				if (fragments != null
+						&& fragments.size() == 1) {
+					html = fragments.get(0);
+				}
+			}
+		}
+		return new Result(id, html);
 	}
 
 	@Override

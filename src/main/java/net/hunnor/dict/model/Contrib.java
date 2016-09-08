@@ -120,19 +120,39 @@ public final class Contrib {
 	 * @return true if any of the fields is a not empty string, false otherwise
 	 */
 	public boolean hasInput() {
-		if (spelling != null && !spelling.isEmpty()) {
-			return true;
-		}
-		if (infl != null && !infl.isEmpty()) {
-			return true;
-		}
-		if (trans != null && !trans.isEmpty()) {
-			return true;
-		}
-		if (comments != null && !comments.isEmpty()) {
-			return true;
-		}
-		return false;
+		return hasSpelling() && hasInfl() && hasTrans() && hasComments();
+	}
+
+	/**
+	 * Check if the model has spelling.
+	 * @return true if spelling is a not empty string, false otherwise
+	 */
+	private boolean hasSpelling() {
+		return spelling != null && !spelling.isEmpty();
+	}
+
+	/**
+	 * Check if the model has inflection.
+	 * @return true if inflection is a not empty string, false otherwise
+	 */
+	private boolean hasInfl() {
+		return infl != null && !infl.isEmpty();
+	}
+
+	/**
+	 * Check if the model has translation.
+	 * @return true if translation is a not empty string, false otherwise
+	 */
+	private boolean hasTrans() {
+		return trans != null && !trans.isEmpty();
+	}
+
+	/**
+	 * Check if the model has comments.
+	 * @return true if comments is a not empty string, false otherwise
+	 */
+	private boolean hasComments() {
+		return comments != null && !comments.isEmpty();
 	}
 
 }
