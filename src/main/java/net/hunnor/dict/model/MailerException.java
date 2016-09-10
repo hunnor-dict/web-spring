@@ -5,6 +5,9 @@ package net.hunnor.dict.model;
  */
 public class MailerException extends Exception {
 
+	/**
+	 * serialVersionUID.
+	 */
 	private static final long serialVersionUID = -8076662701692239509L;
 
 }
