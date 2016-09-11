@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -173,7 +174,8 @@ public final class SolrSearchService implements SearchService {
 		for (Language language: Language.values()) {
 			try {
 				QueryResponse queryResponse = solrClient.query(
-						(CORE_NAME_PREFIX + language).toLowerCase(),
+						(CORE_NAME_PREFIX + language)
+								.toLowerCase(Locale.ENGLISH),
 						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
 				counts.put(language, solrDocumentList.getNumFound());
@@ -271,7 +273,8 @@ public final class SolrSearchService implements SearchService {
 			try {
 
 				QueryResponse queryResponse = solrClient.query(
-						(CORE_NAME_PREFIX + language).toLowerCase(),
+						(CORE_NAME_PREFIX + language)
+								.toLowerCase(Locale.ENGLISH),
 						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
 				long numFound = solrDocumentList.getNumFound();
@@ -416,7 +419,8 @@ public final class SolrSearchService implements SearchService {
 			solrQuery.set(TermsParams.TERMS_PREFIX_STR, q);
 			try {
 				QueryResponse response = solrClient.query(
-								(CORE_NAME_PREFIX + language).toLowerCase(),
+								(CORE_NAME_PREFIX + language)
+										.toLowerCase(Locale.ENGLISH),
 								solrQuery);
 				responses.put(language, response);
 			} catch (SolrServerException | IOException e) {
