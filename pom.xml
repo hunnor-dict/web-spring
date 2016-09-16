@@ -68,6 +68,11 @@
 					<executable>true</executable>
 				</configuration>
 			</plugin>
+			<!--
+			To use the code quality plugins in Eclipse or STS, install the
+			m2e-code-quality plugin from software site
+			http://m2e-code-quality.github.com/m2e-code-quality/site/latest/
+			 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
