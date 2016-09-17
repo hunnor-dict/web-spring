@@ -21,7 +21,7 @@ function Searcher() {
 			}).data("ui-autocomplete")._renderItem = function(ul, item) {
 				var li =  $("<li>");
 				li.text(item.value);
-				if (item.prefix == false) {
+				if (!item.prefix) {
 					li.addClass("suggestion");
 				}
 				return li.appendTo(ul);
