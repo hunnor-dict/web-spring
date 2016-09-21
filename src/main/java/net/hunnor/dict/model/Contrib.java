@@ -120,7 +120,7 @@ public final class Contrib {
 	 * @return true if any of the fields is a not empty string, false otherwise
 	 */
 	public boolean hasInput() {
-		return hasSpelling() && hasInfl() && hasTrans() && hasComments();
+		return hasSpelling() || hasInfl() || hasTrans() || hasComments();
 	}
 
 	/**
