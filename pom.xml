@@ -82,7 +82,7 @@
 						<id>validate</id>
 						<phase>validate</phase>
 						<configuration>
-							<configLocation>sun-eclipse-hunnor.xml</configLocation>
+							<configLocation>checkstyle.xml</configLocation>
 							<violationSeverity>warning</violationSeverity>
 						</configuration>
 						<goals>
