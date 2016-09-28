@@ -25,6 +25,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<solr.version>6.2.1</solr.version>
+		<!-- properties for docker:build -->
+		<net.hunnor.dict.search.solr.url>http://localhost:8983/solr</net.hunnor.dict.search.solr.url>
 	</properties>
 
 	<dependencies>
@@ -66,6 +68,35 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<executable>true</executable>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.16.5</version>
+				<configuration>
+					<images>
+						<image>
+							<name>hunnor-dict-web-spring</name>
+							<alias>hunnor-dict-web-spring</alias>
+							<build>
+								<from>openjdk:8-jdk</from>
+								<assembly>
+									<basedir>/</basedir>
+									<descriptor>docker-assembly.xml</descriptor>
+								</assembly>
+							</build>
+							<run>
+								<cmd>
+									<shell>java -jar web-spring-1.0.0.jar</shell>
+								</cmd>
+								<namingStrategy>alias</namingStrategy>
+								<ports>
+									<port>8080:8080</port>
+								</ports>
+							</run>
+						</image>
+					</images>
 				</configuration>
 			</plugin>
 			<!--
