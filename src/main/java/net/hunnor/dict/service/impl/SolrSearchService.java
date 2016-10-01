@@ -100,7 +100,7 @@ public final class SolrSearchService implements SearchService {
 	private int suggestionsMaxLength;
 
 	/**
-	 * s.
+	 * The object that manages connections to the Solr server.
 	 */
 	private SolrClient solrClient;
 
