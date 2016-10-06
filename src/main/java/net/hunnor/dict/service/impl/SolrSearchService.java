@@ -71,15 +71,16 @@ public final class SolrSearchService implements SearchService {
 	private String baseURL;
 
 	/**
+	 * Constants prefix for core names.
+	 */
+	@Value("${net.hunnor.dict.search.solr.core.names.prefix}")
+	private String coreNamesPrefix;
+
+	/**
 	 * The names of the Solr cores to search.
 	 */
 	@Value("${net.hunnor.dict.search.solr.cores}")
 	private String[] cores;
-
-	/**
-	 * Constants prefix for core names.
-	 */
-	private static final String CORE_NAME_PREFIX = "hunnor.";
 
 	/**
 	 * The maximum number of results to return.
@@ -100,65 +101,39 @@ public final class SolrSearchService implements SearchService {
 	private int suggestionsMaxLength;
 
 	/**
+	 * Collation rules for Hungarian and Norwegian terms.
+	 */
+	@Value("${net.hunnor.dict.search.collation.rules}")
+	private String collationRules;
+
+	/**
 	 * The object that manages connections to the Solr server.
 	 */
 	private SolrClient solrClient;
 
 	/**
-	 * Collation rules for Hungarian and Norwegian terms.
-	 */
-	private static final String COLLATION_HU_NO = 
-			"< a, A, á, Á"
-			+ "< b, B"
-			+ "< c, C"
-			+ "< d, D"
-			+ "< e, E, é, É"
-			+ "< f, F"
-			+ "< g, G"
-			+ "< h, H"
-			+ "< i, I, í, Í"
-			+ "< j, J"
-			+ "< k, K"
-			+ "< l, L"
-			+ "< m, M"
-			+ "< n, N"
-			+ "< o, O, ó, Ó"
-			+ "< ö, Ö, ő, Ő"
-			+ "< p, P"
-			+ "< q, Q"
-			+ "< r, R"
-			+ "< s, S"
-			+ "< t, T"
-			+ "< u, U, ú, Ú"
-			+ "< ü, Ü, ű, Ű"
-			+ "< v, V"
-			+ "< w, W"
-			+ "< x, X"
-			+ "< y, Y"
-			+ "< z, Z"
-			+ "< æ, Æ"
-			+ "< ø, Ø"
-			+ "< å, Å";
-
-	/**
 	 * Collator object for Hungarian and Norwegian terms.
 	 */
-	private static Collator collator = null;
-
-	static {
-		try {
-			collator = new RuleBasedCollator(COLLATION_HU_NO);
-		} catch (ParseException e) {
-			LOGGER.error(e.getMessage(), e);
-		}
-	}
+	private Collator collator;
 
 	/**
 	 * Connect to the Solr server after the service is created.
 	 */
 	@PostConstruct
-	private void connect() {
+	private void setUpSolrClient() {
 		solrClient = new HttpSolrClient.Builder(baseURL).build();
+	}
+
+	/**
+	 * Set up collator after the service is created.
+	 */
+	@PostConstruct
+	private void setUpCollator() {
+		try {
+			collator = new RuleBasedCollator(collationRules);
+		} catch (ParseException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
 	}
 
 	@Override
@@ -174,7 +149,7 @@ public final class SolrSearchService implements SearchService {
 		for (Language language: Language.values()) {
 			try {
 				QueryResponse queryResponse = solrClient.query(
-						(CORE_NAME_PREFIX + language)
+						(coreNamesPrefix + language)
 								.toLowerCase(Locale.ENGLISH),
 						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
@@ -273,7 +248,7 @@ public final class SolrSearchService implements SearchService {
 			try {
 
 				QueryResponse queryResponse = solrClient.query(
-						(CORE_NAME_PREFIX + language)
+						(coreNamesPrefix + language)
 								.toLowerCase(Locale.ENGLISH),
 						solrQuery);
 				SolrDocumentList solrDocumentList = queryResponse.getResults();
@@ -419,7 +394,7 @@ public final class SolrSearchService implements SearchService {
 			solrQuery.set(TermsParams.TERMS_PREFIX_STR, q);
 			try {
 				QueryResponse response = solrClient.query(
-								(CORE_NAME_PREFIX + language)
+								(coreNamesPrefix + language)
 										.toLowerCase(Locale.ENGLISH),
 								solrQuery);
 				responses.put(language, response);
