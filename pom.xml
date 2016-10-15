@@ -77,8 +77,8 @@
 				<configuration>
 					<images>
 						<image>
-							<name>hunnor-dict-web-spring</name>
-							<alias>hunnor-dict-web-spring</alias>
+							<name>hunnordict/web-spring</name>
+							<alias>hunnordict/web-spring</alias>
 							<build>
 								<from>openjdk:8-jdk</from>
 								<assembly>
