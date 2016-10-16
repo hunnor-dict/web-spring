@@ -78,18 +78,21 @@
 					<images>
 						<image>
 							<name>hunnordict/web-spring</name>
-							<alias>hunnordict/web-spring</alias>
+							<alias>hunnor-dict-web-spring</alias>
 							<build>
 								<from>openjdk:8-jdk</from>
 								<assembly>
 									<basedir>/</basedir>
 									<descriptor>docker-assembly.xml</descriptor>
 								</assembly>
-							</build>
-							<run>
 								<cmd>
 									<shell>java -jar web-spring-1.0.0.jar</shell>
 								</cmd>
+								<ports>
+									<port>8080</port>
+								</ports>
+							</build>
+							<run>
 								<namingStrategy>alias</namingStrategy>
 								<ports>
 									<port>8080:8080</port>
