@@ -7,7 +7,7 @@
 
 			<div class="jumbotron" style="margin-bottom: 20px; padding: 20px;">
 				<div class="input-group">
-					<input class="form-control" id="search-term" name="term" type="text" th:value="${term}"/>
+					<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:value="${term}"/>
 					<span class="input-group-btn">
 						<input class="btn btn-default" id="search-submit" type="submit" value="Keresés" th:value="#{search.submit.button}"/>
 					</span>
