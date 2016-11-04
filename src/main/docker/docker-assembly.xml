@@ -6,9 +6,5 @@
 		<file>
 			<source>target/web-spring-1.0.0.jar</source>
 		</file>
-		<file>
-			<source>src/main/docker/application.properties</source>
-			<filtered>true</filtered>
-		</file>
 	</files>
 </assembly>
