@@ -82,14 +82,21 @@
 							<build>
 								<from>openjdk:8-jdk</from>
 								<assembly>
-									<basedir>/</basedir>
+									<basedir>/hunnor</basedir>
 									<descriptor>docker-assembly.xml</descriptor>
 								</assembly>
+								<runCmds>
+									<run>groupadd --system hunnor</run>
+									<run>useradd --system --gid hunnor hunnor</run>
+									<run>chown --recursive hunnor:hunnor /hunnor</run>
+								</runCmds>
+								<optimise/>
+								<user>hunnor</user>
 								<entryPoint>
 									<exec>
 										<arg>java</arg>
 										<arg>-jar</arg>
-										<arg>web-spring-1.0.0.jar</arg>
+										<arg>/hunnor/web-spring-1.0.0.jar</arg>
 									</exec>
 								</entryPoint>
 								<ports>
