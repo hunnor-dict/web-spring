@@ -73,7 +73,7 @@
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.16.5</version>
+				<version>0.17.2</version>
 				<configuration>
 					<images>
 						<image>
@@ -83,7 +83,7 @@
 								<from>openjdk:8-jdk</from>
 								<assembly>
 									<basedir>/hunnor</basedir>
-									<descriptor>docker-assembly.xml</descriptor>
+									<descriptorRef>artifact</descriptorRef>
 								</assembly>
 								<runCmds>
 									<run>groupadd --system hunnor</run>
