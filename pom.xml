@@ -24,7 +24,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<solr.version>6.2.1</solr.version>
+		<solr.version>6.3.0</solr.version>
 		<!-- property for overriding Solr URL in docker:run -->
 		<net.hunnor.dict.search.solr.url>http://localhost:8983/solr</net.hunnor.dict.search.solr.url>
 	</properties>
