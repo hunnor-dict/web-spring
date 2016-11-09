@@ -11,6 +11,10 @@
 			<nav th:replace="layout/navigation :: navigation">
 			</nav>
 
+			<div class="page-header">
+				<h1 th:text="#{search.title}"> </h1>
+			</div>
+
 			<form th:replace="views/search/form :: searchForm">
 			</form>
 
