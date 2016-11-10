@@ -165,12 +165,12 @@ public final class ApplicationController {
 			final Model model) {
 			if (term != null && !term.isEmpty()) {
 				try {
-					Map<Language, Response> responses =
-							searchService.search(term, match);
 					model.addAttribute("term", term);
 					model.addAttribute("match", match);
 					model.addAttribute("hu", Language.HU);
 					model.addAttribute("nb", Language.NB);
+					Map<Language, Response> responses =
+							searchService.search(term, match);
 					model.addAttribute("responses", responses);
 				} catch (SearchException e) {
 					LOGGER.error(e.getMessage(), e);

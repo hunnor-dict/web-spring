@@ -21,11 +21,14 @@
 				}(document, 'script', 'facebook-jssdk'));
 				/*]]>*/
 			</script>
+			<div th:if="${hu == null and nb == null}">
+				<div class="alert alert-danger" role="alert" th:text="#{error.title}"> </div>
+			</div>
 			<div class="page-header">
 				<h1 th:text="#{about.title}"> </h1>
 			</div>
 			<section>
-				<p>A HunNor egy magyarországi és norvégiai önkéntesek által létrehozott norvég-magyar közösségi szótár. A szótár felhasználását a <a href="http://www.gnu.hu/gplv3.html" style="font-weight: bold;">GNU Általános Nyilvános Licenc</a> szabályozza. A szótár jelenleg <span th:text="${nb}">0</span> norvég-magyar és <span th:text="${hu}">0</span> magyar-norvég szócikket tartalmaz.</p>
+				<p>A HunNor egy magyarországi és norvégiai önkéntesek által létrehozott norvég-magyar közösségi szótár. A szótár felhasználását a <a href="http://www.gnu.hu/gplv3.html" style="font-weight: bold;">GNU Általános Nyilvános Licenc</a> szabályozza. A szótár jelenleg <span th:text="${nb == null ? 0 : nb}">0</span> norvég-magyar és <span th:text="${hu == null ? 0 : hu}">0</span> magyar-norvég szócikket tartalmaz.</p>
 			</section>
 			<section>
 				<div class="fb-page" data-href="https://www.facebook.com/hunnor.dict" data-hide-cover="true" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/hunnor.dict"><a href="https://www.facebook.com/hunnor.dict">HunNor szótár</a></blockquote></div></div>

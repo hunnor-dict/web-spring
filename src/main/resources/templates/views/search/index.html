@@ -11,6 +11,10 @@
 			<nav th:replace="layout/navigation :: navigation">
 			</nav>
 
+			<div th:if="${term != null and responses == null}">
+				<div class="alert alert-danger" role="alert" th:text="#{error.title}"> </div>
+			</div>
+
 			<div class="page-header">
 				<h1 th:text="#{search.title}"> </h1>
 			</div>
