@@ -1,13 +1,16 @@
-package net.hunnor.dict.model;
+package net.hunnor.dict.test.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import net.hunnor.dict.model.Contrib;
 
 /**
  * Tests for the Contrib model class.
  */
-public class ContribTest {
+public final class ContribTest {
 
 	/**
 	 * A Contrib object should be empty by default.
