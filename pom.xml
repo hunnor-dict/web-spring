@@ -27,6 +27,8 @@
 		<solr.version>6.3.0</solr.version>
 		<!-- property for overriding Solr URL in docker:run -->
 		<net.hunnor.dict.search.solr.url>http://localhost:8983/solr</net.hunnor.dict.search.solr.url>
+		<!-- property for overriding app port in docker:run -->
+		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
 	</properties>
 
 	<dependencies>
@@ -107,7 +109,7 @@
 								<namingStrategy>alias</namingStrategy>
 								<cmd>--net.hunnor.dict.search.solr.url=${net.hunnor.dict.search.solr.url}</cmd>
 								<ports>
-									<port>8080:8080</port>
+									<port>${net.hunnor.dict.web.port}:8080</port>
 								</ports>
 							</run>
 						</image>
