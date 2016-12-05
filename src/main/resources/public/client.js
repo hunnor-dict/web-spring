@@ -8,6 +8,21 @@ function Searcher() {
 	this.searchForm = $("#search-form");
 	this.searchInput = $("#search-term");
 
+	this.bindChars = function() {
+		var _this = this;
+		this.searchForm.find("button").click(function() {
+			var char = $(this).data("char");
+			var selectionStart = document.getElementById("search-term").selectionStart;
+			var selectionEnd = document.getElementById("search-term").selectionEnd;
+			var before = _this.searchInput.val();
+			var after = before.substring(0, selectionStart)
+					+ char
+					+ before.substring(selectionEnd, before.length);
+			_this.searchInput.val(after);
+			$(this).blur();
+		});
+	};
+
 	this.bindSuggest = function() {
 		var _this = this;
 		if (this.searchInput.length > 0) {
@@ -77,6 +92,7 @@ function Switcher() {
 $(document).ready(function() {
 
 	var searcher = new Searcher();
+	searcher.bindChars();
 	searcher.bindSuggest();
 	searcher.focusInput();
 
