@@ -15,25 +15,28 @@
 			</div>
 
 			<div class="btn-toolbar" role="toolbar">
-				<div class="btn-group" role="group" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
+				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
 					<button type="button" class="btn btn-default" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
 				</div>
-				<div class="btn-group" role="group" th:with="letters = ${ {'æ', 'ø', 'å'} }">
+				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'æ', 'ø', 'å'} }">
 					<button type="button" class="btn btn-default" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
 				</div>
 			</div>
 
-			<div class="input-group" style="margin-bottom: 20px;">
-				<span th:text="#{search.match.label}"></span>:
-				<label class="radio-inline">
+			<div class="checkbox">
+				<label>
 					<input th:checked="${match == null or match == '' or match == 'roots'}" id="match-roots" name="match" type="radio" value="roots"/>
 					<span th:text="#{search.match.roots}"></span>
 				</label>
-				<label class="radio-inline">
+			</div>
+			<div class="checkbox">
+				<label>
 					<input th:checked="${match == 'forms'}" id="match-forms" name="match" type="radio" value="forms"/>
 					<span th:text="#{search.match.forms}"></span>
 				</label>
-				<label class="radio-inline">
+			</div>
+			<div class="checkbox" style="margin-bottom: 20px;">
+				<label>
 					<input th:checked="${match == 'full'}" id="match-full" name="match" type="radio" value="full"/>
 					<span th:text="#{search.match.full}"></span>
 				</label>
