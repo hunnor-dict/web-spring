@@ -22,13 +22,16 @@
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<bootstrap.version>3.3.7-1</bootstrap.version>
 		<java.version>1.8</java.version>
-		<solr.version>6.3.0</solr.version>
+		<jquery.version>1.12.4</jquery.version>
+		<jquery.ui.version>1.11.4</jquery.ui.version>
 		<!-- property for overriding Solr URL in docker:run -->
 		<net.hunnor.dict.search.solr.url>http://localhost:8983/solr</net.hunnor.dict.search.solr.url>
-		<!-- property for overriding app port in docker:run -->
+		<!-- property for overriding application port in docker:run -->
 		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<solr.version>6.3.0</solr.version>
 	</properties>
 
 	<dependencies>
@@ -52,6 +55,21 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery-ui</artifactId>
+			<version>${jquery.ui.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.solr</groupId>

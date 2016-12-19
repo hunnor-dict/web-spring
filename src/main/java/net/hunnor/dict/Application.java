@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -58,6 +59,13 @@ public class Application extends WebMvcConfigurerAdapter {
 	@Override
 	public final void addInterceptors(final InterceptorRegistry registry) {
 		registry.addInterceptor(localeChangeInterceptor());
+	}
+
+	@Override
+	public final void addResourceHandlers(
+			final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/webjars/**").addResourceLocations(
+				"classpath:/META-INF/resources/webjars/");
 	}
 
 }
