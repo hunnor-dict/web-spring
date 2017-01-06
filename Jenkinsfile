@@ -1,6 +1,17 @@
 node {
-	stage 'Checkout'
-	checkout scm
-	stage 'Build'
-	sh 'mvn clean package'
+
+	stage ('Checkout') {
+		checkout scm
+	}
+
+	stage ('Build') {
+		sh 'mvn clean package'
+	}
+
+	stage ('QA') {
+		withSonarQubeEnv('default') {
+			sh 'mvn ${SONAR_MAVEN_GOAL} -Dsonar.projectKey=web-spring -Dsonar.projectName=Web\ app\ (Spring\ Boot) -Dsonar.projectVersion=1.0.0'
+		}
+	}
+
 }
