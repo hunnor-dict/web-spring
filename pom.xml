@@ -11,7 +11,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>web-spring</name>
+	<name>Web app (Spring Boot)</name>
 	<description>HunNor web app Spring Boot version</description>
 
 	<parent>
