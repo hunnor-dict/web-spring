@@ -1,4 +1,4 @@
 /**
- * Package for data models.
+ * Tests for data models.
  */
 package net.hunnor.dict.test.model;
