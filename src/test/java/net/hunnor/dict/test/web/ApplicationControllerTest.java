@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.junit.Test;
@@ -20,6 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import net.hunnor.dict.model.Contrib;
 import net.hunnor.dict.model.Language;
+import net.hunnor.dict.model.Response;
+import net.hunnor.dict.model.Result;
 import net.hunnor.dict.service.CaptchaService;
 import net.hunnor.dict.service.MailerService;
 import net.hunnor.dict.service.SearchService;
@@ -135,6 +138,51 @@ public final class ApplicationControllerTest {
 		mvc.perform(get("/download"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("views/download/index"));
+
+	}
+
+	/**
+	 * Test for the Search controller.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testSearchFormDisplay() throws Exception {
+
+		mvc.perform(get("/"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeDoesNotExist("term", "match"))
+				.andExpect(model().attributeDoesNotExist("hu", "nb"))
+				.andExpect(model().attributeDoesNotExist("response"))
+				.andExpect(view().name("views/search/index"));
+
+	}
+
+	/**
+	 * Test for the Search controller.
+	 * @throws Exception 
+	 */
+	@Test
+	public void testSearchFormSubmit() throws Exception {
+
+		Map<Language, Response> responses = new HashMap<>();
+		Response hu = new Response();
+		hu.setResults(new HashSet<Result>());
+		hu.setSuggestions(new HashSet<String>());
+		Response nb = new Response();
+		nb.setResults(new HashSet<Result>());
+		nb.setSuggestions(new HashSet<String>());
+		responses.put(Language.HU, hu);
+		responses.put(Language.NB, nb);
+
+		given(searchService.search("foo", null)).willReturn(responses);
+
+		mvc.perform(get("/").param("term", "foo"))
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("term", "foo"))
+				.andExpect(model().attributeDoesNotExist("match"))
+				.andExpect(model().attribute("hu", Language.HU))
+				.andExpect(model().attribute("nb", Language.NB))
+				.andExpect(view().name("views/search/index"));
 
 	}
 
