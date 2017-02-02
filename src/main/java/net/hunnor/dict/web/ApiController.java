@@ -35,7 +35,7 @@ public final class ApiController {
 	private SearchService searchService;
 
 	/**
-	 * Controller method for search suggestions (jQuery autocomplete).
+	 * Controller method for search suggestions (jQuery).
 	 * @param term the term to return suggestions for
 	 * @return search suggestions in JSON
 	 */
