@@ -31,7 +31,7 @@
 		<!-- property for overriding application port in docker:run -->
 		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<solr.version>6.3.0</solr.version>
+		<solr.version>6.4.1</solr.version>
 	</properties>
 
 	<dependencies>
