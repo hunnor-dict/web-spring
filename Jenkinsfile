@@ -5,12 +5,16 @@ node {
 	}
 
 	stage ('Build') {
-		sh 'mvn clean package'
+		withMaven(maven: 'Default') {
+			sh 'mvn clean package'
+		}
 	}
 
 	stage ('QA') {
-		withSonarQubeEnv('default') {
-			sh 'mvn ${SONAR_MAVEN_GOAL}'
+		withSonarQubeEnv('Default') {
+			withMaven(maven: 'Default') {
+				sh 'mvn ${SONAR_MAVEN_GOAL}'
+			}
 		}
 	}
 
