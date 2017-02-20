@@ -5,13 +5,12 @@ import java.text.Collator;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -382,7 +381,7 @@ public final class SolrSearchService implements SearchService {
 	 */
 	private Map<Language, QueryResponse> getSuggestions(
 			final String term) throws SearchException {
-		Map<Language, QueryResponse> responses = new HashMap<>();
+		Map<Language, QueryResponse> responses = new EnumMap<>(Language.class);
 		String q = ClientUtils.escapeQueryChars(term);
 		for (Language language: Language.values()) {
 
