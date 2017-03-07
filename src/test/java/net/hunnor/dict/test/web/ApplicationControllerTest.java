@@ -96,7 +96,6 @@ public final class ApplicationControllerTest {
 				.param("comments", contrib.getComments()))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("hasCaptcha", true))
-				.andExpect(model().attribute("captchaLang", "hu"))
 				.andExpect(model().attribute("hasInput", false))
 				.andExpect(view().name("views/contrib/index"));
 	}
@@ -120,7 +119,6 @@ public final class ApplicationControllerTest {
 				.param("comments", contrib.getComments()))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("hasCaptcha", true))
-				.andExpect(model().attribute("captchaLang", "hu"))
 				.andExpect(model().attribute("hasInput", true))
 				.andExpect(model().attribute("captchaValid", true))
 				.andExpect(model().attribute("messageSent", true))

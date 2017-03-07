@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="hu" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 	<head th:fragment="header">
 
@@ -35,7 +35,7 @@
 			<script src="respond-1.4.2.min.js" type="text/javascript"> </script>
 		<![endif]-->
 
-		<script src="https://www.google.com/recaptcha/api.js?hl=hu" th:src="${'https://www.google.com/recaptcha/api.js?hl=' + captchaLang}" th:if="${hasCaptcha}"> </script>
+		<script src="https://www.google.com/recaptcha/api.js?hl=hu" th:src="${'https://www.google.com/recaptcha/api.js?hl=' + lang}" th:if="${hasCaptcha}"> </script>
 
 	</head>
 

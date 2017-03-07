@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" th:with="description=#{search.description}">
+<html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},description=#{search.description}">
 
 	<head th:replace="layout/header :: header">
 	</head>
