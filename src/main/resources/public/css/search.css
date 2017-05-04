@@ -2,6 +2,10 @@ div.btn-group {
 	margin-bottom: 1em;
 }
 
+select {
+	margin-bottom: 1em;
+}
+
 a.switch-view-inline {
 	font-weight: bold;
 }
