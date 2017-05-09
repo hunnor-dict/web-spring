@@ -11,12 +11,12 @@ function Searcher() {
 	this.bindChars = function() {
 		var _this = this;
 		this.searchForm.find("button").click(function() {
-			var char = $(this).data("char");
-			var selectionStart = document.getElementById("search-term").selectionStart;
-			var selectionEnd = document.getElementById("search-term").selectionEnd;
-			var before = _this.searchInput.val();
-			var after = before.substring(0, selectionStart)
-					+ char
+			var ch = $(this).data("char"),
+				selectionStart = document.getElementById("search-term").selectionStart,
+				selectionEnd = document.getElementById("search-term").selectionEnd,
+				before = _this.searchInput.val();
+				after = before.substring(0, selectionStart)
+					+ ch
 					+ before.substring(selectionEnd, before.length);
 			_this.searchInput.val(after);
 			$(this).blur();
@@ -69,19 +69,19 @@ function Switcher() {
 		var _this = this;
 		$(".switch-view-inline").click(function(event) {
 			$(this).css("font-weight", "bold");
-			var pSwitch = $(this).closest("div.switch-container");
-			var treeLink = pSwitch.find(".switch-view-tree");
+			var pSwitch = $(this).closest("div.switch-container"),
+				treeLink = pSwitch.find(".switch-view-tree"),
+				entry = $(this).closest(".entry");
 			treeLink.css("font-weight", "normal");
-			var entry = $(this).closest(".entry");
 			_this.switchEntryToInline(entry);
 			event.preventDefault();
 		});
 		$(".switch-view-tree").click(function(event) {
 			$(this).css("font-weight", "bold");
-			var pSwitch = $(this).closest("div.switch-container");
-			var inlineLink = pSwitch.find(".switch-view-inline");
+			var pSwitch = $(this).closest("div.switch-container"),
+				inlineLink = pSwitch.find(".switch-view-inline"),
+				entry = $(this).closest(".entry");
 			inlineLink.css("font-weight", "normal");
-			var entry = $(this).closest(".entry");
 			_this.switchEntryToTree(entry);
 			event.preventDefault();
 		});
@@ -91,12 +91,13 @@ function Switcher() {
 
 $(document).ready(function() {
 
-	var searcher = new Searcher();
+	var searcher = new Searcher(),
+		switcher = new Switcher();
+
 	searcher.bindChars();
 	searcher.bindSuggest();
 	searcher.focusInput();
 
-	var switcher = new Switcher();
 	switcher.bindSwitches();
 
 });

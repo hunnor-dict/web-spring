@@ -91,6 +91,30 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>minify-maven-plugin</artifactId>
+				<version>1.7.6</version>
+				<executions>
+					<execution>
+						<id>minify-css</id>
+						<configuration>
+							<verbose>true</verbose>
+							<charset>UTF-8</charset>
+							<webappSourceDir>${basedir}/src/main/web</webappSourceDir>
+							<webappTargetDir>${project.build.directory}/classes/public</webappTargetDir>
+							<cssSourceIncludes>*.css</cssSourceIncludes>
+							<cssFinalFile>hunnor-web.min.css</cssFinalFile>
+							<jsSourceIncludes>*.js</jsSourceIncludes>
+							<jsFinalFile>hunnor-web.min.js</jsFinalFile>
+							<nosuffix>true</nosuffix>
+						</configuration>
+						<goals>
+							<goal>minify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.20.1</version>
