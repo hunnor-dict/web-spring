@@ -8,6 +8,18 @@ function Searcher() {
 	this.searchForm = $("#search-form");
 	this.searchInput = $("#search-term");
 
+	this.setCursorPosition = function(pos) {
+		if (this.searchInput.get(0).setSelectionRange) {
+			this.searchInput.get(0).setSelectionRange(pos, pos);
+		} else if (this.searchInput.get(0).createTextRange) {
+			var range = this.searchInput.get(0).createTextRange();
+			range.collapse(true);
+			range.moveEnd('character', pos);
+			range.moveStart('character', pos);
+			range.select();
+		}
+	}
+
 	this.bindChars = function() {
 		var _this = this;
 		this.searchForm.find("button").click(function() {
@@ -19,7 +31,8 @@ function Searcher() {
 					+ ch
 					+ before.substring(selectionEnd, before.length);
 			_this.searchInput.val(after);
-			$(this).blur();
+			_this.focusInput();
+			_this.setCursorPosition(selectionStart + 1);
 		});
 	};
 
@@ -46,7 +59,6 @@ function Searcher() {
 
 	this.focusInput = function() {
 		if (this.searchInput != null) {
-			this.searchInput.select();
 			this.searchInput.focus();
 		}
 	};
