@@ -23,6 +23,8 @@
 
 	<properties>
 		<bootstrap.version>3.3.7-1</bootstrap.version>
+		<html5shiv.version>3.7.3</html5shiv.version>
+		<ie10.viewport.version>1.0.3</ie10.viewport.version>
 		<java.version>1.8</java.version>
 		<jquery.version>1.12.4</jquery.version>
 		<jquery.ui.version>1.11.4</jquery.ui.version>
@@ -31,10 +33,12 @@
 		<!-- property for overriding application port in docker:run -->
 		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<respond.version>1.4.2</respond.version>
 		<solr.version>6.5.1</solr.version>
 	</properties>
 
 	<dependencies>
+		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -56,6 +60,22 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		<!-- WebJars -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>html5shiv</artifactId>
+			<version>${html5shiv.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>ie10-viewport-bug-workaround</artifactId>
+			<version>${ie10.viewport.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -68,9 +88,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>${bootstrap.version}</version>
+			<artifactId>respond</artifactId>
+			<version>${respond.version}</version>
 		</dependency>
+		<!-- Miscellaneous -->
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
