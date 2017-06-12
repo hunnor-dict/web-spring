@@ -34,7 +34,7 @@
 		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<respond.version>1.4.2</respond.version>
-		<solr.version>6.5.1</solr.version>
+		<solr.version>6.6.0</solr.version>
 		<thymeleaf.version>3.0.6.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.2.1</thymeleaf-layout-dialect.version>
 	</properties>
