@@ -61,7 +61,6 @@ public final class ApplicationController {
 			value = "/about",
 			method = RequestMethod.GET)
 	public String about(final Model model) {
-		model.addAttribute("activeTab", "about");
 		try {
 			Map<Language, Long> counts = searchService.counts();
 			model.addAttribute("hu", counts.get(Language.HU));
@@ -87,8 +86,6 @@ public final class ApplicationController {
 			@RequestParam(value = "g-recaptcha-response", required = false)
 					final String captchaResponse,
 			final Model model) {
-
-		model.addAttribute("activeTab", "contrib");
 
 		boolean hasCaptcha = true;
 		model.addAttribute("hasCaptcha", hasCaptcha);
@@ -133,14 +130,12 @@ public final class ApplicationController {
 
 	/**
 	 * Controller method for the Downloads page.
-	 * @param model the model to pass to the view
 	 * @return the name of the Downloads view
 	 */
 	@RequestMapping(
 			value = "/download",
 			method = RequestMethod.GET)
-	public String download(final Model model) {
-		model.addAttribute("activeTab", "download");
+	public String download() {
 		return ViewConstants.DOWNLOAD_VIEW;
 	}
 
@@ -158,7 +153,6 @@ public final class ApplicationController {
 			@RequestParam(value = "term", required = false) final String term,
 			@RequestParam(value = "match", required = false) final String match,
 			final Model model) {
-		model.addAttribute("activeTab", "search");
 		if (term != null && !term.isEmpty()) {
 			try {
 				model.addAttribute("term", term);
