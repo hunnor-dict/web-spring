@@ -16,10 +16,18 @@
 				</div>
 				<div aria-expanded="false" class="navbar-collapse collapse" id="navbar" style="height: 1px;">
 					<ul class="nav navbar-nav">
-						<li><a href="/" th:href="@{/}" th:text="#{menu.search}"></a></li>
-						<li><a href="/download" th:href="@{/download}" th:text="#{menu.download}"></a></li>
-						<li><a href="/about" th:href="@{/about}" th:text="#{menu.about}"></a></li>
-						<li><a href="/contrib" th:href="@{/contrib}" th:text="#{menu.contrib}"></a></li>
+						<li th:classappend="${activeTab == 'search'}?active">
+							<a href="/" th:href="@{/}" th:text="#{menu.search}"></a>
+						</li>
+						<li th:classappend="${activeTab == 'download'}?active">
+							<a href="/download" th:href="@{/download}" th:text="#{menu.download}"></a>
+						</li>
+						<li th:classappend="${activeTab == 'about'}?active">
+							<a href="/about" th:href="@{/about}" th:text="#{menu.about}"></a>
+						</li>
+						<li th:classappend="${activeTab == 'contrib'}?active">
+							<a href="/contrib" th:href="@{/contrib}" th:text="#{menu.contrib}"></a>
+						</li>
 					</ul>
 				</div>
 			</div>
