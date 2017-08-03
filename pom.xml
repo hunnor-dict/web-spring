@@ -28,10 +28,6 @@
 		<java.version>1.8</java.version>
 		<jquery.version>1.12.4</jquery.version>
 		<jquery.ui.version>1.11.4</jquery.ui.version>
-		<!-- property for overriding Solr URL in docker:run -->
-		<net.hunnor.dict.search.solr.url>http://localhost:8983/solr</net.hunnor.dict.search.solr.url>
-		<!-- property for overriding application port in docker:run -->
-		<net.hunnor.dict.web.port>8080</net.hunnor.dict.web.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<respond.version>1.4.2</respond.version>
 		<solr.version>6.6.0</solr.version>
@@ -136,50 +132,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<groupId>io.fabric8</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.20.1</version>
-				<configuration>
-					<images>
-						<image>
-							<name>hunnordict/web-spring</name>
-							<alias>hunnor-dict-web-spring</alias>
-							<build>
-								<from>openjdk:8-jdk</from>
-								<assembly>
-									<basedir>/hunnor</basedir>
-									<descriptorRef>artifact</descriptorRef>
-								</assembly>
-								<runCmds>
-									<run>groupadd --system hunnor</run>
-									<run>useradd --system --gid hunnor hunnor</run>
-									<run>chown --recursive hunnor:hunnor /hunnor</run>
-								</runCmds>
-								<optimise/>
-								<user>hunnor</user>
-								<entryPoint>
-									<exec>
-										<arg>java</arg>
-										<arg>-jar</arg>
-										<arg>/hunnor/web-spring-1.0.0.jar</arg>
-									</exec>
-								</entryPoint>
-								<ports>
-									<port>8080</port>
-								</ports>
-							</build>
-							<run>
-								<namingStrategy>alias</namingStrategy>
-								<cmd>--net.hunnor.dict.search.solr.url=${net.hunnor.dict.search.solr.url}</cmd>
-								<ports>
-									<port>${net.hunnor.dict.web.port}:8080</port>
-								</ports>
-							</run>
-						</image>
-					</images>
-				</configuration>
 			</plugin>
 			<!--
 			To use the code quality plugins in Eclipse or STS, install the
