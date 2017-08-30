@@ -5,6 +5,7 @@ import java.util.Locale;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -16,6 +17,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
  * The launcher class of the application.
  */
 @SpringBootApplication
+@PropertySource("classpath:application.properties")
+@PropertySource("classpath:hunnor.properties")
 public class Application extends WebMvcConfigurerAdapter {
 
 	/**
