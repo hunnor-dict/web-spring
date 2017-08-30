@@ -6,7 +6,7 @@ The web application of the dictionary at https://dict.hunnor.net.
 
 The dictionary is a Spring Boot application. To run the application locally, build the source code with Maven (`mvn package`) and simply run the fat JAR file with `java -jar`.
 
-Configuration parameters are supplied on the command line. For example, to specify the Solr server URL, use `--net.hunnor.dict.search.solr.url=http://solr:8983/solr`.
+Configuration parameters are supplied on the command line. For example, to specify the Solr server URL, use `--net.hunnor.dict.client.search.solr.url=http://solr:8983/solr`.
 
 For a list of available parameters, other than those specified by Spring Boot, and their default values, see `src/main/resources/application.properties`.
 
@@ -18,4 +18,4 @@ To supply configuration parameters, simply append the parameters to the `docker 
 
     docker run \
     -p 8080:8080 \
-    --net.hunnor.dict.search.solr.url=http://solr:8983/solr
+    --net.hunnor.dict.client.search.solr.url=http://solr:8983/solr
