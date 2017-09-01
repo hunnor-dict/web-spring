@@ -220,7 +220,9 @@ public final class SolrSearchService implements SearchService {
 			sb.append("0");
 		}
 		sb.append("|").append(term);
-		SEARCH_LOGGER.info(sb.toString());
+		if (SEARCH_LOGGER.isInfoEnabled()) {
+			SEARCH_LOGGER.info(sb.toString());
+		}
 
 		return responses;
 
