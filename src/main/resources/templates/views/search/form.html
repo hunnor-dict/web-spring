@@ -9,6 +9,9 @@
 				<div class="input-group">
 					<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
 					<span class="input-group-btn">
+						<button class="btn btn-default" id="search-delete" type="button">
+							<span class="glyphicon glyphicon-remove-circle"></span>
+						</button>
 						<input class="btn btn-default" id="search-submit" type="submit" value="Keresés" th:value="#{search.submit.button}"/>
 					</span>
 				</div>
@@ -16,10 +19,10 @@
 
 			<div class="btn-toolbar" role="toolbar">
 				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
-					<button type="button" class="btn btn-default" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
+					<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
 				</div>
 				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'æ', 'ø', 'å'} }">
-					<button type="button" class="btn btn-default" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
+					<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
 				</div>
 			</div>
 

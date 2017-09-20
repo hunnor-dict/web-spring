@@ -6,6 +6,7 @@ function Searcher() {
 	this.suggestUrl = this.apiUrl + "/suggest"
 
 	this.searchForm = $("#search-form");
+	this.searchDelete = $("#search-delete");
 	this.searchInput = $("#search-term");
 
 	this.setCursorPosition = function(pos) {
@@ -22,7 +23,7 @@ function Searcher() {
 
 	this.bindChars = function() {
 		var _this = this;
-		this.searchForm.find("button").click(function() {
+		this.searchForm.find("button.letter").click(function() {
 			var ch = $(this).data("char"),
 				selectionStart = document.getElementById("search-term").selectionStart,
 				selectionEnd = document.getElementById("search-term").selectionEnd,
@@ -35,6 +36,13 @@ function Searcher() {
 			_this.setCursorPosition(selectionStart + 1);
 		});
 	};
+
+	this.bindDelete = function() {
+		var _this = this;
+		this.searchDelete.click(function() {
+			_this.searchInput.val("");
+		});
+	}
 
 	this.bindSuggest = function() {
 		var _this = this;
@@ -107,6 +115,7 @@ $(document).ready(function() {
 		switcher = new Switcher();
 
 	searcher.bindChars();
+	searcher.bindDelete();
 	searcher.bindSuggest();
 	searcher.focusInput();
 
