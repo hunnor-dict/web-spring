@@ -9,10 +9,13 @@
 				<div class="input-group">
 					<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
 					<span class="input-group-btn">
-						<button class="btn btn-default" id="search-delete" type="button">
+						<button class="btn btn-default" id="search-delete" type="button" th:attr="aria-label=#{search.clear.button}">
 							<span class="glyphicon glyphicon-remove-circle"></span>
 						</button>
-						<input class="btn btn-default" id="search-submit" type="submit" value="Keresés" th:value="#{search.submit.button}"/>
+						<button class="btn btn-default" id="search-submit" type="submit" th:attr="aria-label=#{search.submit.button}">
+							<span class="glyphicon glyphicon-search" id="search-submit-icon"></span>
+							<span id="search-submit-text" th:text="#{search.submit.button}">Keresés</span>
+						</button>
 					</span>
 				</div>
 			</div>

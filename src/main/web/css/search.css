@@ -6,6 +6,19 @@ div.btn-group {
 	font-size: 16px;
 }
 
+#search-submit-icon {
+	display: none;
+}
+
+@media (max-width: 768px) {
+	#search-submit-text {
+		display: none;
+}
+	#search-submit-icon {
+		display: inline;
+	}
+}
+
 select {
 	margin-bottom: 1em;
 }
