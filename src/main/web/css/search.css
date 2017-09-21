@@ -2,6 +2,10 @@ div.btn-group {
 	margin-bottom: 1em;
 }
 
+#search-term {
+	font-size: 16px;
+}
+
 select {
 	margin-bottom: 1em;
 }
