@@ -53,6 +53,9 @@ function Searcher() {
 					_this.searchInput.val(element.item.value);
 					_this.searchForm.submit();
 				},
+				open: function(event, element) {
+					$(".ui-autocomplete").off("menufocus");
+				},
 				source: this.suggestUrl
 			}).data("ui-autocomplete")._renderItem = function(ul, item) {
 				var li =  $("<li>");
