@@ -41,6 +41,7 @@ function Searcher() {
 		var _this = this;
 		this.searchDelete.click(function() {
 			_this.searchInput.val("");
+			_this.focusInput();
 		});
 	}
 
