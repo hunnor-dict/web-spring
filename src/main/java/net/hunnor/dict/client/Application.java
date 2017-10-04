@@ -3,7 +3,9 @@ package net.hunnor.dict.client;
 import java.util.Locale;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.solr.SolrAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.LocaleResolver;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
  * The launcher class of the application.
  */
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {SolrAutoConfiguration.class})
 @PropertySource("classpath:application.properties")
 @PropertySource("classpath:hunnor.properties")
 public class Application extends WebMvcConfigurerAdapter {
