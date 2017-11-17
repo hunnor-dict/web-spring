@@ -6,6 +6,11 @@ package net.hunnor.dict.client.model;
 public final class Result {
 
 	/**
+	 * Random prime number for the hashCode method.
+	 */
+	private static final int PRIME = 31;
+
+	/**
 	 * The ID of the result.
 	 */
 	private String id;
@@ -74,18 +79,17 @@ public final class Result {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
 		int result = 1;
 		int h = 0;
 		if (html != null) {
 			h = html.hashCode();
 		}
-		result = prime * result + h;
+		result = PRIME * result + h;
 		int i = 0;
 		if (id != null) {
 			i = id.hashCode();
 		}
-		result = prime * result + i;
+		result = PRIME * result + i;
 		return result;
 	}
 
