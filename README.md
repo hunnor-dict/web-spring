@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/hunnor-dict/web-spring.svg?branch=master)](https://travis-ci.org/hunnor-dict/web-spring)
+
 # HunNor Dictionary - Web Spring
 
 The web application of the dictionary at https://dict.hunnor.net.
