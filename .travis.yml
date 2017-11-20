@@ -1,1 +1,16 @@
 language: java
+sudo: false
+install: true
+addons:
+  sonarcloud:
+    organization: "hunnor-dict"
+    token:
+      secure: "PJqBehSUfTbZ378FzOKp1nVwruGC0keRaPcQzlNnpK9qHcy53bO3mAR3OVMNRiC7ooSR8xvNJy+f/CGm65jAozLev+qrTQhr1Jl/7WpDFbRsKsj/9uFK6UZ8QFpXpgymXfLVEQXqYP0x6dEVyJ8RDW0SxqomVVvMtxX7wu4es8m8Nb9Nl7hHGyrI3q/1ZvBzhDDQSxgzE2iKnhsTk76BorrPWJ1fHb+MjZzB3euE6ZxoaHSOkY0qvi5VUg4Rn6fdp1xKxKS/SiGisB/L4BZ3TMFtDHdqUg0y6DQo8RjuVM0cn5+RIv9+YUkARw7J1FIeqqeSvBMOkS1QpkDVVxqw1TU2gzIoqmQa/P1yt8MypUtbfiilKavWYVLcQK5BfsLndyfEaKFDfW/PqaLZ5lmWaAPAkdiTsAUh/pr3JLRwHZw9FMPXOHCpzyOHweWuZfx3ZyNEXyCL/xmRXz4pB9IfuObgu7zqmLkaSZIEQKiGesI2I5hi7sGE6ZyGOkTtMmT+Yp1ZY0ruKdh2cZ0xfltK/QKucHab4cidwYWLxCoRmvLDZXnVDl/CpH4mya2FrJmCGn85HQ9gZ27PW+MsWWmrw3hFxoLKnIhOdvIzJn8VsqzRCjdWMbaPoKE+1yf5avkVwJ6FSX6AnqKQIfAjNgUXuUFrrEaBuevM0FtYGhMSt5E="
+jdk:
+  - openjdk8
+script:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
