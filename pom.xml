@@ -30,7 +30,7 @@
 		<jquery.ui.version>1.11.4</jquery.ui.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<respond.version>1.4.2</respond.version>
-		<solr.version>7.1.0</solr.version>
+		<solr.version>7.2.0</solr.version>
 		<thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
 	</properties>
