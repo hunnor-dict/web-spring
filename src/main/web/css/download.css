@@ -8,6 +8,10 @@ a.installation-instructions {
 	font-weight: bold;
 }
 
+h3.app-category {
+	margin-bottom: 0;
+}
+
 img.app-icon {
 	height: 48px;
 	margin-right: 1em;
@@ -17,6 +21,11 @@ img.app-icon {
 
 img.app-store {
 	max-width: 100%;
+	width: 200px;
+}
+
+p.app-category {
+	font-size: 120%;
 }
 
 p.app-recommendation {
