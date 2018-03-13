@@ -1,7 +1,8 @@
 package net.hunnor.dict.client.web;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.hunnor.dict.client.model.Autocomplete;
+import net.hunnor.dict.client.service.SearchService;
+import net.hunnor.dict.client.service.ServiceException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,82 +13,67 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.hunnor.dict.client.model.Autocomplete;
-import net.hunnor.dict.client.model.SearchException;
-import net.hunnor.dict.client.service.SearchService;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Controller for machine-readable interfaces.
- */
 @Controller
-public final class ApiController {
+public class ApiController {
 
-	/**
-	 * Default logger.
-	 */
-	private static final Logger LOGGER =
-			LoggerFactory.getLogger(ApiController.class);
+  private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
 
-	/**
-	 * The SearchService to use for searches.
-	 */
-	@Autowired
-	private SearchService searchService;
+  @Autowired
+  private SearchService searchService;
 
-	/**
-	 * Controller method for search suggestions (jQuery).
-	 * @param term the term to return suggestions for
-	 * @return search suggestions in JSON
-	 */
-	@RequestMapping(
-			value = "/suggest",
-			method = RequestMethod.GET,
-			produces = {"application/json"})
-	@ResponseBody
-	public List<Autocomplete> suggest(
-			@RequestParam(value = "term", required = false) final String term) {
-		List<Autocomplete> result = null;
-		try {
-			result = searchService.suggest(term);
-		} catch (SearchException e) {
-			LOGGER.error(e.getMessage(), e);
-		}
-		return result;
-	}
+  /**
+   * Controller method for search suggestions (jQuery).
+   * @param term term the term to return suggestions for
+   * @return search suggestions in JSON
+   */
+  @RequestMapping(value = "/suggest", method = RequestMethod.GET,
+      produces = {"application/json"})
+  @ResponseBody
+  public List<Autocomplete> suggest(@RequestParam(value = "term", required = false) String term) {
+    List<Autocomplete> result = new ArrayList<>();
+    try {
+      result = searchService.suggest(term);
+    } catch (ServiceException ex) {
+      logger.error(ex.getMessage(), ex);
+    }
+    return result;
+  }
 
-	/**
-	 * Controller method for search suggestion (OpenSearch).
-	 * @param term the term to return suggestions for
-	 * @return search suggestions in JSON
-	 */
-	@RequestMapping(
-			value = "/opensearch/suggest",
-			method = RequestMethod.GET,
-			produces = {"application/x-suggestions+json"})
-	@ResponseBody
-	public List<Object> opensearchSuggest(
-			@RequestParam(value = "term", required = false) final String term) {
+  /**
+   * Controller method for search suggestion (OpenSearch).
+   * @param term the term to return suggestions for
+   * @return search suggestions in JSON
+   */
+  @RequestMapping(value = "/opensearch/suggest", method = RequestMethod.GET,
+      produces = {"application/x-suggestions+json"})
+  @ResponseBody
+  public Object[] opensearchSuggest(@RequestParam(value = "term", required = false) String term) {
 
-		List<Autocomplete> autocompletes = null;
-		try {
-			autocompletes = searchService.suggest(term);
-		} catch (SearchException e) {
-			LOGGER.error(e.getMessage(), e);
-		}
+    Object[] result = new Object[2];
+    result[0] = term;
 
-		List<Object> results = new ArrayList<>();
-		results.add(term);
+    List<Autocomplete> autocomplete = null;
+    try {
+      autocomplete = searchService.suggest(term);
+    } catch (ServiceException ex) {
+      logger.error(ex.getMessage(), ex);
+    }
 
-		List<String> suggestions = new ArrayList<>();
-		if (autocompletes != null) {
-			for (Autocomplete autocomplete: autocompletes) {
-				suggestions.add(autocomplete.getValue());
-			}
-		}
-		results.add(suggestions);
+    if (autocomplete == null) {
+      result[1] = new Object[0];
+    } else {
+      Object[] suggestions = new Object[autocomplete.size()];
+      for (int i = 0; i < autocomplete.size(); i++) {
+        suggestions[i] = autocomplete.get(i).getValue();
+        result[1] = suggestions;
+      }
+    }
 
-		return results;
+    return result;
 
-	}
+  }
 
 }

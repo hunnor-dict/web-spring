@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-		xmlns="http://maven.apache.org/POM/4.0.0"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -17,8 +15,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.10.RELEASE</version>
-		<relativePath/>
+		<version>2.0.0.RELEASE</version>
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -29,22 +27,16 @@
 		<jquery.version>1.12.4</jquery.version>
 		<jquery.ui.version>1.11.4</jquery.ui.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<respond.version>1.4.2</respond.version>
 		<solr.version>7.2.1</solr.version>
-		<thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
-		<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
+		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 	</properties>
 
 	<dependencies>
-		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,7 +50,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		<!-- WebJars -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -88,15 +92,6 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>respond</artifactId>
 			<version>${respond.version}</version>
-		</dependency>
-		<!-- Miscellaneous -->
-		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-solrj</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -133,21 +128,16 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--
-			To use the code quality plugins in Eclipse or STS, install the
-			m2e-code-quality plugin from software site
-			http://m2e-code-quality.github.com/m2e-code-quality/site/latest/
-			 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>validate</id>
 						<phase>validate</phase>
 						<configuration>
-							<configLocation>checkstyle.xml</configLocation>
+							<configLocation>google_checks.xml</configLocation>
 							<violationSeverity>warning</violationSeverity>
 						</configuration>
 						<goals>
@@ -162,7 +152,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.4</version>
+				<version>3.0.5</version>
 				<configuration>
 					<effort>Max</effort>
 					<threshold>Low</threshold>
@@ -180,7 +170,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.9</version>
+				<version>0.8.0</version>
 				<executions>
 					<execution>
 						<id>default-prepare-agent</id>

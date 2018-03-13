@@ -1,113 +1,67 @@
 package net.hunnor.dict.client.service.impl;
 
-import java.util.Collection;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import net.hunnor.dict.client.service.CaptchaService;
+import net.hunnor.dict.client.service.ServiceException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Collection;
 
-import net.hunnor.dict.client.model.CaptchaException;
-import net.hunnor.dict.client.service.CaptchaService;
-
-/**
- * CaptchaService implementation with reCAPTCHA.
- */
 @Service
-public final class RecaptchaService implements CaptchaService {
+public class RecaptchaService implements CaptchaService {
 
-	/**
-	 * Code from a reCAPTCHA tutorial.
-	 */
-	private static class RecaptchaResponse {
+  private static class RecaptchaResponse {
 
-		/**
-		 * Code from a reCAPTCHA tutorial.
-		 */
-		@JsonProperty("success")
-		private boolean success;
+    @JsonProperty("success")
+    public boolean success;
 
-		/**
-		 * Code from a reCAPTCHA tutorial.
-		 */
-		@JsonProperty("error-codes")
-		private Collection<String> errorCodes;
+    @JsonProperty("error-codes")
+    public Collection<String> errorCodes;
 
-	}
+  }
 
-	/**
-	 * Default logger.
-	 */
-	private static final Logger LOGGER =
-			LoggerFactory.getLogger(CaptchaService.class);
+  private static final Logger logger = LoggerFactory.getLogger(CaptchaService.class);
 
-	/**
-	 * The URL to send the validation request to.
-	 */
-	@Value("${net.hunnor.dict.client.contrib.recaptcha.url}")
-	private String recaptchaUrl;
+  @Value("${net.hunnor.dict.client.contrib.recaptcha.url}")
+  private String recaptchaUrl;
 
-	/**
-	 * The secret key of the reCAPTCHA account.
-	 */
-	@Value("${net.hunnor.dict.client.contrib.recaptcha.secret-key}")
-	private String recaptchaSecretKey;
+  @Value("${net.hunnor.dict.client.contrib.recaptcha.secret-key}")
+  private String recaptchaSecretKey;
 
-	/**
-	 * Code from a reCAPTCHA tutorial.
-	 */
-	private final RestTemplate restTemplate;
+  @Autowired
+  private RestTemplate restTemplate;
 
-	/**
-	 * Code from a reCAPTCHA tutorial.
-	 * @param template parameter
-	 */
-	@Autowired
-	public RecaptchaService(final RestTemplate template) {
-		this.restTemplate = template;
-	}
-
-	@Override
-	public boolean isResponseValid(
-			final String remoteIp,
-			final String response) throws CaptchaException {
-		RecaptchaResponse recaptchaResponse = null;
-		try {
-			recaptchaResponse = restTemplate.postForEntity(
-                    recaptchaUrl,
-                    createBody(recaptchaSecretKey, remoteIp, response),
-                    RecaptchaResponse.class)
-                    .getBody();
-		} catch (RestClientException e) {
-			LOGGER.error(e.getMessage(), e);
-			throw new CaptchaException();
-		}
-		return recaptchaResponse.success;
-	}
-
-	/**
-	 * Code from a reCAPTCHA tutorial.
-	 * @param secret the secret key of the reCAPTCHA account
-	 * @param remoteIp parameter
-	 * @param response parameter
-	 * @return return value
-	 */
-	private MultiValueMap<String, String> createBody(
-			final String secret,
-			final String remoteIp,
-			final String response) {
-		MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
-		form.add("secret", secret);
-		form.add("remoteip", remoteIp);
-		form.add("response", response);
-		return form;
-	}
+  @Override
+  public boolean isResponseValid(String remoteIp, String response) throws ServiceException {
+    RecaptchaResponse recaptchaResponse = null;
+    try {
+      MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+      body.add("secret", recaptchaSecretKey);
+      body.add("remoteip", remoteIp);
+      body.add("response", response);
+      ResponseEntity<RecaptchaResponse> responseEntity = restTemplate.postForEntity(
+          recaptchaUrl, body, RecaptchaResponse.class);
+      recaptchaResponse = responseEntity.getBody();
+    } catch (RestClientException ex) {
+      logger.error(ex.getMessage(), ex);
+      throw new ServiceException();
+    }
+    if (recaptchaResponse == null) {
+      return false;
+    } else {
+      return recaptchaResponse.success;
+    }
+  }
 
 }
