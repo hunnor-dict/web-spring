@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.ServiceException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +29,6 @@ public class RecaptchaService implements CaptchaService {
 
   }
 
-  private static final Logger logger = LoggerFactory.getLogger(CaptchaService.class);
-
   @Value("${net.hunnor.dict.client.contrib.recaptcha.url}")
   private String recaptchaUrl;
 
@@ -44,7 +40,7 @@ public class RecaptchaService implements CaptchaService {
 
   @Override
   public boolean isResponseValid(String remoteIp, String response) throws ServiceException {
-    RecaptchaResponse recaptchaResponse = null;
+    boolean isValid = false;
     try {
       MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
       body.add("secret", recaptchaSecretKey);
@@ -52,16 +48,16 @@ public class RecaptchaService implements CaptchaService {
       body.add("response", response);
       ResponseEntity<RecaptchaResponse> responseEntity = restTemplate.postForEntity(
           recaptchaUrl, body, RecaptchaResponse.class);
-      recaptchaResponse = responseEntity.getBody();
+      if (responseEntity.hasBody()) {
+        RecaptchaResponse recaptchaResponse = responseEntity.getBody();
+        // FindBugs false positive NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE
+        // See findbugs-exclude.xml
+        isValid = recaptchaResponse.success;
+      }
     } catch (RestClientException ex) {
-      logger.error(ex.getMessage(), ex);
-      throw new ServiceException();
+      throw new ServiceException(ex.getMessage(), ex);
     }
-    if (recaptchaResponse == null) {
-      return false;
-    } else {
-      return recaptchaResponse.success;
-    }
+    return isValid;
   }
 
 }

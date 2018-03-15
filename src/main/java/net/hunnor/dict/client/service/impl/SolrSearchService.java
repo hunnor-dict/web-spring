@@ -44,8 +44,6 @@ import java.util.TreeSet;
 @Service
 public class SolrSearchService implements SearchService {
 
-  private static final Logger logger = LoggerFactory.getLogger(SearchService.class);
-
   private static final Logger searches =
       LoggerFactory.getLogger("net.hunnor.dict.client.log.searches");
 
@@ -84,8 +82,7 @@ public class SolrSearchService implements SearchService {
         SolrDocumentList solrDocumentList = queryResponse.getResults();
         counts.put(language, solrDocumentList.getNumFound());
       } catch (SolrServerException | IOException ex) {
-        logger.error(ex.getMessage(), ex);
-        throw new ServiceException();
+        throw new ServiceException(ex.getMessage(), ex);
       }
     }
     return counts;
@@ -183,8 +180,7 @@ public class SolrSearchService implements SearchService {
         }
 
       } catch (SolrServerException | IOException ex) {
-        logger.error(ex.getMessage(), ex);
-        throw new ServiceException();
+        throw new ServiceException(ex.getMessage(), ex);
       }
 
     }
@@ -265,8 +261,7 @@ public class SolrSearchService implements SearchService {
             (coreNamesPrefix + language).toLowerCase(Locale.ENGLISH), solrQuery);
         responses.put(language, response);
       } catch (SolrServerException | IOException ex) {
-        logger.error(ex.getMessage(), ex);
-        throw new ServiceException();
+        throw new ServiceException(ex.getMessage(), ex);
       }
     }
     return responses;

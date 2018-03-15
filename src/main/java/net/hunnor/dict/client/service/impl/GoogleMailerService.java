@@ -4,8 +4,6 @@ import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
@@ -19,8 +17,6 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 public class GoogleMailerService implements MailerService {
-
-  private static final Logger logger = LoggerFactory.getLogger(MailerService.class);
 
   @Value("${net.hunnor.dict.client.contrib.mail.from}")
   private String mailFrom;
@@ -45,8 +41,7 @@ public class GoogleMailerService implements MailerService {
       message.setText(buildMessage(contrib));
       javaMailSender.send(message);
     } catch (MailException | MessagingException ex) {
-      logger.error(ex.getMessage(), ex);
-      throw new ServiceException();
+      throw new ServiceException(ex.getMessage(), ex);
     }
   }
 
