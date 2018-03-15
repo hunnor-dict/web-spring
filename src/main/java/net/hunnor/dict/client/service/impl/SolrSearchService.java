@@ -32,7 +32,6 @@ import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -73,7 +72,7 @@ public class SolrSearchService implements SearchService {
 
   @Override
   public Map<Language, Long> counts() throws ServiceException {
-    Map<Language, Long> counts = new HashMap<>();
+    Map<Language, Long> counts = new EnumMap<>(Language.class);
     SolrQuery solrQuery = new SolrQuery();
     solrQuery.set(CommonParams.Q, "*:*");
     solrQuery.set(CommonParams.OMIT_HEADER, true);
@@ -237,16 +236,14 @@ public class SolrSearchService implements SearchService {
   @Override
   public List<Autocomplete> suggest(String term) throws ServiceException {
     Map<String, Autocomplete> suggestions = new TreeMap<>(collator);
-    if (term != null) {
-      if (term.length() <= suggestionsMaxLength) {
-        Map<Language, QueryResponse> responses = getSuggestions(term);
+    if (term != null && term.length() <= suggestionsMaxLength) {
+      Map<Language, QueryResponse> responses = getSuggestions(term);
+      for (Language language: Language.values()) {
+        getTermsFromResponse(language, responses.get(language), suggestions);
+      }
+      if (suggestions.isEmpty()) {
         for (Language language: Language.values()) {
-          getTermsFromResponse(language, responses.get(language), suggestions);
-        }
-        if (suggestions.isEmpty()) {
-          for (Language language: Language.values()) {
-            getSuggestionsFromResponse(language, responses.get(language), suggestions);
-          }
+          getSuggestionsFromResponse(language, responses.get(language), suggestions);
         }
       }
     }
