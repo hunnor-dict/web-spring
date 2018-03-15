@@ -10,7 +10,7 @@ public class ApplicationTests {
   public void contextLoads() {
 
     String port = System.getProperty(SERVER_PORT);
-    System.setProperty(SERVER_PORT, "8081");
+    System.setProperty(SERVER_PORT, "0");
 
     Application.main(new String[] {});
 
