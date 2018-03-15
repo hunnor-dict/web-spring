@@ -2,7 +2,7 @@ package net.hunnor.dict.client;
 
 import org.junit.Test;
 
-public class ApplicationTests {
+public class ApplicationTest {
 
   private static final String SERVER_PORT = "server.port";
 
