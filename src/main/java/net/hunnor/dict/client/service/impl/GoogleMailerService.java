@@ -29,6 +29,12 @@ public class GoogleMailerService implements MailerService {
   @Value("${net.hunnor.dict.client.contrib.mail.reply-to}")
   private String replyTo;
 
+  @Value("${net.hunnor.dict.client.contrib.mail.subject}")
+  private String subject;
+
+  @Value("${spring.mail.default-encoding}")
+  private String encoding;
+
   @Autowired
   private JavaMailSender javaMailSender;
 
@@ -42,7 +48,7 @@ public class GoogleMailerService implements MailerService {
       message.setFrom(new InternetAddress(mailFrom));
       message.setRecipient(RecipientType.TO, new InternetAddress(mailTo));
       message.setReplyTo(new InternetAddress[] {new InternetAddress(replyTo)});
-      message.setSubject("HunNor javaslat: " + contrib.getSpelling(), "UTF-8");
+      message.setSubject(String.format(subject, contrib.getSpelling()), encoding);
       message.setText(buildMessage(contrib));
       javaMailSender.send(message);
     } catch (MailException | MessagingException ex) {
