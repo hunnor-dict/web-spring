@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
@@ -30,6 +32,9 @@ public class GoogleMailerService implements MailerService {
   @Autowired
   private JavaMailSender javaMailSender;
 
+  @Autowired
+  private TemplateEngine templateEngine;
+
   @Override
   public void send(Contrib contrib) throws ServiceException {
     try {
@@ -46,12 +51,9 @@ public class GoogleMailerService implements MailerService {
   }
 
   private String buildMessage(Contrib contrib) {
-    StringBuilder sb = new StringBuilder();
-    sb.append("-> helyesírás: ").append(contrib.getSpelling()).append("\n");
-    sb.append("-> ragozás: ").append(contrib.getInfl()).append("\n");
-    sb.append("-> fordítás: ").append(contrib.getTrans()).append("\n");
-    sb.append("-> megjegyzés: ").append(contrib.getComments()).append("\n");
-    return sb.toString();
+    Context context = new Context();
+    context.setVariable("contrib", contrib);
+    return templateEngine.process("mail/contrib", context);
   }
 
 }
