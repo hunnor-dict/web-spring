@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	<luceneMatchVersion>7.2.1</luceneMatchVersion>
+	<requestHandler name="/select" class="solr.SearchHandler" default="true">
+		<lst name="defaults">
+			<str name="echoParams">explicit</str>
+			<int name="rows">10</int>
+			<str name="df">id</str>
+			<str name="spellcheck.dictionary">default</str>
+			<str name="spellcheck">on</str>
+			<str name="spellcheck.extendedResults">false</str>       
+			<str name="spellcheck.count">10</str>
+			<str name="spellcheck.alternativeTermCount">0</str>
+			<str name="spellcheck.maxResultsForSuggest">5</str>       
+			<str name="spellcheck.collate">true</str>
+			<str name="spellcheck.collateExtendedResults">false</str>  
+			<str name="spellcheck.maxCollationTries">10</str>
+			<str name="spellcheck.maxCollations">5</str>         
+		</lst>
+		<arr name="last-components">
+			<str>spellcheck</str>
+		</arr>
+	</requestHandler>
+	<requestHandler name="/update" class="solr.UpdateRequestHandler" />
+	<requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+		<lst name="invariants">
+			<str name="qt">search</str>
+			<str name="q">*:*</str>
+		</lst>
+	</requestHandler>
+	<requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+		<lst name="defaults">
+			<str name="suggest">true</str>
+			<str name="suggest.count">10</str>
+			<str name="suggest.dictionary">default</str>
+			<str name="terms">true</str>
+			<str name="terms.fl">spellings</str>
+		</lst>
+		<arr name="components">
+			<str>term</str>
+			<str>suggest</str>
+		</arr>
+	</requestHandler>
+	<searchComponent class="solr.HighlightComponent" name="highlight">
+		<highlighting>
+			<fragmenter name="gap" default="true" class="solr.highlight.GapFragmenter">
+				<lst name="defaults">
+					<int name="hl.fragsize">0</int>
+				</lst>
+			</fragmenter>
+			<formatter name="html" default="true" class="solr.highlight.HtmlFormatter">
+				<lst name="defaults">
+					<str name="hl.simple.pre"><![CDATA[<span class="hl">]]></str>
+					<str name="hl.simple.post"><![CDATA[</span>]]></str>
+				</lst>
+			</formatter>
+		</highlighting>
+	</searchComponent>
+	<searchComponent name="spellcheck" class="solr.SpellCheckComponent">
+		<str name="queryAnalyzerFieldType">text</str>
+		<lst name="spellchecker">
+			<str name="name">default</str>
+			<str name="field">spellings</str>
+			<str name="classname">solr.DirectSolrSpellChecker</str>
+			<str name="distanceMeasure">internal</str>
+			<float name="accuracy">0.5</float>
+			<int name="maxEdits">2</int>
+			<int name="minPrefix">1</int>
+			<int name="maxInspections">5</int>
+			<int name="minQueryLength">4</int>
+			<float name="maxQueryFrequency">0.01</float>
+		</lst>
+	</searchComponent>
+	<searchComponent class="solr.TermsComponent" name="term">
+		<lst name="defaults">
+			<bool name="terms">true</bool>
+			<int name="terms.limit">10</int>
+			<str name="terms.sort">index</str>
+		</lst>
+	</searchComponent>
+	<searchComponent name="suggest" class="solr.SuggestComponent">
+		<lst name="suggester">
+			<str name="name">default</str>
+			<str name="lookupImpl">FuzzyLookupFactory</str>
+			<str name="dictionaryImpl">DocumentDictionaryFactory</str>
+			<str name="field">spellings</str>
+			<str name="suggestAnalyzerFieldType">text</str>
+			<str name="buildOnCommit">true</str>
+		</lst>
+	</searchComponent>
+	<codecFactory class="solr.SchemaCodecFactory"/>
+	<schemaFactory class="ClassicIndexSchemaFactory"/>
+</config>

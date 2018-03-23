@@ -118,20 +118,20 @@ public class SolrSearchService implements SearchService {
     // Phase 1
     SolrQuery p1Query = baseQuery.getCopy();
     p1Query.set(CommonParams.Q, "roots:" + escapedTerm);
-    hasResults = searchPhase(responses, p1Query, true);
+    hasResults = searchPhase(responses, p1Query);
 
     // Phase 2
     if (!hasResults || "forms".equals(match) || "full".equals(match)) {
       SolrQuery p2Query = baseQuery.getCopy();
       p2Query.set(CommonParams.Q, "forms:" + escapedTerm);
-      hasResults = searchPhase(responses, p2Query, true);
+      hasResults = searchPhase(responses, p2Query);
     }
 
     if (!hasResults || "full".equals(match)) {
       SolrQuery p3Query = baseQuery.getCopy();
       p3Query.set(CommonParams.Q, "trans:" + escapedTerm
           + " egTrans:" + escapedTerm);
-      hasResults = searchPhase(responses, p3Query, true);
+      hasResults = searchPhase(responses, p3Query);
     }
 
     // Log search
@@ -152,37 +152,24 @@ public class SolrSearchService implements SearchService {
 
   private boolean searchPhase(
       Map<Language, Response> responses,
-      SolrQuery solrQuery,
-      boolean spellCheck) throws ServiceException {
-
+      SolrQuery solrQuery) throws ServiceException {
     boolean hasResults = false;
-
     for (Language language: Language.values()) {
       Response response = responses.get(language);
-
       try {
-
         String coreName = (coreNamesPrefix + language).toLowerCase(Locale.ENGLISH);
         QueryResponse queryResponse = solrClient.query(coreName, solrQuery);
         SolrDocumentList solrDocumentList = queryResponse.getResults();
         long numFound = solrDocumentList.getNumFound();
-
-        if (numFound == 0 && spellCheck) {
-
+        if (numFound == 0) {
           getSpellingSuggestions(queryResponse, response);
-
         } else {
-
           hasResults = true;
-
           getResults(queryResponse, response);
-
         }
-
       } catch (SolrServerException | IOException ex) {
         throw new ServiceException(ex.getMessage(), ex);
       }
-
     }
 
     return hasResults;
@@ -219,11 +206,9 @@ public class SolrSearchService implements SearchService {
     String html = solrDocument.getFieldValue("html").toString();
     if (highlighting != null) {
       Map<String, List<String>> highlightingMap = highlighting.get(id);
-      if (highlightingMap != null) {
-        List<String> fragments = highlightingMap.get("html");
-        if (fragments != null && fragments.size() == 1) {
-          html = fragments.get(0);
-        }
+      List<String> fragments = highlightingMap.get("html");
+      if (fragments != null) {
+        html = fragments.get(0);
       }
     }
     return new Result(id, html);
