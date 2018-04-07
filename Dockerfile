@@ -1,7 +1,7 @@
 FROM maven:3.5-jdk-8 as maven
 COPY . /opt/hunnor-dict/web-spring
 WORKDIR /opt/hunnor-dict/web-spring
-RUN mvn package
+RUN mvn verify
 
 FROM openjdk:8-jre
 RUN groupadd --system hunnor && \

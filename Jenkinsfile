@@ -6,7 +6,7 @@ node {
 
 	stage ('Build') {
 		withMaven(maven: 'Default') {
-			sh 'mvn clean package'
+			sh 'mvn clean verify'
 		}
 	}
 
