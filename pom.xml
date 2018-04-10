@@ -21,14 +21,12 @@
 
 	<properties>
 		<bootstrap.version>3.3.7-1</bootstrap.version>
-		<html5shiv.version>3.7.3-1</html5shiv.version>
 		<ie10.viewport.version>1.0.3</ie10.viewport.version>
 		<java.version>1.8</java.version>
-		<jquery.version>1.12.4</jquery.version>
-		<jquery.ui.version>1.11.4</jquery.ui.version>
+		<jquery.version>3.3.1-1</jquery.version>
+		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<respond.version>1.4.2-1</respond.version>
 		<solr.version>7.3.0</solr.version>
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 	</properties>
@@ -74,11 +72,6 @@
 			<version>${bootstrap.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>html5shiv</artifactId>
-			<version>${html5shiv.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.webjars.bower</groupId>
 			<artifactId>ie10-viewport-bug-workaround</artifactId>
 			<version>${ie10.viewport.version}</version>
@@ -92,11 +85,6 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
 			<version>${jquery.ui.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>respond</artifactId>
-			<version>${respond.version}</version>
 		</dependency>
 	</dependencies>
 

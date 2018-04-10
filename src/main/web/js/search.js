@@ -59,11 +59,15 @@ function Searcher() {
 				},
 				source: this.suggestUrl
 			}).data("ui-autocomplete")._renderItem = function(ul, item) {
+				var div = $("<div>");
+				div.addClass("ui-menu-item-wrapper");
+				div.text(item.value);
 				var li =  $("<li>");
-				li.text(item.value);
+				li.addClass("ui-menu-item");
 				if (!item.prefix) {
 					li.addClass("suggestion");
 				}
+				div.appendTo(li);
 				return li.appendTo(ul);
 			}
 		}
