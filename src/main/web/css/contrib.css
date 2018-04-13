@@ -1,13 +1,8 @@
-div.contrib-input {
-	margin-bottom: 1em;
-}
-
 p.field-description {
 	font-style: italic;
 	margin-left: 1em;
 }
 
-p.field-label {
+label {
 	font-size: 1.2em;
-	font-weight: bold;
 }
