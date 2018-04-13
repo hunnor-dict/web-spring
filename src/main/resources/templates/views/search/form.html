@@ -20,20 +20,24 @@
 				</div>
 			</div>
 
-			<div class="btn-toolbar" role="toolbar">
-				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
-					<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
-				</div>
-				<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'æ', 'ø', 'å'} }">
-					<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
+			<div class="form-group">
+				<div class="btn-toolbar" role="toolbar">
+					<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
+						<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
+					</div>
+					<div class="btn-group btn-group-sm" role="group" th:with="letters = ${ {'æ', 'ø', 'å'} }">
+						<button type="button" class="btn btn-default letter" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"></button>
+					</div>
 				</div>
 			</div>
 
-			<select class="form-control" name="match">
-				<option value="roots" th:selected="${match == null or match == '' or match == 'roots'}" th:text="#{search.match.roots}"></option>
-				<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"></option>
-				<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"></option>
-			</select>
+			<div class="form-group">
+				<select class="form-control" name="match">
+					<option value="roots" th:selected="${match == null or match == '' or match == 'roots'}" th:text="#{search.match.roots}"></option>
+					<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"></option>
+					<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"></option>
+				</select>
+			</div>
 
 		</form>
 
