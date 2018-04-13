@@ -27,6 +27,11 @@ a.switch-view-inline {
 	font-weight: bold;
 }
 
+div.jumbotron {
+	margin-bottom: 1em;
+	padding: 1em !important;
+}
+
 div.view-inline ol.sense li ul {
 	list-style-type: none;
 	padding-left: 0;
