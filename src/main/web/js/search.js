@@ -59,10 +59,10 @@ function Searcher() {
 				},
 				source: this.suggestUrl
 			}).data("ui-autocomplete")._renderItem = function(ul, item) {
-				var div = $("<div>");
+				var div = $("<div>"),
+					li =  $("<li>");
 				div.addClass("ui-menu-item-wrapper");
 				div.text(item.value);
-				var li =  $("<li>");
 				li.addClass("ui-menu-item");
 				if (!item.prefix) {
 					li.addClass("suggestion");
