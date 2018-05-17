@@ -26,7 +26,7 @@
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<solr.version>7.3.0</solr.version>
+		<solr.version>7.3.1</solr.version>
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 	</properties>
 
