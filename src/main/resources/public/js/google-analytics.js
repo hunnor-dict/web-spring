@@ -9,5 +9,6 @@ a.src=g;
 m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+ga('set', 'anonymizeIp', true);
 ga('create', 'UA-39143361-1', 'auto');
 ga('send', 'pageview');
