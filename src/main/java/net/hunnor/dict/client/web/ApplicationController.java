@@ -29,6 +29,8 @@ public class ApplicationController {
 
   private static final String CONTRIB_VIEW = "views/contrib/index";
 
+  private static final String COOKIES_VIEW = "views/cookies/index";
+
   private static final String DOWNLOAD_VIEW = "views/download/index";
 
   private static final String SEARCH_VIEW = "views/search/index";
@@ -95,6 +97,15 @@ public class ApplicationController {
     }
     model.addAttribute("contrib", contrib);
     return CONTRIB_VIEW;
+  }
+
+  /**
+   * Controller method for the Cookies page.
+   * @return the name of the Cookies view
+   */
+  @RequestMapping(value = "/cookies", method = RequestMethod.GET)
+  public String cookies() {
+    return COOKIES_VIEW;
   }
 
   /**

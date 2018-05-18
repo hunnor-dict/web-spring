@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},subtitle=#{cookies.title},description=#{cookies.description},activeTab=''">
+
+	<head th:replace="layout/header :: header"> </head>
+
+	<body>
+
+		<div class="container">
+
+			<nav th:replace="layout/navigation :: navigation"> </nav>
+
+			<div class="page-header">
+				<h1 th:text="#{cookies.title}"> </h1>
+			</div>
+
+			<script id="CookieDeclaration" src="https://consent.cookiebot.com/a807803c-5ca5-4bc6-9240-d2413b70f522/cd.js" type="text/javascript" async> </script>
+
+			<div th:replace="layout/footer :: flags"> </div>
+			<div th:replace="layout/footer :: cookies"> </div>
+
+		</div>
+
+		<div th:replace="layout/footer :: scripts"> </div>
+
+	</body>
+
+</html>

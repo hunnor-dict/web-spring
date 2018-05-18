@@ -143,6 +143,13 @@ public class ApplicationControllerTest {
   }
 
   @Test
+  public void testCookies() throws Exception {
+    mockMvc.perform(get("/cookies"))
+        .andExpect(status().isOk())
+        .andExpect(view().name("views/cookies/index"));
+  }
+
+  @Test
   public void testDownload() throws Exception {
     mockMvc.perform(get("/download"))
         .andExpect(status().isOk())

@@ -31,6 +31,17 @@ ol, ul {
 	margin-bottom: 0;
 }
 
+p.footer-text {
+	color: #808080;
+	font-size: 90%;
+	margin-bottom: 0;
+	text-align: center;
+}
+
+p.footer-text a {
+	color: #808080;
+}
+
 #flags {
 	text-align: center;
 }
