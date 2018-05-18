@@ -105,7 +105,9 @@
 							<webappTargetDir>${project.build.directory}/classes/public</webappTargetDir>
 							<cssSourceIncludes>*.css</cssSourceIncludes>
 							<cssFinalFile>hunnor-web.min.css</cssFinalFile>
-							<jsSourceIncludes>*.js</jsSourceIncludes>
+							<jsSourceIncludes>
+								<jsSourceInclude>search.js</jsSourceInclude>
+							</jsSourceIncludes>
 							<jsFinalFile>hunnor-web.min.js</jsFinalFile>
 							<nosuffix>true</nosuffix>
 						</configuration>
