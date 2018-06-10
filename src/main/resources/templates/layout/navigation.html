@@ -3,33 +3,26 @@
 
 	<body>
 
-		<nav class="navbar navbar-default" th:fragment="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
-						<span class="sr-only">Menü</span>
-						<span class="icon-bar"><!-- --></span>
-						<span class="icon-bar"><!-- --></span>
-						<span class="icon-bar"><!-- --></span>
-					</button>
-					<a href="/" class="navbar-brand" th:href="@{/}">HunNor</a>
-				</div>
-				<div aria-expanded="false" class="navbar-collapse collapse" id="navbar" style="height: 1px;">
-					<ul class="nav navbar-nav">
-						<li th:classappend="${activeTab == 'search'}?active">
-							<a href="/" th:href="@{/}" th:text="#{menu.search}"></a>
-						</li>
-						<li th:classappend="${activeTab == 'download'}?active">
-							<a href="/download" th:href="@{/download}" th:text="#{menu.download}"></a>
-						</li>
-						<li th:classappend="${activeTab == 'about'}?active">
-							<a href="/about" th:href="@{/about}" th:text="#{menu.about}"></a>
-						</li>
-						<li th:classappend="${activeTab == 'contrib'}?active">
-							<a href="/contrib" th:href="@{/contrib}" th:text="#{menu.contrib}"></a>
-						</li>
-					</ul>
-				</div>
+		<nav class="bg-light mb-3 navbar navbar-expand-md navbar-light" th:fragment="navigation">
+			<a class="navbar-brand" href="/" th:href="@{/}">HunNor</a>
+			<button aria-controls="navbar-content" aria-expanded="false" aria-label="#{menu.toggle}" class="navbar-toggler" data-target="#navbar-content" data-toggle="collapse" type="button">
+				<span class="navbar-toggler-icon"> </span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbar-content">
+				<ul class="navbar-nav">
+					<li class="nav-item" th:classappend="${activeTab == 'search'}?active">
+						<a class="nav-link" href="/" th:href="@{/}" th:text="#{menu.search}"></a>
+					</li>
+					<li class="nav-item" th:classappend="${activeTab == 'download'}?active">
+						<a class="nav-link" href="/download" th:href="@{/download}" th:text="#{menu.download}"></a>
+					</li>
+					<li class="nav-item" th:classappend="${activeTab == 'about'}?active">
+						<a class="nav-link" href="/about" th:href="@{/about}" th:text="#{menu.about}"></a>
+					</li>
+					<li class="nav-item" th:classappend="${activeTab == 'contrib'}?active">
+						<a class="nav-link" href="/contrib" th:href="@{/contrib}" th:text="#{menu.contrib}"></a>
+					</li>
+				</ul>
 			</div>
 		</nav>
 

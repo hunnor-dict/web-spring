@@ -6,28 +6,18 @@
 		<div th:fragment="searchResults">
 
 			<div th:if="${responses.get(hu).results.size()} > 0">
-				<div class="alert alert-success" role="alert">
-					<p th:utext="#{search.num.hu.results(${responses.get(hu).results.size()}, ${term})}"> </p>
-				</div>
-				<div class="panel panel-default entry view-inline" th:each="result: ${responses.get(hu).results}">
-					<div class="panel-body">
-						<div th:replace="views/search/settings :: searchSettings"> </div>
-						<hr/>
-						<div th:utext="${result.html}"> </div>
-					</div>
+				<div class="alert alert-success" role="alert" th:utext="#{search.num.hu.results(${responses.get(hu).results.size()}, ${term})}"> </div>
+				<div class="card entry mb-3 view-inline" th:each="result: ${responses.get(hu).results}">
+					<div th:replace="views/search/settings :: searchSettings"> </div>
+					<div class="card-body" th:utext="${result.html}"> </div>
 				</div>
 			</div>
 
 			<div th:if="${responses.get(nb).results.size()} > 0">
-				<div class="alert alert-success" role="alert">
-					<p th:utext="#{search.num.nb.results(${responses.get(nb).results.size()}, ${term})}"> </p>
-				</div>
-				<div class="panel panel-default entry view-inline" th:each="result: ${responses.get(nb).results}">
-					<div class="panel-body">
-						<div th:replace="views/search/settings :: searchSettings"> </div>
-						<hr/>
-						<div th:utext="${result.html}"> </div>
-					</div>
+				<div class="alert alert-success" role="alert" th:utext="#{search.num.nb.results(${responses.get(nb).results.size()}, ${term})}"> </div>
+				<div class="card entry mb-3 view-inline" th:each="result: ${responses.get(nb).results}">
+					<div th:replace="views/search/settings :: searchSettings"> </div>
+					<div class="card-body" th:utext="${result.html}"> </div>
 				</div>
 			</div>
 

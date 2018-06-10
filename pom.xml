@@ -20,10 +20,12 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>3.3.7-1</bootstrap.version>
+		<bootstrap.version>4.1.1</bootstrap.version>
+		<font.awesome.version>5.0.13</font.awesome.version>
 		<java.version>1.8</java.version>
 		<jquery.version>3.3.1-1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
+		<popper.js.version>1.14.1</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>7.3.1</solr.version>
@@ -72,6 +74,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>${font.awesome.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>${jquery.version}</version>
 		</dependency>
@@ -79,6 +86,11 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
 			<version>${jquery.ui.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>popper.js</artifactId>
+			<version>${popper.js.version}</version>
 		</dependency>
 	</dependencies>
 

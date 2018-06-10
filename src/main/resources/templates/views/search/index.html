@@ -8,19 +8,13 @@
 
 		<div class="container">
 
-			<nav th:replace="layout/navigation :: navigation">
-			</nav>
+			<nav th:replace="layout/navigation :: navigation"> </nav>
 
-			<div th:if="${term != null and responses == null}">
-				<div class="alert alert-danger" role="alert" th:text="#{error.title}"> </div>
-			</div>
+			<div class="alert alert-danger" role="alert" th:if="${term != null and responses == null}" th:text="#{error.title}"> </div>
 
-			<div class="page-header" style="margin-top: 20px;">
-				<h1 th:text="#{search.title}" style="font-size: 24px;"> </h1>
-			</div>
+			<h1 th:text="#{search.title}"> </h1>
 
-			<form th:replace="views/search/form :: searchForm">
-			</form>
+			<form th:replace="views/search/form :: searchForm"> </form>
 
 			<div th:if="${responses != null}" th:with="totalResults = ${responses.get(hu).results.size() + responses.get(nb).results.size()}">
 				<div th:if="${totalResults == 0}" th:with="totalSuggestions = ${responses.get(hu).suggestions.size() + responses.get(nb).suggestions.size()}">
@@ -36,8 +30,7 @@
 				</div>
 			</div>
 
-			<div th:replace="layout/footer :: flags"> </div>
-			<div th:replace="layout/footer :: cookies"> </div>
+			<footer th:replace="layout/footer :: footer"> </footer>
 
 		</div>
 

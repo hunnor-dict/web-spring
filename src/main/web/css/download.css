@@ -1,35 +1,15 @@
-a.app-link {
-	font-size: 120%;
-	font-weight: bold;
-}
-
-a.installation-instructions {
+a.install-instructions, a.install-instructions:active, a.install-instructions:hover, a.install-instructions:visited {
 	color: red;
 	font-weight: bold;
 }
 
-h3.app-category {
-	margin-bottom: 0;
-}
-
-img.app-icon {
-	height: 48px;
-	margin-right: 1em;
-	vertical-align: middle;
-	width: 48px;
-}
-
-img.app-store {
-	max-width: 100%;
-	width: 200px;
-}
-
-p.app-category {
+a.app-link, a.app-link:active, a.app-link:hover, a.app-link:visited {
 	font-size: 120%;
+	font-weight: bold;
 }
 
-p.app-recommendation {
-	font-weight: bold;
+img.app-store-icon {
+	max-width: 200px;
 }
 
 td.platform {

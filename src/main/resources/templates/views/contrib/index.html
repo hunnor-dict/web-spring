@@ -11,28 +11,19 @@
 
 			<div th:if="${hasInput}">
 				<div th:if="${captchaValid}">
-					<div th:if="${messageSent}">
-						<div class="alert alert-success" role="alert" th:text="#{contrib.form.sent}"> </div>
-					</div>
-					<div th:unless="${messageSent}">
-						<div class="alert alert-danger" role="alert" th:text="#{contrib.send.error}"> </div>
-					</div>
+					<div class="alert alert-success" role="alert" th:if="${messageSent}" th:text="#{contrib.form.sent}"> </div>
+					<div class="alert alert-danger" role="alert" th:text="#{contrib.send.error}" th:unless="${messageSent}"> </div>
 				</div>
-				<div th:unless="${captchaValid}">
-					<div class="alert alert-warning" role="alert" th:text="#{contrib.captcha.invalid}"> </div>
-				</div>
+				<div class="alert alert-warning" role="alert" th:text="#{contrib.captcha.invalid}" th:unless="${captchaValid}"> </div>
 			</div>
 
-			<div class="page-header">
-				<h1 th:text="#{contrib.title}"> </h1>
-			</div>
+			<h1 th:text="#{contrib.title}"> </h1>
 
 			<p th:text="#{contrib.info}"> </p>
 
 			<form th:replace="views/contrib/form :: contribForm"> </form>
 
-			<div th:replace="layout/footer :: flags"> </div>
-			<div th:replace="layout/footer :: cookies"> </div>
+			<footer th:replace="layout/footer :: footer"> </footer>
 
 		</div>
 

@@ -1,8 +1,8 @@
-p.field-description {
-	font-style: italic;
-	margin-left: 1em;
+label {
+	font-size: 120%;
+	font-weight: bold;
 }
 
-label {
-	font-size: 1.2em;
+p.field-description {
+	font-style: italic;
 }

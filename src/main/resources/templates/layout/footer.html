@@ -3,30 +3,24 @@
 
 	<body>
 
-		<div th:fragment="cookies">
-			<p class="footer-text"><a href="/cookies" th:href="@{/cookies}" th:text="#{cookies.link}"> </a></p>
-		</div>
-
-		<div th:fragment="flags">
+		<footer th:fragment="footer">
 			<hr/>
-			<div id="flags">
-				<a class="flag" href="/?lang=hu" th:href="@{/?lang=hu}"><img src="/img/flag.hu.png" th:alt="#{page.flag.hu.alt}" th:src="@{/img/flag.hu.png}"/></a>
-				<a class="flag" href="/?lang=nb" th:href="@{/?lang=nb}"><img src="/img/flag.nb.png" th:alt="#{page.flag.nb.alt}" th:src="@{/img/flag.nb.png}"/></a>
-			</div>
-		</div>
+			<p class="mb-1 text-center">
+				<a href="/?lang=hu" th:href="@{/?lang=hu}"><img src="/img/flag.hu.png" th:alt="#{page.flag.hu.alt}" th:src="@{/img/flag.hu.png}"/></a>
+				<a href="/?lang=nb" th:href="@{/?lang=nb}"><img src="/img/flag.nb.png" th:alt="#{page.flag.nb.alt}" th:src="@{/img/flag.nb.png}"/></a>
+			</p>
+			<p class="small text-center">
+				<a href="/cookies" th:href="@{/cookies}" th:text="#{cookies.link}"> </a>
+			</p>
+		</footer>
 
 		<div th:fragment="scripts">
-
 			<script src="/webjars/jquery/3.3.1-1/jquery.min.js" type="text/javascript" th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"> </script>
-
 			<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js" type="text/javascript" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"> </script>
-
-			<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"> </script>
-
+			<script src="/webjars/popper.js/1.14.1/popper.min.js" type="text/javascript" th:src="@{/webjars/popper.js/1.14.1/popper.min.js}"> </script>
+			<script src="/webjars/bootstrap/4.1.1/js/bootstrap.min.js" type="text/javascript" th:src="@{/webjars/bootstrap/4.1.1/js/bootstrap.min.js}"> </script>
 			<script src="/js/hunnor-web.min.js" type="text/javascript" th:src="@{/js/hunnor-web.min.js}"> </script>
-
 			<script data-cookieconsent="statistics" src="/js/google-analytics.js" type="text/plain" th:src="@{/js/google-analytics.js}"> </script>
-
 		</div>
 
 	</body>

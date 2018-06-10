@@ -3,9 +3,7 @@
 
 	<body>
 
-		<div class="alert alert-danger" role="alert" th:fragment="noResults">
-			<span th:utext="#{search.no.match(${term})}"> </span>
-		</div>
+		<div class="alert alert-danger" role="alert" th:fragment="noResults" th:utext="#{search.no.match(${term})}"> </div>
 
 	</body>
 

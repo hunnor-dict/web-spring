@@ -9,42 +9,38 @@
 
 			<nav th:replace="layout/navigation :: navigation"> </nav>
 
-			<div class="page-header">
-				<h1 th:text="#{download.title}"> </h1>
-			</div>
+			<h1 th:text="#{download.title}"> </h1>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2 class="panel-title" th:text="#{download.apps.hunnor}"> </h2>
-				</div>
-				<div class="panel-body">
-					<h3 class="app-category" th:text="#{download.proprietary.apps.ovitas}"> </h3>
-					<p class="app-category" th:text="#{download.proprietary.apps.ovitas.sub}"> </p>
+			<section class="card mb-3">
+				<h2 class="card-header" th:text="#{download.apps.hunnor}"> </h2>
+				<div class="card-body">
+					<h3 th:text="#{download.proprietary.apps.ovitas}"> </h3>
+					<p th:text="#{download.proprietary.apps.ovitas.sub}"> </p>
 					<p>
 						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.mobileapp">
-							<img alt="Android app on Google Play" class="app-store" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
-							<img alt="Android app on Google Play" class="app-store" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
 						</a>
 					</p>
 					<p>
 						<a href="https://itunes.apple.com/us/app/hunnor/id1305770091">
-							<img alt="iOS app on the App Store" class="app-store" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
-							<img alt="iOS app on the App Store" class="app-store" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
+							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
+							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
 						</a>
 					</p>
-					<h3 class="app-category" th:text="#{download.open.source}"> </h3>
-					<p class="app-category" th:text="#{download.open.source.sub}"> </p>
-					<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict">
-						<img alt="Android app on Google Play" class="app-store" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
-						<img alt="Android app on Google Play" class="app-store" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
-					</a>
+					<h3 th:text="#{download.open.source}"> </h3>
+					<p th:text="#{download.open.source.sub}"> </p>
+					<p>
+						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict">
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+						</a>
+					</p>
 				</div>
-			</div>
+			</section>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title" th:text="#{download.data.files.for.apps}"> </h3>
-				</div>
+			<section class="card mb-3">
+				<h2 class="card-header" th:text="#{download.data.files.for.apps}"> </h2>
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
@@ -59,54 +55,54 @@
 							<tr>
 								<td class="platform" th:text="#{download.android}"> </td>
 								<td>
-									<p class="app-recommendation">
-										<img class="app-icon" src="/img/app-colordict.png" th:src="@{/img/app-colordict.png}"/>
-										<a class="app-link" href="https://play.google.com/store/apps/details?id=com.socialnmobile.colordict" th:text="#{download.colordict}"></a>
+									<p>
+										<img src="/img/app-colordict.png" th:src="@{/img/app-colordict.png}"/>
+										<a class="app-link link-normal" href="https://play.google.com/store/apps/details?id=com.socialnmobile.colordict" th:text="#{download.colordict}"></a>
 									</p>
 								</td>
 								<td>
 									<p>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 										<br/>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
 									</p>
 								</td>
 								<td>
-									<a class="installation-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.android')}" th:text="#{download.installation.instructions}"></a>
+									<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.android')}" th:text="#{download.installation.instructions}"></a>
 								</td>
 							</tr>
 							<tr>
 								<td class="platform" th:text="#{download.ios}"></td>
 								<td>
 									<p>
-										<img class="app-icon" src="/img/app-dicty.jpg" th:src="@{/img/app-dicty.jpg}"/>
-										<a class="app-link" href="https://itunes.apple.com/us/app/dicty/id969045273?mt=8" th:text="#{download.dicty}"></a>
+										<img src="/img/app-dicty.jpg" th:src="@{/img/app-dicty.jpg}"/>
+										<a class="app-link link-normal"  href="https://itunes.apple.com/us/app/dicty/id969045273?mt=8" th:text="#{download.dicty}"></a>
 									</p>
 								</td>
 								<td>
 									<p>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 										<br/>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
 									</p>
 								</td>
 								<td>
-									<a class="installation-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.ios')}" th:text="#{download.installation.instructions}"></a>
+									<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.ios')}" th:text="#{download.installation.instructions}"></a>
 								</td>
 							</tr>
 							<tr>
 								<td class="platform" th:text="#{download.windows.phone}"></td>
 								<td>
 									<p>
-										<img class="app-icon" src="/img/app-silverdict.png" th:src="@{/img/app-silverdict.png}"/>
-										<a class="app-link" href="http://www.windowsphone.com/en-us/store/app/silverdict/1f7a8b3a-081c-454e-a6a0-b41760e1dedc" th:text="#{download.silverdict}"></a>
+										<img src="/img/app-silverdict.png" th:src="@{/img/app-silverdict.png}"/>
+										<a class="app-link link-normal"  href="http://www.windowsphone.com/en-us/store/app/silverdict/1f7a8b3a-081c-454e-a6a0-b41760e1dedc" th:text="#{download.silverdict}"></a>
 									</p>
 								</td>
 								<td>
 									<p>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.wp.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.windows.phone.short}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.wp.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.windows.phone.short}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 										<br/>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.wp.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.windows.phone.short}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.wp.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.windows.phone.short}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
 									</p>
 								</td>
 								<td>
@@ -116,15 +112,15 @@
 								<td class="platform" th:text="#{download.windows} + ', ' + #{download.macos} + ' ' + #{and} + ' ' + #{download.linux}"></td>
 								<td>
 									<p>
-										<img class="app-icon" src="/img/app-stardict.png" th:src="@{/img/app-stardict.png}"/>
-										<a class="app-link" href="https://code.google.com/p/stardict-3/downloads/list" th:text="#{download.stardict}"></a>
+										<img src="/img/app-stardict.png" th:src="@{/img/app-stardict.png}"/>
+										<a class="app-link link-normal"  href="https://code.google.com/p/stardict-3/downloads/list" th:text="#{download.stardict}"></a>
 									</p>
 								</td>
 								<td>
 									<p>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 										<br/>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}"><span th:text="#{download.stardict}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
 									</p>
 								</td>
 								<td>
@@ -136,37 +132,35 @@
 								</td>
 								<td>
 									<p>
-										<a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.kindle.nh')}"><span th:text="#{download.kindle.touch}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.kindle.nh')}"><span th:text="#{download.kindle.touch}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 									</p>
 								</td>
 								<td>
 									<p>
-										<a class="installation-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.kindle')}" th:text="#{download.installation.instructions}"></a>
+										<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.kindle')}" th:text="#{download.installation.instructions}"></a>
 									</p>
 								</td>
 							</tr>
 					</table>
 				</div>
-			</div>
+			</section>
 
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title" th:text="#{download.pdf}"> </h3>
-				</div>
-				<div class="panel-body">
-					<p class="app-recommendation" th:text="#{download.data.files}"></p>
+			<section class="card mb-3">
+				<h2 class="card-header" th:text="#{download.pdf}"> </h2>
+				<div class="card-body">
 					<p>
-						&raquo; <a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.hn')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
+						&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.hn')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
 						<br/>
-						&raquo; <a class="data-file-link" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.nh')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+						&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.nh')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
 					</p>
 				</div>
-			</div>
+			</section>
 
-			<p class="footer-text" th:text="#{download.google.play.copyright}"> </p>
+			<section>
+				<p class="small text-center text-secondary" th:text="#{download.google.play.copyright}"> </p>
+			</section>
 
-			<div th:replace="layout/footer :: flags"> </div>
-			<div th:replace="layout/footer :: cookies"> </div>
+			<footer th:replace="layout/footer :: footer"> </footer>
 
 		</div>
 

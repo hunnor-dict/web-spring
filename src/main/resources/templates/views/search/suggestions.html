@@ -4,24 +4,22 @@
 	<body>
 
 		<div class="alert alert-warning" role="alert" th:fragment="searchSuggestions">
-			<div>
-				<p>
-					<span th:utext="#{search.no.match(${term})}"> </span>
-					<span th:text="#{search.suggestions}"> </span>
-				</p>
-				<p th:if="${responses.get(hu).suggestions.size() > 0}">
-					<img alt="#{hu}" src="/img/flag.hu.png" th:src="@{/img/flag.hu.png}"/>
-					<span th:each="suggestion, position: ${responses.get(hu).suggestions}">
-						<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
-					</span>
-				</p>
-				<p th:if="${responses.get(nb).suggestions.size() > 0}">
-					<img alt="#{nb}" src="/img/flag.nb.png" th:src="@{/img/flag.nb.png}"/>
-					<span th:each="suggestion, position: ${responses.get(nb).suggestions}">
-						<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
-					</span>
-				</p>
-			</div>
+			<p>
+				<span th:utext="#{search.no.match(${term})}"> </span>
+				<span th:text="#{search.suggestions}"> </span>
+			</p>
+			<p th:if="${responses.get(hu).suggestions.size() > 0}">
+				<img alt="#{hu}" src="/img/flag.hu.png" th:src="@{/img/flag.hu.png}"/>
+				<span th:each="suggestion, position: ${responses.get(hu).suggestions}">
+					<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
+				</span>
+			</p>
+			<p th:if="${responses.get(nb).suggestions.size() > 0}">
+				<img alt="#{nb}" src="/img/flag.nb.png" th:src="@{/img/flag.nb.png}"/>
+				<span th:each="suggestion, position: ${responses.get(nb).suggestions}">
+					<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
+				</span>
+			</p>
 		</div>
 
 	</body>

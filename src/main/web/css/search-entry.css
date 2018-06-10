@@ -1,29 +1,3 @@
-#search-term {
-	font-size: 16px;
-}
-
-#search-submit-icon {
-	display: none;
-}
-
-@media (max-width: 768px) {
-	#search-submit-text {
-		display: none;
-}
-	#search-submit-icon {
-		display: inline;
-	}
-}
-
-a.switch-view-inline {
-	font-weight: bold;
-}
-
-div.jumbotron {
-	margin-bottom: 1em;
-	padding: 1em !important;
-}
-
 div.view-inline ol.sense li ul {
 	list-style-type: none;
 	padding-left: 0;
@@ -63,20 +37,6 @@ ol.single, ul.single {
 	padding-left: 0;
 }
 
-div.switch-container {
-	color: #808080;
-	font-style: italic;
-}
-
-div.switch-container a {
-	color: #808080;
-	text-decoration: none;
-}
-
-div.switch-container a:hover {
-	text-decoration: underline;
-}
-
 span.bob {
 	display: none;
 }
@@ -101,8 +61,4 @@ span.q {
 ul.form {
 	list-style-type: none;
 	padding-left: 0;
-}
-
-ul.ui-autocomplete li.suggestion {
-	font-style: italic;
 }
