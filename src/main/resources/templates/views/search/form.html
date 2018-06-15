@@ -21,10 +21,10 @@
 			</div>
 
 			<div aria-label="" class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.hu}" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
-				<button class="btn btn-outline-secondary letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
+				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
 			</div>
 			<div aria-label="" class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.nb}" th:with="letters = ${ {'æ', 'ø', 'å'} }">
-				<button class="btn btn-outline-secondary letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
+				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
 			</div>
 
 			<div class="form-group">

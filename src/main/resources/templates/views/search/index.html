@@ -12,7 +12,7 @@
 
 			<div class="alert alert-danger" role="alert" th:if="${term != null and responses == null}" th:text="#{error.title}"> </div>
 
-			<h1 th:text="#{search.title}"> </h1>
+			<h1 style="font-size: 1.5rem" th:text="#{search.title}"> </h1>
 
 			<form th:replace="views/search/form :: searchForm"> </form>
 
