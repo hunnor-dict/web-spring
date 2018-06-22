@@ -40,6 +40,7 @@ public class Application implements WebMvcConfigurer {
   public LocaleChangeInterceptor localeChangeInterceptor() {
     LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
     localeChangeInterceptor.setParamName("lang");
+    localeChangeInterceptor.setIgnoreInvalidLocale(true);
     return localeChangeInterceptor;
   }
 
