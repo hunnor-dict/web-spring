@@ -21,14 +21,18 @@
 
 	<properties>
 		<bootstrap.version>4.1.1</bootstrap.version>
+		<checkstyle.version>3.0.0</checkstyle.version>
 		<font.awesome.version>5.0.13</font.awesome.version>
+		<jacoco.version>0.8.1</jacoco.version>
 		<java.version>1.8</java.version>
 		<jquery.version>3.3.1-1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
+		<minify.version>1.7.6</minify.version>
 		<popper.js.version>1.14.1</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>7.3.1</solr.version>
+		<spotbugs.version>3.1.5</spotbugs.version>
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 	</properties>
 
@@ -106,7 +110,7 @@
 			<plugin>
 				<groupId>com.samaxes.maven</groupId>
 				<artifactId>minify-maven-plugin</artifactId>
-				<version>1.7.6</version>
+				<version>${minify.version}</version>
 				<executions>
 					<execution>
 						<id>minify-css</id>
@@ -132,7 +136,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${checkstyle.version}</version>
 				<configuration>
 					<includeTestSourceDirectory>true</includeTestSourceDirectory>
 				</configuration>
@@ -152,7 +156,7 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>3.1.5</version>
+				<version>${spotbugs.version}</version>
 				<configuration>
 					<effort>Max</effort>
 					<threshold>Low</threshold>
@@ -170,7 +174,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.1</version>
+				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
 						<id>default-prepare-agent</id>
