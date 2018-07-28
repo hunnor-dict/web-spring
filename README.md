@@ -1,23 +1,15 @@
 [![Build Status](https://travis-ci.org/hunnor-dict/web-spring.svg?branch=master)](https://travis-ci.org/hunnor-dict/web-spring)
 
-# HunNor Dictionary - Web Spring
-
 The web application of the dictionary at https://dict.hunnor.net.
 
-## Usage
+# Usage
 
-The dictionary is a Spring Boot application. To run the application locally, build the source code with Maven (`mvn package`) and simply run the fat JAR file with `java -jar`.
+The dictionary is a Spring Boot application. To run the application locally, package the source code with Maven and simply run the fat JAR file with `java -jar`.
 
 Configuration parameters are supplied on the command line. For example, to specify the Solr server URL, use `--net.hunnor.dict.client.search.solr.url=http://solr:8983/solr`.
 
-For a list of available parameters, other than those specified by Spring Boot, and their default values, see `src/main/resources/application.properties`.
+For a list of available parameters, other than [those specified by Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html), and their default values, see `src/main/resources/hunnor.properties`.
 
-## Docker
+To run the application with Docker, either build the image locally or use the official hunnordict/web-spring image. To supply configuration parameters, simply append the parameters to the `docker run` command:
 
-The repository includes a `Dockerfile` for creating an image with Java 8 and the web application installed. The official `hunnordict/web-spring` image is built with this file.
-
-To supply configuration parameters, simply append the parameters to the `docker run` command:
-
-    docker run \
-    -p 8080:8080 \
-    --net.hunnor.dict.client.search.solr.url=http://solr:8983/solr
+`docker run --name web-spring --publish 8080:8080 hunnordict/web-spring --net.hunnor.dict.client.search.solr.url=http://solr:8983/solr`
