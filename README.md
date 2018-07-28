@@ -2,7 +2,7 @@
 
 The web application of the dictionary at https://dict.hunnor.net.
 
-# Usage
+# Usage
 
 The dictionary is a Spring Boot application. To run the application locally, package the source code with Maven and simply run the fat JAR file with `java -jar`.
 
