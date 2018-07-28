@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +50,7 @@ public class ApplicationController {
    * @param model the model to pass to the view
    * @return the name of the About view
    */
-  @RequestMapping(value = "/about", method = RequestMethod.GET)
+  @GetMapping(value = "/about")
   public String about(Model model) {
     try {
       Map<Language, Long> counts = searchService.counts();
@@ -103,7 +104,7 @@ public class ApplicationController {
    * Controller method for the Cookies page.
    * @return the name of the Cookies view
    */
-  @RequestMapping(value = "/cookies", method = RequestMethod.GET)
+  @GetMapping(value = "/cookies")
   public String cookies() {
     return COOKIES_VIEW;
   }
@@ -112,7 +113,7 @@ public class ApplicationController {
    * Controller method for the Downloads page.
    * @return the name of the Downloads view
    */
-  @RequestMapping(value = "/download", method = RequestMethod.GET)
+  @GetMapping(value = "/download")
   public String download() {
     return DOWNLOAD_VIEW;
   }
@@ -124,7 +125,7 @@ public class ApplicationController {
    * @param model the model to pass to the view
    * @return the name of the main view
    */
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @GetMapping(value = "/")
   public String search(
       @RequestParam(value = "term", required = false) String term,
       @RequestParam(value = "match", required = false) String match,

@@ -8,8 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,8 +28,7 @@ public class ApiController {
    * @param term term the term to return suggestions for
    * @return search suggestions in JSON
    */
-  @RequestMapping(value = "/suggest", method = RequestMethod.GET,
-      produces = {"application/json"})
+  @GetMapping(value = "/suggest", produces = {"application/json"})
   @ResponseBody
   public List<Autocomplete> suggest(@RequestParam(value = "term", required = false) String term) {
     List<Autocomplete> result = new ArrayList<>();
@@ -47,8 +45,7 @@ public class ApiController {
    * @param term the term to return suggestions for
    * @return search suggestions in JSON
    */
-  @RequestMapping(value = "/opensearch/suggest", method = RequestMethod.GET,
-      produces = {"application/x-suggestions+json"})
+  @GetMapping(value = "/opensearch/suggest", produces = {"application/x-suggestions+json"})
   @ResponseBody
   public Object[] opensearchSuggest(@RequestParam(value = "term", required = false) String term) {
 
