@@ -1,9 +1,9 @@
-FROM maven:3.5-jdk-8 as maven
+FROM maven:3.5-jdk-10 as maven
 COPY . /opt/hunnor-dict/web-spring
 WORKDIR /opt/hunnor-dict/web-spring
 RUN mvn verify
 
-FROM openjdk:8-jre
+FROM openjdk:10-jre
 RUN groupadd --system hunnor && \
 	useradd --system --gid hunnor hunnor && \
 	mkdir /hunnor && \
