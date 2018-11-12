@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-3" th:fragment="ebook">
+			<h2 class="card-header" th:text="#{download.ebooks}"> </h2>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th th:text="#{download.device}"> </th>
+							<th th:text="#{download.data.files}"> </th>
+							<th th:text="#{download.documentation}"> </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="platform" th:text="#{download.kindle.touch}"></td>
+							<td>
+								<p>
+									<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.kindle.nh')}"><span th:text="#{download.kindle.touch}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+								</p>
+							</td>
+							<td>
+								<p>
+									<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.kindle')}" th:text="#{download.installation.instructions}"></a>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td class="platform" th:text="#{download.pocketbook}"></td>
+							<td>
+								<p>
+									<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pocketbook.nh')}"><span th:text="#{download.pocketbook}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
+								</p>
+							</td>
+							<td>
+								<p> </p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+	</body>
+
+</html>
