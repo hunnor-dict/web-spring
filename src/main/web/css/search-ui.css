@@ -1,7 +1,11 @@
-a.switch-view-inline {
-	font-weight: bold;
-}
-
 ul.ui-autocomplete li.suggestion {
 	font-style: italic;
+}
+
+#search-title {
+	font-size: 1.5rem;
+}
+
+#settings-panel {
+	display: none;
 }

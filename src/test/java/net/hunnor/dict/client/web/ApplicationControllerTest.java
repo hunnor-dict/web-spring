@@ -1,5 +1,6 @@
 package net.hunnor.dict.client.web;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -27,6 +28,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+
+import javax.servlet.http.Cookie;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ApplicationController.class)
@@ -199,6 +202,25 @@ public class ApplicationControllerTest {
         .andExpect(status().isOk())
         .andExpect(model().attributeDoesNotExist("responses"))
         .andExpect(view().name("views/search/index"));
+  }
+
+  @Test
+  public void testSearchCookiesViewInline() throws Exception {
+    mockMvc.perform(get("/")
+        .cookie(new Cookie("view", "inline")))
+        .andExpect(status().isOk())
+        .andExpect(view().name("views/search/index"))
+        .andExpect(model().attributeDoesNotExist("view"));
+  }
+
+  @Test
+  public void testSearchCookiesViewTree() throws Exception {
+    mockMvc.perform(get("/")
+        .cookie(new Cookie("view", "tree")))
+        .andExpect(status().isOk())
+        .andExpect(view().name("views/search/index"))
+        .andExpect(model().attributeExists("view"))
+        .andExpect(model().attribute("view", equalTo("tree")));
   }
 
 }

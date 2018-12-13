@@ -81,6 +81,38 @@ function Searcher() {
 
 }
 
+function Settings() {
+
+	this.bindSettings = function() {
+		var _this = this;
+		$("#settings-toggle").click(function(event) {
+			$("#settings-panel").toggle();
+			event.preventDefault();
+		});
+		$("#view-inline").click(function(event) {
+			_this.setCookie("view", "inline");
+			$(this).css("font-weight", "bold");
+			$("#view-tree").css("font-weight", "normal");
+			event.preventDefault();
+		});
+		$("#view-tree").click(function(event) {
+			_this.setCookie("view", "tree");
+			$(this).css("font-weight", "bold");
+			$("#view-inline").css("font-weight", "normal");
+			event.preventDefault();
+		});
+	}
+
+	this.setCookie = function(cookieName, cookieValue) {
+		var date = new Date();
+		// The cookie expires in 30 days
+		date.setTime(date.getTime() + 2592000000);
+		var expires = "expires="+ date.toUTCString();
+		document.cookie = cookieName + "=" + cookieValue + ";" + expires;
+	}
+
+}
+
 function Switcher() {
 
 	this.switchEntryToInline = function(entry) {
@@ -120,12 +152,15 @@ function Switcher() {
 $(document).ready(function() {
 
 	var searcher = new Searcher(),
+		settings = new Settings(),
 		switcher = new Switcher();
 
 	searcher.bindChars();
 	searcher.bindDelete();
 	searcher.bindSuggest();
 	searcher.focusInput();
+
+	settings.bindSettings();
 
 	switcher.bindSwitches();
 

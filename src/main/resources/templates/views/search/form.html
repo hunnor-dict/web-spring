@@ -5,25 +5,23 @@
 
 		<form id="search-form" th:fragment="searchForm">
 
-			<div class="jumbotron p-3">
-				<div class="input-group">
-					<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
-					<div class="input-group-append">
-						<button class="btn btn-secondary" id="search-delete" type="button" th:attr="aria-label=#{search.clear.button}">
-							<span class="fas fa-times-circle"> </span>
-						</button>
-						<button class="btn btn-primary" id="search-submit" type="submit" th:attr="aria-label=#{search.submit.button}">
-							<span class="d-md-none fas fa-search"> </span>
-							<span class="d-none d-md-block" th:text="#{search.submit.button}"> </span>
-						</button>
-					</div>
+			<div class="input-group mb-3">
+				<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
+				<div class="input-group-append">
+					<button class="btn btn-secondary" id="search-delete" type="button" th:attr="aria-label=#{search.clear.button}">
+						<span class="fas fa-times-circle"> </span>
+					</button>
+					<button class="btn btn-primary" id="search-submit" type="submit" th:attr="aria-label=#{search.submit.button}">
+						<span class="d-md-none fas fa-search"> </span>
+						<span class="d-none d-md-block" th:text="#{search.submit.button}"> </span>
+					</button>
 				</div>
 			</div>
 
-			<div aria-label="" class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.hu}" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
+			<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.hu}" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
 				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
 			</div>
-			<div aria-label="" class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.nb}" th:with="letters = ${ {'æ', 'ø', 'å'} }">
+			<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.nb}" th:with="letters = ${ {'æ', 'ø', 'å'} }">
 				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
 			</div>
 
@@ -33,6 +31,15 @@
 					<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"> </option>
 					<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"> </option>
 				</select>
+			</div>
+
+			<div class="form-group">
+				<p>&raquo; <a class="link-normal" href="#" id="settings-toggle" th:text="#{search.settings.toggle}"> </a></p>
+				<div class="card" id="settings-panel">
+					<div class="card-body">
+						<span th:text="#{search.settings.view.label}"> </span>: <a class="link-normal" href="#" id="view-inline" th:style="${view != 'tree'} ? 'font-weight: bold'" th:text="#{search.view.inline}"> </a> | <a class="link-normal" href="#" id="view-tree" th:style="${view == 'tree'} ? 'font-weight: bold'" th:text="#{search.view.tree}"> </a>
+					</div>
+				</div>
 			</div>
 
 		</form>
