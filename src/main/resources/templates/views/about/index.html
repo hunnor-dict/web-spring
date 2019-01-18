@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu" xmlns:th="http://www.thymeleaf.org" th:with="subtitle=#{about.title},description=#{about.description},activeTab='about'">
+<html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},subtitle=#{about.title},description=#{about.description},activeTab='about'">
 
 	<head th:replace="layout/header :: header"> </head>
 
@@ -26,11 +26,14 @@
 
 			<h1 th:text="#{about.title}"> </h1>
 
-			<section>
+			<section th:if="${lang != 'nb'}">
 				<p>A HunNor egy magyarországi és norvégiai önkéntesek által létrehozott norvég-magyar közösségi szótár. A szótár felhasználását a <strong><a class="link-normal" href="http://www.gnu.hu/gplv3.html">GNU Általános Nyilvános Licenc</a></strong> szabályozza. A szótár jelenleg <span th:text="${nb == null ? 0 : nb}">0</span> norvég-magyar és <span th:text="${hu == null ? 0 : hu}">0</span> magyar-norvég szócikket tartalmaz.</p>
 			</section>
+			<section th:if="${lang == 'nb'}">
+				<p>HunNor er en åpen nettordbok utviklet av frivillige fra Ungarn og Norge. Ordboka inneholder <span th:text="${nb == null ? 0 : nb}">0</span> norske og <span th:text="${hu == null ? 0 : hu}">0</span> ungarske oppslagsord og er fritt tilgjengelig under <strong><a class="link-normal" href="https://www.gnu.org/licenses/gpl.html">GNU General Public License</a></strong>.</p>
+			</section>
 
-			<section>
+			<section th:if="${lang != 'nb'}">
 				<h2>Kapcsolat</h2>
 				<div class="fb-page mb-3" data-adapt-container-width="true" data-hide-cover="true" data-href="https://www.facebook.com/HunNor.Dict" data-show-facepile="false" data-small-header="false">
 					<div class="fb-xfbml-parse-ignore">
@@ -38,21 +41,42 @@
 					</div>
 				</div>
 			</section>
+			<section th:if="${lang == 'nb'}">
+				<h2>Kontaktinformasjon</h2>
+				<div class="fb-page mb-3" data-adapt-container-width="true" data-hide-cover="true" data-href="https://www.facebook.com/HunNor.Dict" data-show-facepile="false" data-small-header="false">
+					<div class="fb-xfbml-parse-ignore">
+						<p>» <a class="link-normal" href="https://www.facebook.com/HunNor.Dict">HunNor på Facebook</a></p>
+					</div>
+				</div>
+			</section>
 
-			<section>
+			<section th:if="${lang != 'nb'}">
 				<h2>Adatvédelem</h2>
 				<p>A szótár webszervere naplózza a látogatók IP-címét és szoftverkörnyezetét. A naplófájlokhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
 				<p>A szótár minden keresésnél naplózza a keresett kifejezést, és hogy a keresés adott-e találatot. A naplóhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
 			</section>
+			<section th:if="${lang == 'nb'}">
+				<h2>Personvern</h2>
+				<p>Webserveren logger besøkendes IP-adresse og detaljer om nettleser og operativsystem. Loggen er kun tilgjengelig for administratorer.</p>
+				<p>For hvert søk er søkebegrepet og det om søket ga resultater logget. Loggen er kun tilgjengelig for administratorer.</p>
+			</section>
 
-			<section>
+			<section th:if="${lang != 'nb'}">
 				<h2>Fejlesztőknek</h2>
 				<p>» <strong><a class="link-normal" href="https://github.com/hunnor-dict">Forráskód</a></strong> (GitHub)<br/>» <strong><a class="link-normal" href="https://www.dropbox.com/sh/8ilj0ilmgpudu2v/AABnvBhrDhuPwhTi2i9foURka?dl=0">Adatbázisok</a></strong> (Dropbox)</p>
 			</section>
+			<section th:if="${lang == 'nb'}">
+				<h2>For utviklere</h2>
+				<p>» <strong><a class="link-normal" href="https://github.com/hunnor-dict">Kildekode</a></strong> (GitHub)<br/>» <strong><a class="link-normal" href="https://www.dropbox.com/sh/8ilj0ilmgpudu2v/AABnvBhrDhuPwhTi2i9foURka?dl=0">Databaser</a></strong> (Dropbox)</p>
+			</section>
 
-			<section>
+			<section th:if="${lang != 'nb'}">
 				<h2>Források</h2>
 				<p>» Norvég szólista: <strong><a class="link-normal" href="http://www.edd.uio.no/prosjekt/ordbanken/">Norsk ordbank</a></strong> és <strong><a class="link-normal" href="http://torvald.aksis.uib.no/nta/">Norsk tekstarkiv</a></strong> (GNU GPL)<br/>» Sablon: <strong><a class="link-normal" href="http://getbootstrap.com/">Twitter Bootstrap</a></strong> (MIT)</p>
+			</section>
+			<section th:if="${lang == 'nb'}">
+				<h2>Kilder</h2>
+				<p>» Norsk ordliste: <strong><a class="link-normal" href="http://www.edd.uio.no/prosjekt/ordbanken/">Norsk ordbank</a></strong> og <strong><a class="link-normal" href="http://torvald.aksis.uib.no/nta/">Norsk tekstarkiv</a></strong> (GNU GPL)<br/>» Mal: <strong><a class="link-normal" href="http://getbootstrap.com/">Twitter Bootstrap</a></strong> (MIT)</p>
 			</section>
 
 			<footer th:replace="layout/footer :: footer"> </footer>
