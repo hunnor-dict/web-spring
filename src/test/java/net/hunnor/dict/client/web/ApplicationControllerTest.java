@@ -50,12 +50,12 @@ public class ApplicationControllerTest {
   @Test
   public void testAbout() throws Exception {
     Map<Language, Long> counts = new HashMap<>();
-    counts.put(Language.HU, new Long(1));
-    counts.put(Language.NB, new Long(1));
+    counts.put(Language.HU, Long.valueOf(1));
+    counts.put(Language.NB, Long.valueOf(1));
     given(searchService.counts()).willReturn(counts);
     mockMvc.perform(get("/about")).andExpect(status().isOk())
-        .andExpect(model().attribute("hu", new Long(1)))
-        .andExpect(model().attribute("nb", new Long(1)))
+        .andExpect(model().attribute("hu", Long.valueOf(1)))
+        .andExpect(model().attribute("nb", Long.valueOf(1)))
         .andExpect(view().name("views/about/index"));
   }
 
