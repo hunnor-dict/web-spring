@@ -20,15 +20,15 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>4.1.3</bootstrap.version>
+		<bootstrap.version>4.2.1</bootstrap.version>
 		<checkstyle.version>3.0.0</checkstyle.version>
-		<font.awesome.version>5.5.0</font.awesome.version>
+		<font.awesome.version>5.7.1</font.awesome.version>
 		<jacoco.version>0.8.3</jacoco.version>
 		<java.version>11</java.version>
 		<jquery.version>3.3.1-1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
-		<popper.js.version>1.14.4</popper.js.version>
+		<popper.js.version>1.14.6</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>7.6.0</solr.version>
