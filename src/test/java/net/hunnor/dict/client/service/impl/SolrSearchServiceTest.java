@@ -18,7 +18,6 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.common.SolrInputDocument;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -38,7 +37,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SolrSearchServiceTest {
