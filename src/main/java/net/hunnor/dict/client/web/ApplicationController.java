@@ -63,7 +63,8 @@ public class ApplicationController {
   }
 
   @GetMapping(value = "/contrib")
-  public String contribPost(@ModelAttribute Contrib contrib) {
+  public String contribPost(@ModelAttribute Contrib contrib, Model model) {
+    model.addAttribute("hasCaptcha", true);
     return CONTRIB_VIEW;
   }
 
