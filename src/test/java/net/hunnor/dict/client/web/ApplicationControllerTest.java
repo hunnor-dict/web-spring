@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -70,15 +71,15 @@ public class ApplicationControllerTest {
 
   @Test
   public void testContrib() throws Exception {
-    Contrib contrib = new Contrib();
-    mockMvc.perform(get("/contrib")
-        .param("spelling", contrib.getSpelling())
-        .param("infl", contrib.getInfl())
-        .param("trans", contrib.getTrans())
-        .param("comments", contrib.getComments()))
+    mockMvc.perform(get("/contrib"))
         .andExpect(status().isOk())
-        .andExpect(model().attribute("hasCaptcha", true))
-        .andExpect(model().attribute("hasInput", false))
+        .andExpect(view().name("views/contrib/index"));
+  }
+
+  @Test
+  public void testContribPost() throws Exception {
+    mockMvc.perform(post("/contrib"))
+        .andExpect(status().isOk())
         .andExpect(view().name("views/contrib/index"));
   }
 
@@ -87,7 +88,7 @@ public class ApplicationControllerTest {
     Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
     given(captchaService.isResponseValid(ArgumentMatchers.any(), ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
-    mockMvc.perform(get("/contrib")
+    mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
         .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
@@ -101,7 +102,7 @@ public class ApplicationControllerTest {
   @Test
   public void testContribCaptchaInvalid() throws Exception {
     Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
-    mockMvc.perform(get("/contrib")
+    mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
         .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
@@ -117,7 +118,7 @@ public class ApplicationControllerTest {
     Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
-    mockMvc.perform(get("/contrib")
+    mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
         .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
@@ -134,7 +135,7 @@ public class ApplicationControllerTest {
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
     doThrow(ServiceException.class).when(mailerService).send(ArgumentMatchers.any(Contrib.class));
-    mockMvc.perform(get("/contrib")
+    mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
         .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())

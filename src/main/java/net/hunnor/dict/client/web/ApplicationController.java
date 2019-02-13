@@ -16,8 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
@@ -63,6 +62,11 @@ public class ApplicationController {
     return ABOUT_VIEW;
   }
 
+  @GetMapping(value = "/contrib")
+  public String contribPost(@ModelAttribute Contrib contrib) {
+    return CONTRIB_VIEW;
+  }
+
   /**
    * Controller method for the suggestions page.
    * @param contrib the suggestion being processed
@@ -70,7 +74,7 @@ public class ApplicationController {
    * @param model the model to pass to the view
    * @return the name of the suggestions view
    */
-  @RequestMapping(value = "/contrib", method = {RequestMethod.GET, RequestMethod.POST})
+  @PostMapping(value = "/contrib")
   public String contrib(
       @ModelAttribute Contrib contrib,
       @RequestParam(value = "g-recaptcha-response", required = false) String captchaResponse,
@@ -101,19 +105,11 @@ public class ApplicationController {
     return CONTRIB_VIEW;
   }
 
-  /**
-   * Controller method for the Cookies page.
-   * @return the name of the Cookies view
-   */
   @GetMapping(value = "/cookies")
   public String cookies() {
     return COOKIES_VIEW;
   }
 
-  /**
-   * Controller method for the Downloads page.
-   * @return the name of the Downloads view
-   */
   @GetMapping(value = "/download")
   public String download() {
     return DOWNLOAD_VIEW;
