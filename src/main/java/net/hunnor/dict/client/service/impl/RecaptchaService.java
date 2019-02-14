@@ -52,7 +52,7 @@ public class RecaptchaService implements CaptchaService {
         RecaptchaResponse recaptchaResponse = responseEntity.getBody();
         // FindBugs false positive NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE
         // See findbugs-exclude.xml
-        isValid = recaptchaResponse.success;
+        isValid = recaptchaResponse != null && recaptchaResponse.success;
       }
     } catch (RestClientException ex) {
       throw new ServiceException(ex.getMessage(), ex);
