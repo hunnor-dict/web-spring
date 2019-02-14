@@ -29,11 +29,19 @@ public class RecaptchaServiceTest {
   private RestTemplate restTemplate;
 
   @Test
-  public void testValidation() throws ServiceException {
+  public void testValidationTrue() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
         withSuccess("{\"success\":true}", MediaType.APPLICATION_JSON_UTF8));
     assertTrue(captchaService.isResponseValid("", ""));
+  }
+
+  @Test
+  public void testValidationFalse() throws ServiceException {
+    MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
+    mockServer.expect(anything()).andRespond(
+        withSuccess("{\"success\":false}", MediaType.APPLICATION_JSON_UTF8));
+    assertFalse(captchaService.isResponseValid("", ""));
   }
 
   @Test
