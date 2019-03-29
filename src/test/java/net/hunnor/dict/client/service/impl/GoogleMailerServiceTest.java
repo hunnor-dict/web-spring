@@ -1,5 +1,6 @@
 package net.hunnor.dict.client.service.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 
@@ -31,6 +32,7 @@ public class GoogleMailerServiceTest {
 
   @Test
   public void testSend() throws ServiceException {
+    assertNotNull(javaMailSender);
     doNothing().when(javaMailSender).send(ArgumentMatchers.any(MimeMessage.class));
     Contrib contrib = new Contrib();
     mailerService.send(contrib);
