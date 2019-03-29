@@ -1,7 +1,9 @@
 package net.hunnor.dict.client.service.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doThrow;
 
@@ -220,12 +222,19 @@ public class SolrSearchServiceTest {
 
   @Test
   public void testSearchLogging() throws ServiceException {
+
     Logger logger = LoggerFactory.getLogger("net.hunnor.dict.client.log.searches");
     ch.qos.logback.classic.Logger logbackLogger = (ch.qos.logback.classic.Logger) logger;
+
     Level level = logbackLogger.getLevel();
+    assertNull(level);
+
     logbackLogger.setLevel(ch.qos.logback.classic.Level.ERROR);
+    assertFalse(logger.isInfoEnabled());
+
     searchService.search("foo", "full");
     logbackLogger.setLevel(level);
+
   }
 
   @Test
