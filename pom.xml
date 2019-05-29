@@ -22,8 +22,6 @@
 	<properties>
 		<bootstrap.version>4.3.1</bootstrap.version>
 		<checkstyle.version>3.0.0</checkstyle.version>
-		<!-- https://github.com/spring-projects/spring-boot/issues/15110 -->
-		<dropwizard-metrics.version>3.2.6</dropwizard-metrics.version>
 		<font.awesome.version>5.8.2</font.awesome.version>
 		<jacoco.version>0.8.3</jacoco.version>
 		<java.version>11</java.version>
@@ -33,7 +31,7 @@
 		<popper.js.version>1.15.0</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<solr.version>8.0.0</solr.version>
+		<solr.version>8.1.1</solr.version>
 		<spotbugs.version>3.1.11</spotbugs.version>
 	</properties>
 
