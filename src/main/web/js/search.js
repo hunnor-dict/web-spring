@@ -104,10 +104,11 @@ function Settings() {
 	}
 
 	this.setCookie = function(cookieName, cookieValue) {
-		var date = new Date();
+		var date = new Date(),
+			expires = "";
 		// The cookie expires in 30 days
 		date.setTime(date.getTime() + 2592000000);
-		var expires = "expires="+ date.toUTCString();
+		expires = "expires="+ date.toUTCString();
 		document.cookie = cookieName + "=" + cookieValue + ";" + expires;
 	}
 
