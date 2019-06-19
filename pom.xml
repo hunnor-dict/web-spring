@@ -21,9 +21,9 @@
 
 	<properties>
 		<bootstrap.version>4.3.1</bootstrap.version>
-		<checkstyle.version>3.0.0</checkstyle.version>
+		<checkstyle.version>3.1.0</checkstyle.version>
 		<font.awesome.version>5.8.2</font.awesome.version>
-		<jacoco.version>0.8.3</jacoco.version>
+		<jacoco.version>0.8.4</jacoco.version>
 		<java.version>11</java.version>
 		<jquery.version>3.4.1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
@@ -32,7 +32,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.1.1</solr.version>
-		<spotbugs.version>3.1.11</spotbugs.version>
+		<spotbugs.version>3.1.12</spotbugs.version>
 	</properties>
 
 	<dependencies>

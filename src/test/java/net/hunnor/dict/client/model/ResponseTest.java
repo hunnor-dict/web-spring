@@ -2,9 +2,9 @@ package net.hunnor.dict.client.model;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import java.util.HashSet;
+
+import org.junit.Test;
 
 public class ResponseTest {
 

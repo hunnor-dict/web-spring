@@ -1,5 +1,8 @@
 package net.hunnor.dict.client.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
@@ -11,9 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class ApiController {

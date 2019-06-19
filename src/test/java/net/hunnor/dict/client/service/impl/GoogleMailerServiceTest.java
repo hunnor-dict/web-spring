@@ -4,6 +4,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 
+import javax.mail.internet.MimeMessage;
+
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;
@@ -17,8 +19,6 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.mail.internet.MimeMessage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

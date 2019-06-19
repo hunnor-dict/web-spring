@@ -1,5 +1,10 @@
 package net.hunnor.dict.client.service.impl;
 
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;
@@ -11,11 +16,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 @Service
 public class GoogleMailerService implements MailerService {

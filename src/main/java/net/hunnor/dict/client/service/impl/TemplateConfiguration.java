@@ -1,15 +1,15 @@
 package net.hunnor.dict.client.service.impl;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.annotation.PostConstruct;
 
 @Configuration
 public class TemplateConfiguration {

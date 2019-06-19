@@ -2,6 +2,8 @@ package net.hunnor.dict.client.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Collection;
+
 import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.ServiceException;
 
@@ -13,8 +15,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Collection;
 
 @Service
 public class RecaptchaService implements CaptchaService {

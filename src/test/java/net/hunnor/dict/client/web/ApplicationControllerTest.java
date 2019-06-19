@@ -9,6 +9,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
+import javax.servlet.http.Cookie;
+
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
@@ -25,12 +31,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-
-import javax.servlet.http.Cookie;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ApplicationController.class)
