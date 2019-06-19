@@ -18,26 +18,37 @@
 				</div>
 			</div>
 
-			<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.hu}" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
-				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
-			</div>
-			<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.nb}" th:with="letters = ${ {'æ', 'ø', 'å'} }">
-				<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
-			</div>
-
-			<div class="form-group">
-				<select class="form-control" name="match">
-					<option value="roots" th:selected="${match == null or match == '' or match == 'roots'}" th:text="#{search.match.roots}"> </option>
-					<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"> </option>
-					<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"> </option>
-				</select>
+			<div class="mb-3">
+				<button aria-controls="keyboard" aria-expanded="false" class="btn btn-secondary" data-target="#keyboard" data-toggle="collapse" type="button" th:attr="aria-label=#{search.keyboard.toggle}">
+					<span class="fas fa-keyboard"> </span>
+				</button>
+				<button aria-controls="settings" aria-expanded="false" class="btn btn-secondary" data-target="#settings" data-toggle="collapse" type="button" th:attr="aria-label=#{search.settings.toggle}">
+					<span class="fas fa-sliders-h"> </span>
+				</button>
 			</div>
 
-			<div class="form-group">
-				<p>&raquo; <a class="link-normal" href="#" id="settings-toggle" th:text="#{search.settings.toggle}"> </a></p>
-				<div class="card" id="settings-panel">
-					<div class="card-body">
-						<span th:text="#{search.settings.view.label}"> </span>: <a class="link-normal" href="#" id="view-inline" th:style="${view != 'tree'} ? 'font-weight: bold'" th:text="#{search.view.inline}"> </a> | <a class="link-normal" href="#" id="view-tree" th:style="${view == 'tree'} ? 'font-weight: bold'" th:text="#{search.view.tree}"> </a>
+			<div class="collapse" id="keyboard">
+				<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.hu}" th:with="letters = ${ {'á', 'é', 'í', 'ó', 'ö', 'ő', 'ú', 'ü', 'ű'} }">
+					<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
+				</div>
+				<div class="btn-group mb-3" role="group" th:attr="aria-label=#{search.insert.letters.nb}" th:with="letters = ${ {'æ', 'ø', 'å'} }">
+					<button class="btn btn-outline-secondary btn-sm letter" type="button" th:attr="data-char=${letter}" th:each="letter: ${letters}" th:text="${letter}"> </button>
+				</div>
+			</div>
+
+			<div class="collapse" id="settings">
+				<div class="form-group">
+					<select class="form-control" name="match">
+						<option value="roots" th:selected="${match == null or match == '' or match == 'roots'}" th:text="#{search.match.roots}"> </option>
+						<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"> </option>
+						<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"> </option>
+					</select>
+				</div>
+				<div class="form-group">
+					<div class="card">
+						<div class="card-body">
+							<span th:text="#{search.settings.view.label}"> </span>: <a class="link-normal" href="#" id="view-inline" th:style="${view != 'tree'} ? 'font-weight: bold'" th:text="#{search.view.inline}"> </a> | <a class="link-normal" href="#" id="view-tree" th:style="${view == 'tree'} ? 'font-weight: bold'" th:text="#{search.view.tree}"> </a>
+						</div>
 					</div>
 				</div>
 			</div>

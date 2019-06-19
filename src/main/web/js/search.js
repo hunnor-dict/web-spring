@@ -85,10 +85,6 @@ function Settings() {
 
 	this.bindSettings = function() {
 		var _this = this;
-		$("#settings-toggle").click(function(event) {
-			$("#settings-panel").toggle();
-			event.preventDefault();
-		});
 		$("#view-inline").click(function(event) {
 			_this.setCookie("view", "inline");
 			$(this).css("font-weight", "bold");
