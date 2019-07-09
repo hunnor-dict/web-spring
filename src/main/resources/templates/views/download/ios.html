@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-3" th:fragment="ios">
+			<div class="card-header collapsed" data-target="#ios" data-toggle="collapse">
+				<h2>
+					<span class="fab fa-apple mr-2"> </span>
+					<span class="card-title" th:text="#{download.ios.title}"> </span>
+					<span class="card-indicator fa"> </span>
+				</h2>
+			</div>
+			<div class="card-body collapse" id="ios">
+				<div class="mb-5">
+					<p>
+						<strong th:text="#{download.app}"> </strong>
+					</p>
+					<p>
+						<a href="https://itunes.apple.com/us/app/hunnor/id1305770091">
+							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
+							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
+						</a>
+					</p>
+					<p>
+						<em th:text="#{download.app.by.ovitas}"> </em>
+					</p>
+				</div>
+				<div>
+					<p>
+						<strong th:text="#{download.data.files.for.apps}"> </strong>
+					</p>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th th:text="#{download.format}"> </th>
+									<th th:text="#{download.recommended.app}"> </th>
+									<th th:text="#{download.data.files}"> </th>
+									<th th:text="#{download.documentation}"> </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<p th:text="#{download.stardict}"> </p>
+									<td>
+										<p>
+											<img src="/img/app-dicty.jpg" th:src="@{/img/app-dicty.jpg}"/>
+											<a class="app-link link-normal"  href="https://itunes.apple.com/us/app/dicty/id969045273?mt=8" th:text="#{download.dicty}"> </a>
+										</p>
+									</td>
+									<td>
+										<p>
+											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}" th:text="#{download.stardict} + ' ' + #{download.hungarian.norwegian}"> </a>
+											<br/>
+											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}" th:text="#{download.stardict} + ' ' + #{download.norwegian.hungarian}"> </a>
+										</p>
+									</td>
+									<td>
+										<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.ios')}" th:text="#{download.installation.instructions}"> </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+
+</html>

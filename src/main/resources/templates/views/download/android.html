@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-5" th:fragment="android">
+			<div class="card-header collapsed" data-target="#android" data-toggle="collapse">
+				<h2>
+					<span class="fab fa-android mr-2"> </span>
+					<span class="card-title" th:text="#{download.android.title}"> </span>
+					<span class="card-indicator fa"> </span>
+				</h2>
+			</div>
+			<div class="card-body collapse" id="android">
+				<div class="mb-5">
+					<p>
+						<strong th:text="#{download.apps}"> </strong>
+					</p>
+					<p>
+						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.android">
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+						</a>
+					</p>
+					<p>
+						<em th:text="#{download.app.by.hunnor}"> </em>
+					</p>
+					<p>
+						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.mobileapp">
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+						</a>
+					</p>
+					<p>
+						<em th:text="#{download.app.by.ovitas}"> </em>
+					</p>
+					<p class="small text-secondary" th:text="#{download.google.play.copyright}"> </p>
+				</div>
+				<div>
+					<p>
+						<strong th:text="#{download.data.files.for.apps}"> </strong>
+					</p>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th th:text="#{download.recommended.app}"> </th>
+									<th th:text="#{download.data.files}"> </th>
+									<th th:text="#{download.documentation}"> </th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<p>
+											<img src="/img/app-colordict.png" th:src="@{/img/app-colordict.png}"/>
+											<a class="app-link link-normal" href="https://play.google.com/store/apps/details?id=com.socialnmobile.colordict" th:text="#{download.colordict}"> </a>
+										</p>
+									</td>
+									<td>
+										<p>
+											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}" th:text="#{download.stardict} + ' ' + #{download.hungarian.norwegian}"> </a>
+											<br/>
+											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}" th:text="#{download.stardict} + ' ' + #{download.norwegian.hungarian}"> </a>
+										</p>
+									</td>
+									<td>
+										<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.android')}" th:text="#{download.installation.instructions}"> </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+
+</html>

@@ -16,3 +16,24 @@ td.platform {
 	font-size: 120%;
 	font-weight: bold;
 }
+
+div.card-header h2 {
+	display: flex;
+	margin: 0;
+}
+
+div.card-header h2 span {
+	margin: 0;
+}
+
+div.card-header span.card-indicator:after {
+	content: "\f139";
+}
+
+div.card-header.collapsed span.card-indicator:after {
+	content: "\f13a";
+}
+
+span.card-title {
+	flex: 1;
+}

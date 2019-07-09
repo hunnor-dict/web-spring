@@ -9,28 +9,18 @@
 
 			<nav th:replace="layout/navigation :: navigation"> </nav>
 
-			<h1 th:text="#{download.title}"> </h1>
+			<h1 class="mb-5" th:text="#{download.title}"> </h1>
 
-			<section th:replace="views/download/apps"> </section>
+			<section th:replace="views/download/android"> </section>
 
-			<section th:replace="views/download/files"> </section>
+			<section th:replace="views/download/ios"> </section>
+			<section th:replace="views/download/macos"> </section>
+
+			<section th:replace="views/download/windows"> </section>
+			<section th:replace="views/download/wp"> </section>
 
 			<section th:replace="views/download/ebook"> </section>
-
-			<section class="card mb-3">
-				<h2 class="card-header" th:text="#{download.pdf}"> </h2>
-				<div class="card-body">
-					<p>
-						&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.hn')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.hungarian.norwegian}"></span></a>
-						<br/>
-						&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.nh')}"><span th:text="#{download.pdf.short}"></span> <span th:text="#{download.norwegian.hungarian}"></span></a>
-					</p>
-				</div>
-			</section>
-
-			<section>
-				<p class="small text-center text-secondary" th:text="#{download.google.play.copyright}"> </p>
-			</section>
+			<section th:replace="views/download/pdf"> </section>
 
 			<footer th:replace="layout/footer :: footer"> </footer>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-5" th:fragment="macos">
+			<div class="card-header collapsed" data-target="#macos" data-toggle="collapse">
+				<h2>
+					<span class="fab fa-apple mr-2"> </span>
+					<span class="card-title" th:text="#{download.macos.title}"> </span>
+					<span class="card-indicator fa"> </span>
+				</h2>
+			</div>
+			<div class="card-body collapse" id="macos">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th th:text="#{download.recommended.app}"> </th>
+								<th th:text="#{download.data.files}"> </th>
+								<th th:text="#{download.documentation}"> </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>
+										<img src="/img/app-apple.png" th:src="@{/img/app-apple.png}"/>
+										<a class="app-link link-normal"  href="https://support.apple.com/en-euro/guide/dictionary/welcome/mac" th:text="#{download.apple}"> </a>
+									</p>
+								</td>
+								<td>
+									<p>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.apple.hn')}" th:text="#{download.apple} + ' ' + #{download.hungarian.norwegian}"> </a>
+										<br/>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.apple.nh')}" th:text="#{download.apple} + ' ' + #{download.norwegian.hungarian}"> </a>
+									</p>
+								</td>
+								<td>
+									<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.apple')}" th:text="#{download.installation.instructions}"> </a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+	</body>
+
+</html>

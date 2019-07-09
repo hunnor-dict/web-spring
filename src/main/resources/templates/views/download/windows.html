@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-3" th:fragment="windows">
+			<div class="card-header collapsed" data-target="#windows" data-toggle="collapse">
+				<h2>
+					<span class="fab fa-windows mr-2"> </span>
+					<span class="card-title" th:text="#{download.windows.title}"> </span>
+					<span class="card-indicator fa"> </span>
+				</h2>
+			</div>
+			<div class="card-body collapse" id="windows">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th th:text="#{download.recommended.app}"> </th>
+								<th th:text="#{download.data.files}"> </th>
+								<th th:text="#{download.documentation}"> </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>
+										<img src="/img/app-stardict.png" th:src="@{/img/app-stardict.png}"/>
+										<a class="app-link link-normal"  href="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/stardict-3/stardict-3.0.1.exe" th:text="#{download.stardict}"> </a>
+									</p>
+								</td>
+								<td>
+									<p>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}" th:text="#{download.stardict} + ' ' + #{download.hungarian.norwegian}"> </a>
+										<br/>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}" th:text="#{download.stardict} + ' ' + #{download.norwegian.hungarian}"> </a>
+									</p>
+								</td>
+								<td>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+	</body>
+
+</html>

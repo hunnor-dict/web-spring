@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+
+		<section class="card mb-3" th:fragment="pdf">
+			<div class="card-header collapsed" data-target="#pdf" data-toggle="collapse">
+				<h2>
+					<span class="fas fa-file-pdf mr-2"> </span>
+					<span class="card-title" th:text="#{download.pdf.title}"> </span>
+					<span class="card-indicator fa"> </span>
+				</h2>
+			</div>
+			<div class="card-body collapse" id="pdf">
+				<p>
+					&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.hn')}" th:text="#{download.pdf} + ' ' + #{download.hungarian.norwegian}"> </a>
+					<br/>
+					&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.nh')}" th:text="#{download.pdf} + ' ' + #{download.norwegian.hungarian}"> </a>
+				</p>
+			</div>
+		</section>
+
+	</body>
+
+</html>
