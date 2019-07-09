@@ -6,9 +6,11 @@
 		<section class="card mb-3" th:fragment="ios">
 			<div class="card-header collapsed" data-target="#ios" data-toggle="collapse">
 				<h2>
-					<span class="fab fa-apple mr-2"> </span>
-					<span class="card-title" th:text="#{download.ios.title}"> </span>
-					<span class="card-indicator fa"> </span>
+					<a class="link-hidden" href="#android">
+						<span class="fab fa-apple mr-2"> </span>
+						<span class="card-title" th:text="#{download.ios.title}"> </span>
+						<span class="card-indicator fa"> </span>
+					</a>
 				</h2>
 			</div>
 			<div class="card-body collapse" id="ios">

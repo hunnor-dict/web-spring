@@ -4,11 +4,13 @@
 	<body>
 
 		<section class="card mb-5" th:fragment="android">
-			<div class="card-header collapsed" data-target="#android" data-toggle="collapse" href="#android">
+			<div class="card-header collapsed" data-target="#android" data-toggle="collapse">
 				<h2>
-					<span class="fab fa-android mr-2"> </span>
-					<span class="card-title" th:text="#{download.android.title}"> </span>
-					<span class="card-indicator fa"> </span>
+					<a class="link-hidden" href="#android">
+						<span class="fab fa-android mr-2"> </span>
+						<span class="card-title" th:text="#{download.android.title}"> </span>
+						<span class="card-indicator fa"> </span>
+					</a>
 				</h2>
 			</div>
 			<div class="card-body collapse" id="android">

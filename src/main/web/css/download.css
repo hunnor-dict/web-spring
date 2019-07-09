@@ -18,19 +18,22 @@ td.platform {
 }
 
 div.card-header h2 {
+	margin: 0;
+}
+
+div.card-header h2 a {
 	display: flex;
+}
+
+div.card-header h2 a span {
 	margin: 0;
 }
 
-div.card-header h2 span {
-	margin: 0;
-}
-
-div.card-header span.card-indicator:after {
+div.card-header a span.card-indicator:after {
 	content: "\f139";
 }
 
-div.card-header.collapsed span.card-indicator:after {
+div.card-header.collapsed a span.card-indicator:after {
 	content: "\f13a";
 }
 
