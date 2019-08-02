@@ -1,0 +1,39 @@
+%TEMPLATE_MODE HTML
+
+%CONTEXT
+hasInput = true
+captchaValid = true
+messageSent = true
+
+%MESSAGES
+contrib.info = 'Info'
+contrib.form.sent = 'OK'
+contrib.title = 'Title'
+
+%INPUT (classpath:templates/views/contrib/index.html)
+%INPUT[views/contrib/form] (classpath:templates/blank.html)
+
+%INPUT[layout/footer] (classpath:templates/blank.html)
+%INPUT[layout/header] (classpath:templates/blank.html)
+%INPUT[layout/navigation] (classpath:templates/blank.html)
+
+%OUTPUT
+<!DOCTYPE html>
+<html lang="en">
+	<head></head>
+	<body>
+		<div class="container">
+			<nav></nav>
+			<div>
+				<div>
+					<div class="alert alert-success" role="alert">OK</div>
+				</div>
+			</div>
+			<h1>Title</h1>
+			<p>Info</p>
+			<form></form>
+			<footer></footer>
+		</div>
+		<div></div>
+	</body>
+</html>

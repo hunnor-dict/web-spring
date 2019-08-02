@@ -1,0 +1,30 @@
+%TEMPLATE_MODE HTML
+
+%CONTEXT
+
+%MESSAGES
+contrib.info = 'Info'
+contrib.title = 'Title'
+
+%INPUT (classpath:templates/views/contrib/index.html)
+%INPUT[views/contrib/form] (classpath:templates/blank.html)
+
+%INPUT[layout/footer] (classpath:templates/blank.html)
+%INPUT[layout/header] (classpath:templates/blank.html)
+%INPUT[layout/navigation] (classpath:templates/blank.html)
+
+%OUTPUT
+<!DOCTYPE html>
+<html lang="en">
+	<head></head>
+	<body>
+		<div class="container">
+			<nav></nav>
+			<h1>Title</h1>
+			<p>Info</p>
+			<form></form>
+			<footer></footer>
+		</div>
+		<div></div>
+	</body>
+</html>
