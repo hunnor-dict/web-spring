@@ -22,7 +22,7 @@
 	<properties>
 		<bootstrap.version>4.3.1</bootstrap.version>
 		<checkstyle.version>3.1.0</checkstyle.version>
-		<font.awesome.version>5.9.0</font.awesome.version>
+		<font.awesome.version>5.10.1</font.awesome.version>
 		<jacoco.version>0.8.4</jacoco.version>
 		<java.version>11</java.version>
 		<javassist.version>3.25.0-GA</javassist.version>
