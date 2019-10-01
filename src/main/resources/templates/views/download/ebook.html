@@ -41,6 +41,8 @@
 								<td class="platform" th:text="#{download.pocketbook}"> </td>
 								<td>
 									<p>
+										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pocketbook.hn')}" th:text="#{download.pocketbook} + ' ' + #{download.hungarian.norwegian}"> </a>
+										<br/>
 										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pocketbook.nh')}" th:text="#{download.pocketbook} + ' ' + #{download.norwegian.hungarian}"> </a>
 									</p>
 								</td>
