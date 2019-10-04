@@ -33,7 +33,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.2.0</solr.version>
-		<spotbugs.version>3.1.12</spotbugs.version>
+		<spotbugs.version>3.1.12.2</spotbugs.version>
 		<thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version>
 	</properties>
 
