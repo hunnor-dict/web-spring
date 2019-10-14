@@ -52,13 +52,11 @@
 
 			<section th:if="${lang != 'nb'}">
 				<h2>Adatvédelem</h2>
-				<p>A szótár webszervere naplózza a látogatók IP-címét és szoftverkörnyezetét. A naplófájlokhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
-				<p>A szótár minden keresésnél naplózza a keresett kifejezést, és hogy a keresés adott-e találatot. A naplóhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
+				<p>A szótár minden keresésnél naplózza a keresett kifejezést, és hogy a keresés adott-e találatot. A szótár webszervere naplózza a látogatók IP-címét és szoftverkörnyezetét. A naplófájlokhoz csak a szerver adminisztrátorai férhetnek hozzá.</p>
 			</section>
 			<section th:if="${lang == 'nb'}">
 				<h2>Personvern</h2>
-				<p>Webserveren logger besøkendes IP-adresse og detaljer om nettleser og operativsystem. Loggen er kun tilgjengelig for administratorer.</p>
-				<p>For hvert søk er søkebegrepet og det om søket ga resultater logget. Loggen er kun tilgjengelig for administratorer.</p>
+				<p>For hvert søk er søkebegrepet og det om søket ga resultater logget. Webserveren logger besøkendes IP-adresse og detaljer om nettleser og operativsystem. Loggen er kun tilgjengelig for administratorer.</p>
 			</section>
 
 			<section th:if="${lang != 'nb'}">
