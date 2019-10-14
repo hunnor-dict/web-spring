@@ -28,6 +28,25 @@
 
 		<div th:replace="layout/footer :: scripts"> </div>
 
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var url = new URL(window.location.href);
+				var sectionId = url.searchParams.get("section");
+				if (sectionId) {
+					var sectionContent = $("#" + sectionId);
+					if (sectionContent.length > 0) {
+						sectionContent.collapse("show");
+					}
+					var sectionTitle = $("#section-" + sectionId);
+					if (sectionTitle.length > 0) {
+						$("html, body").animate({
+							scrollTop: sectionTitle.offset().top - 10
+						}, 1000);
+					}
+				}
+			});
+		</script>
+
 	</body>
 
 </html>
