@@ -85,12 +85,11 @@ public class ApplicationControllerTest {
 
   @Test
   public void testContribCaptchaError() throws Exception {
-    Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
+    Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(ArgumentMatchers.any(), ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
     mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
-        .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
         .param("comments", contrib.getComments()))
         .andExpect(status().isOk())
@@ -101,10 +100,9 @@ public class ApplicationControllerTest {
 
   @Test
   public void testContribCaptchaInvalid() throws Exception {
-    Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
+    Contrib contrib = new Contrib("foo", "bar", "baz");
     mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
-        .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
         .param("comments", contrib.getComments()))
         .andExpect(status().isOk())
@@ -115,12 +113,11 @@ public class ApplicationControllerTest {
 
   @Test
   public void testContribCaptchaValid() throws Exception {
-    Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
+    Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
     mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
-        .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
         .param("comments", contrib.getComments()))
         .andExpect(status().isOk())
@@ -131,13 +128,12 @@ public class ApplicationControllerTest {
 
   @Test
   public void testContribMailerError() throws Exception {
-    Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
+    Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
     doThrow(ServiceException.class).when(mailerService).send(ArgumentMatchers.any(Contrib.class));
     mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
-        .param("infl", contrib.getInfl())
         .param("trans", contrib.getTrans())
         .param("comments", contrib.getComments()))
         .andExpect(status().isOk())

@@ -1,4 +1,3 @@
 -> helyesírás: [(${contrib.spelling})]
--> ragozás: [(${contrib.infl})]
 -> fordítás: [(${contrib.trans})]
 -> megjegyzés: [(${contrib.comments})]

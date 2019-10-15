@@ -4,8 +4,6 @@ public class Contrib {
 
   private String spelling;
 
-  private String infl;
-
   private String trans;
 
   private String comments;
@@ -16,13 +14,11 @@ public class Contrib {
   /**
    * Constructor with all fields.
    * @param spelling value for field spelling
-   * @param infl value for field infl
    * @param trans value for field trans
    * @param comments value for field comments
    */
-  public Contrib(String spelling, String infl, String trans, String comments) {
+  public Contrib(String spelling, String trans, String comments) {
     this.spelling = spelling;
-    this.infl = infl;
     this.trans = trans;
     this.comments = comments;
   }
@@ -33,14 +29,6 @@ public class Contrib {
 
   public void setSpelling(String spelling) {
     this.spelling = spelling;
-  }
-
-  public String getInfl() {
-    return infl;
-  }
-
-  public void setInfl(String infl) {
-    this.infl = infl;
   }
 
   public String getTrans() {
@@ -60,15 +48,11 @@ public class Contrib {
   }
 
   public boolean hasInput() {
-    return hasSpelling() || hasInfl() || hasTrans() || hasComments();
+    return hasSpelling() || hasTrans() || hasComments();
   }
 
   private boolean hasSpelling() {
     return spelling != null && !spelling.isEmpty();
-  }
-
-  private boolean hasInfl() {
-    return infl != null && !infl.isEmpty();
   }
 
   private boolean hasTrans() {

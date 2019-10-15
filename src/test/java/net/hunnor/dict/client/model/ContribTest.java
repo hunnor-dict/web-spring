@@ -10,11 +10,10 @@ public class ContribTest {
 
   @Test
   public void constructorWithAllFields() {
-    Contrib contrib = new Contrib("foo", "bar", "baz", "qux");
+    Contrib contrib = new Contrib("foo", "bar", "baz");
     assertEquals("foo", contrib.getSpelling());
-    assertEquals("bar", contrib.getInfl());
-    assertEquals("baz", contrib.getTrans());
-    assertEquals("qux", contrib.getComments());
+    assertEquals("bar", contrib.getTrans());
+    assertEquals("baz", contrib.getComments());
   }
 
   @Test
@@ -27,13 +26,6 @@ public class ContribTest {
   public void hasContentIfHasSpelling() {
     Contrib contrib = new Contrib();
     contrib.setSpelling("foo");
-    assertTrue(contrib.hasInput());
-  }
-
-  @Test
-  public void hasContentIfHasInfl() {
-    Contrib contrib = new Contrib();
-    contrib.setInfl("foo");
     assertTrue(contrib.hasInput());
   }
 
@@ -55,7 +47,6 @@ public class ContribTest {
   public void hasNoContentIfAllFieldsEmpty() {
     Contrib contrib = new Contrib();
     contrib.setSpelling("");
-    contrib.setInfl("");
     contrib.setTrans("");
     contrib.setComments("");
     assertFalse(contrib.hasInput());
