@@ -25,7 +25,17 @@ li.eg {
 }
 
 li.lbl {
+	color: #808080;
+	font-size: 90%;
 	font-style: italic;
+}
+
+li.lbl:before {
+	content: "(";
+}
+
+li.lbl:after {
+	content: ")";
 }
 
 ol.senseGrp {
