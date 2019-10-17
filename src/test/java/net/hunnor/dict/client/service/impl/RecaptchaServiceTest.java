@@ -32,7 +32,7 @@ public class RecaptchaServiceTest {
   public void testValidationTrue() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
-        withSuccess("{\"success\":true}", MediaType.APPLICATION_JSON_UTF8));
+        withSuccess("{\"success\":true}", MediaType.APPLICATION_JSON));
     assertTrue(captchaService.isResponseValid("", ""));
   }
 
@@ -40,7 +40,7 @@ public class RecaptchaServiceTest {
   public void testValidationFalse() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
-        withSuccess("{\"success\":false}", MediaType.APPLICATION_JSON_UTF8));
+        withSuccess("{\"success\":false}", MediaType.APPLICATION_JSON));
     assertFalse(captchaService.isResponseValid("", ""));
   }
 
@@ -48,7 +48,7 @@ public class RecaptchaServiceTest {
   public void testValidationEmptyResponse() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
-        withSuccess("", MediaType.APPLICATION_JSON_UTF8));
+        withSuccess("", MediaType.APPLICATION_JSON));
     assertFalse(captchaService.isResponseValid("", ""));
   }
 

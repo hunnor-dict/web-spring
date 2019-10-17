@@ -61,7 +61,7 @@ public class ApiControllerTest {
     mockMvc.perform(get("/suggest")
         .param("term", "foo"))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$[0].value", equalTo("foo")))
         .andExpect(jsonPath("$[1].languages", hasItem(equalTo("HU"))))
         .andExpect(jsonPath("$[1].languages", hasItem(equalTo("NB"))));
@@ -74,7 +74,7 @@ public class ApiControllerTest {
     mockMvc.perform(get("/suggest")
         .param("term", "foo"))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8));
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
   }
 
   @Test
@@ -92,7 +92,7 @@ public class ApiControllerTest {
         .param("term", "baz"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(
-            MediaType.parseMediaType("application/x-suggestions+json;charset=UTF-8")))
+            MediaType.parseMediaType("application/x-suggestions+json")))
         .andExpect(jsonPath("$[0]", equalTo("baz")))
         .andExpect(jsonPath("$[1][0]", equalTo("foo")))
         .andExpect(jsonPath("$[1][1]", equalTo("bar")));
@@ -105,7 +105,7 @@ public class ApiControllerTest {
     mockMvc.perform(get("/opensearch/suggest"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(
-            MediaType.parseMediaType("application/x-suggestions+json;charset=UTF-8")));
+            MediaType.parseMediaType("application/x-suggestions+json")));
   }
 
   @Test
@@ -115,7 +115,7 @@ public class ApiControllerTest {
     mockMvc.perform(get("/opensearch/suggest"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(
-            MediaType.parseMediaType("application/x-suggestions+json;charset=UTF-8")));
+            MediaType.parseMediaType("application/x-suggestions+json")));
   }
 
 }
