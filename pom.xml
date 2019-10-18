@@ -23,7 +23,7 @@
 		<bootstrap.version>4.3.1</bootstrap.version>
 		<checkstyle.version>3.1.0</checkstyle.version>
 		<font.awesome.version>5.11.2</font.awesome.version>
-		<jacoco.version>0.8.4</jacoco.version>
+		<jacoco.version>0.8.5</jacoco.version>
 		<java.version>13</java.version>
 		<javassist.version>3.26.0-GA</javassist.version>
 		<jquery.version>3.4.1</jquery.version>
