@@ -8,27 +8,33 @@
 
 		<div class="container">
 
-			<nav th:replace="layout/navigation :: navigation"> </nav>
+			<header>
+				<nav th:replace="layout/navigation :: navigation"> </nav>
+			</header>
 
-			<div class="alert alert-danger" role="alert" th:if="${term != null and responses == null}" th:text="#{error.title}"> </div>
+			<main>
 
-			<h1 class="mb-3" id="search-title" th:text="#{search.title}"> </h1>
+				<div class="alert alert-danger" role="alert" th:if="${term != null and responses == null}" th:text="#{error.title}"> </div>
 
-			<form th:replace="views/search/form :: searchForm"> </form>
+				<h1 class="mb-3" id="search-title" th:text="#{search.title}"> </h1>
 
-			<div th:if="${responses != null}" th:with="totalResults = ${responses.get(hu).results.size() + responses.get(nb).results.size()}">
-				<div th:if="${totalResults == 0}" th:with="totalSuggestions = ${responses.get(hu).suggestions.size() + responses.get(nb).suggestions.size()}">
-					<div th:if="${totalSuggestions == 0}">
-						<div th:replace="views/search/no-results :: noResults"> </div>
+				<form th:replace="views/search/form :: searchForm"> </form>
+
+				<div th:if="${responses != null}" th:with="totalResults = ${responses.get(hu).results.size() + responses.get(nb).results.size()}">
+					<div th:if="${totalResults == 0}" th:with="totalSuggestions = ${responses.get(hu).suggestions.size() + responses.get(nb).suggestions.size()}">
+						<div th:if="${totalSuggestions == 0}">
+							<div th:replace="views/search/no-results :: noResults"> </div>
+						</div>
+						<div th:unless="${totalSuggestions == 0}">
+							<div th:replace="views/search/suggestions :: searchSuggestions"> </div>
+						</div>
 					</div>
-					<div th:unless="${totalSuggestions == 0}">
-						<div th:replace="views/search/suggestions :: searchSuggestions"> </div>
+					<div th:unless="${totalResults == 0}">
+						<div th:replace="views/search/results :: searchResults"> </div>
 					</div>
 				</div>
-				<div th:unless="${totalResults == 0}">
-					<div th:replace="views/search/results :: searchResults"> </div>
-				</div>
-			</div>
+
+			</main>
 
 			<footer th:replace="layout/footer :: footer"> </footer>
 

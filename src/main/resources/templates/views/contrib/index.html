@@ -7,21 +7,27 @@
 
 		<div class="container">
 
-			<nav th:replace="layout/navigation :: navigation"> </nav>
+			<header>
+				<nav th:replace="layout/navigation :: navigation"> </nav>
+			</header>
 
-			<div th:if="${hasInput}">
-				<div th:if="${captchaValid}">
-					<div class="alert alert-success" role="alert" th:if="${messageSent}" th:text="#{contrib.form.sent}"> </div>
-					<div class="alert alert-danger" role="alert" th:text="#{contrib.send.error}" th:unless="${messageSent}"> </div>
+			<main>
+
+				<div th:if="${hasInput}">
+					<div th:if="${captchaValid}">
+						<div class="alert alert-success" role="alert" th:if="${messageSent}" th:text="#{contrib.form.sent}"> </div>
+						<div class="alert alert-danger" role="alert" th:text="#{contrib.send.error}" th:unless="${messageSent}"> </div>
+					</div>
+					<div class="alert alert-warning" role="alert" th:text="#{contrib.captcha.invalid}" th:unless="${captchaValid}"> </div>
 				</div>
-				<div class="alert alert-warning" role="alert" th:text="#{contrib.captcha.invalid}" th:unless="${captchaValid}"> </div>
-			</div>
 
-			<h1 th:text="#{contrib.title}"> </h1>
+				<h1 th:text="#{contrib.title}"> </h1>
 
-			<p th:text="#{contrib.info}"> </p>
+				<p th:text="#{contrib.info}"> </p>
 
-			<form th:replace="views/contrib/form :: contribForm"> </form>
+				<form th:replace="views/contrib/form :: contribForm"> </form>
+
+			</main>
 
 			<footer th:replace="layout/footer :: footer"> </footer>
 

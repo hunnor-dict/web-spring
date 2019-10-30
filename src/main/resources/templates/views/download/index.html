@@ -7,20 +7,26 @@
 
 		<div class="container">
 
-			<nav th:replace="layout/navigation :: navigation"> </nav>
+			<header>
+				<nav th:replace="layout/navigation :: navigation"> </nav>
+			</header>
 
-			<h1 class="mb-5" th:text="#{download.title}"> </h1>
+			<main>
 
-			<section th:replace="views/download/android"> </section>
+				<h1 class="mb-5" th:text="#{download.title}"> </h1>
 
-			<section th:replace="views/download/ios"> </section>
-			<section th:replace="views/download/macos"> </section>
+				<section th:replace="views/download/android"> </section>
 
-			<section th:replace="views/download/windows"> </section>
-			<section th:replace="views/download/wp"> </section>
+				<section th:replace="views/download/ios"> </section>
+				<section th:replace="views/download/macos"> </section>
 
-			<section th:replace="views/download/ebook"> </section>
-			<section th:replace="views/download/pdf"> </section>
+				<section th:replace="views/download/windows"> </section>
+				<section th:replace="views/download/wp"> </section>
+
+				<section th:replace="views/download/ebook"> </section>
+				<section th:replace="views/download/pdf"> </section>
+
+			</main>
 
 			<footer th:replace="layout/footer :: footer"> </footer>
 

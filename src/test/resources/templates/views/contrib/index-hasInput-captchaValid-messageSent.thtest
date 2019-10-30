@@ -23,15 +23,19 @@ contrib.title = 'Title'
 	<head></head>
 	<body>
 		<div class="container">
-			<nav></nav>
-			<div>
+			<header>
+				<nav></nav>
+			</header>
+			<main>
 				<div>
-					<div class="alert alert-success" role="alert">OK</div>
+					<div>
+						<div class="alert alert-success" role="alert">OK</div>
+					</div>
 				</div>
-			</div>
-			<h1>Title</h1>
-			<p>Info</p>
-			<form></form>
+				<h1>Title</h1>
+				<p>Info</p>
+				<form></form>
+			</main>
 			<footer></footer>
 		</div>
 		<div></div>

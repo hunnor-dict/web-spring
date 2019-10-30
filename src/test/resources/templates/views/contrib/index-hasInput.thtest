@@ -21,13 +21,17 @@ contrib.title = 'Title'
 	<head></head>
 	<body>
 		<div class="container">
-			<nav></nav>
-			<div>
-				<div class="alert alert-warning" role="alert">Invalid CAPTCHA</div>
-			</div>
-			<h1>Title</h1>
-			<p>Info</p>
-			<form></form>
+			<header>
+				<nav></nav>
+			</header>
+			<main>
+				<div>
+					<div class="alert alert-warning" role="alert">Invalid CAPTCHA</div>
+				</div>
+				<h1>Title</h1>
+				<p>Info</p>
+				<form></form>
+			</main>
 			<footer></footer>
 		</div>
 		<div></div>
