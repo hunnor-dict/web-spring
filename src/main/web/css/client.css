@@ -27,3 +27,26 @@ button.btn-primary {
 	background-color: #004590;
 	border-color: #004590;
 }
+
+.flag-icon {
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: inline-block;
+	line-height: 1em;
+	margin: 0 0.5rem;
+	position: relative;
+	width: 1.33333333em;
+}
+
+.flag-icon:before {
+	content: "\00a0";
+}
+
+.flag-icon-hu {
+	background-image: url(hu.svg);
+}
+
+.flag-icon-no {
+	background-image: url(no.svg);
+}
