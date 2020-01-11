@@ -135,14 +135,11 @@ public class SolrSearchService implements SearchService {
     }
 
     // Log search
-    StringBuilder sb = new StringBuilder();
-    if (hasResults) {
-      sb.append("1");
-    } else {
-      sb.append("0");
-    }
-    sb.append("|").append(term);
     if (searches.isInfoEnabled()) {
+      StringBuilder sb = new StringBuilder()
+          .append(hasResults ? "1" : "0")
+          .append("|")
+          .append(term.replaceAll("[\\r\\n\\t]", ""));
       searches.info(sb.toString());
     }
 
