@@ -17,26 +17,39 @@
 				<div class="mb-5">
 					<p>
 						<strong th:text="#{download.apps}"> </strong>
+						<br/>
+						<span class="small text-secondary" th:text="#{download.google.play.copyright}"> </span>
 					</p>
-					<p>
-						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.android">
-							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
-							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
-						</a>
-					</p>
-					<p>
-						<em th:text="#{download.app.by.hunnor}"> </em>
-					</p>
-					<p>
-						<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.mobileapp">
-							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
-							<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
-						</a>
-					</p>
-					<p>
-						<em th:text="#{download.app.by.ovitas}"> </em>
-					</p>
-					<p class="small text-secondary" th:text="#{download.google.play.copyright}"> </p>
+					<div class="justify-content-start mb-3 row">
+						<div class="col-sm-auto">
+							<p>
+								<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.android">
+									<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+									<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+								</a>
+							</p>
+						</div>
+						<div class="col-sm-auto">
+							<img class="app-screenshot" src="/img/android.app.hunnor.png" alt="#{download.app.screenshot}" th:src="@{/img/android.app.hunnor.png}"/>
+						</div>
+					</div>
+					<div class="justify-content-start mb-5 row">
+						<div class="col-sm-auto">
+							<p>
+								<a href="https://play.google.com/store/apps/details?id=net.hunnor.dict.mobileapp">
+									<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/google.play.hu.png}"/>
+									<img alt="Android app on Google Play" class="app-store-icon" src="/img/google.play.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/google.play.nb.png}"/>
+								</a>
+								<br/>
+								<em th:text="#{download.app.by.ovitas}"> </em>
+								<br/>
+								<em th:text="#{download.app.by.bristol}"> </em>
+							</p>
+						</div>
+						<div class="col-sm-auto">
+							<img class="app-screenshot" src="/img/android.app.ovitas.png" th:alt="#{download.app.screenshot}" th:src="@{/img/android.app.ovitas.png}"/>
+						</div>
+					</div>
 				</div>
 				<div>
 					<p>

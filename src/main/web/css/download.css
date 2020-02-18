@@ -8,6 +8,10 @@ a.app-link, a.app-link:active, a.app-link:hover, a.app-link:visited {
 	font-weight: bold;
 }
 
+img.app-screenshot {
+	max-width: 200px;
+}
+
 img.app-store-icon {
 	max-width: 200px;
 }
