@@ -29,7 +29,7 @@
 		<jquery.version>3.4.1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
-		<popper.js.version>1.15.0</popper.js.version>
+		<popper.js.version>1.16.0</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.4.1</solr.version>
