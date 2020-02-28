@@ -8,7 +8,6 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

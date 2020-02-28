@@ -1,7 +1,6 @@
 package net.hunnor.dict.client.web;
 
 import java.util.Map;
-
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
@@ -9,7 +8,6 @@ import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

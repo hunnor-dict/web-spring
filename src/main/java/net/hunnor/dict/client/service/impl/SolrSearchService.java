@@ -12,14 +12,12 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
-
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
 import net.hunnor.dict.client.model.Result;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;

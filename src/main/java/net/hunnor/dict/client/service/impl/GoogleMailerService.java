@@ -4,11 +4,9 @@ import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;

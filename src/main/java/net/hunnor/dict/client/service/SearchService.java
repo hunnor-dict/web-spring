@@ -2,7 +2,6 @@ package net.hunnor.dict.client.service;
 
 import java.util.List;
 import java.util.Map;
-
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;

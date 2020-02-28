@@ -3,7 +3,6 @@ package net.hunnor.dict.client.service.impl;
 import java.text.Collator;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
-
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.springframework.beans.factory.annotation.Value;

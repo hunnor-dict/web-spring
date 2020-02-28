@@ -12,9 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-
 import javax.servlet.http.Cookie;
-
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
@@ -22,7 +20,6 @@ import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;

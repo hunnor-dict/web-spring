@@ -1,12 +1,9 @@
 package net.hunnor.dict.client.service.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Collection;
-
 import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

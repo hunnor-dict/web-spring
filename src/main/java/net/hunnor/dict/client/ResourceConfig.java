@@ -1,7 +1,6 @@
 package net.hunnor.dict.client;
 
 import java.util.concurrent.TimeUnit;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;

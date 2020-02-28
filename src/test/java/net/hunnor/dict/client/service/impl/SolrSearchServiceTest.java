@@ -8,20 +8,17 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doThrow;
 
 import ch.qos.logback.classic.Level;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
-
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;

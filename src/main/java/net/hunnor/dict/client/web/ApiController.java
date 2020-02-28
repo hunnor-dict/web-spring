@@ -2,11 +2,9 @@ package net.hunnor.dict.client.web;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
