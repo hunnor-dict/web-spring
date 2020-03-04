@@ -48,11 +48,16 @@ public class ApiController {
   public Object[] opensearchSuggest(@RequestParam(value = "term", required = false) String term) {
 
     Object[] result = new Object[2];
-    result[0] = term;
+
+    String sanitizedTerm = term;
+    if (sanitizedTerm != null) {
+      sanitizedTerm = sanitizedTerm.replaceAll("[^0-9a-zA-ZæøåÆØÅáéíóöőúüűÁÉÍÓÖŐÚÜŰ]", "");
+    }
+    result[0] = sanitizedTerm;
 
     List<Autocomplete> autocomplete = null;
     try {
-      autocomplete = searchService.suggest(term);
+      autocomplete = searchService.suggest(sanitizedTerm);
     } catch (ServiceException ex) {
       logger.error(ex.getMessage(), ex);
     }
