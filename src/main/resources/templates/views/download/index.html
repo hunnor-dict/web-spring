@@ -37,13 +37,15 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				var url = new URL(window.location.href);
-				var sectionId = url.searchParams.get("section");
-				if (sectionId) {
+				var sections = url.searchParams.getAll("section");
+				sections.forEach(function(sectionId) {
 					var sectionContent = $("#" + sectionId);
 					if (sectionContent.length > 0) {
 						sectionContent.collapse("show");
 					}
-					var sectionTitle = $("#section-" + sectionId);
+				});
+				if (sections.length == 1) {
+					var sectionTitle = $("#section-" + sections[0]);
 					if (sectionTitle.length > 0) {
 						$("html, body").animate({
 							scrollTop: sectionTitle.offset().top - 10
