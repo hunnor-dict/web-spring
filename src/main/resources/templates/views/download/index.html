@@ -35,15 +35,16 @@
 		<div th:replace="layout/footer :: scripts"> </div>
 
 		<script type="text/javascript">
+
 			$(document).ready(function() {
+
 				var url = new URL(window.location.href);
 				var sections = url.searchParams.getAll("section");
+
 				sections.forEach(function(sectionId) {
-					var sectionContent = $("#" + sectionId);
-					if (sectionContent.length > 0) {
-						sectionContent.collapse("show");
-					}
+					$("#" + sectionId).collapse("show");
 				});
+
 				if (sections.length == 1) {
 					var sectionTitle = $("#section-" + sections[0]);
 					if (sectionTitle.length > 0) {
@@ -52,7 +53,9 @@
 						}, 1000);
 					}
 				}
+
 			});
+
 		</script>
 
 	</body>
