@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/hunnor-dict/web-spring.svg?branch=master)](https://travis-ci.org/hunnor-dict/web-spring)
+![Build](https://github.com/hunnor-dict/web-spring/workflows/Build/badge.svg)
 [![Known Vulnerabilities](https://snyk.io/test/github/hunnor-dict/web-spring/badge.svg)](https://snyk.io/test/github/hunnor-dict/web-spring)
 
 The web application of the dictionary at https://dict.hunnor.net.
