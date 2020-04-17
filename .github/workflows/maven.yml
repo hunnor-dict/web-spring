@@ -8,4 +8,6 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '13'
-      - run: mvn clean verify
+      - env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn clean verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=net.hunnor.dict:web-spring -Dsonar.organization=hunnor-dict -Dsonar.login=$SONAR_TOKEN
