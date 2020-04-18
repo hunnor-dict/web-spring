@@ -1,4 +1,5 @@
 ![Build](https://github.com/hunnor-dict/web-spring/workflows/Build/badge.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=net.hunnor.dict%3Aweb-spring&metric=alert_status)](https://sonarcloud.io/dashboard?id=net.hunnor.dict%3Aweb-spring)
 [![Known Vulnerabilities](https://snyk.io/test/github/hunnor-dict/web-spring/badge.svg)](https://snyk.io/test/github/hunnor-dict/web-spring)
 
 The web application of the dictionary at https://dict.hunnor.net.
