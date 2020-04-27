@@ -9,13 +9,13 @@
 				<span th:text="#{search.suggestions}"> </span>
 			</p>
 			<p th:if="${responses.get(hu).suggestions.size() > 0}">
-				<img alt="#{hu}" src="/img/flag.hu.png" th:src="@{/img/flag.hu.png}"/>
+				<span class="flag-icon flag-icon-hu"> </span>
 				<span th:each="suggestion, position: ${responses.get(hu).suggestions}">
 					<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
 				</span>
 			</p>
 			<p th:if="${responses.get(nb).suggestions.size() > 0}">
-				<img alt="#{nb}" src="/img/flag.nb.png" th:src="@{/img/flag.nb.png}"/>
+				<span class="flag-icon flag-icon-no"> </span>
 				<span th:each="suggestion, position: ${responses.get(nb).suggestions}">
 					<a class="alert-link" th:href="@{/(term = ${suggestion})}" th:text="${suggestion}"></a><span th:unless="${position.last}">, </span>
 				</span>
