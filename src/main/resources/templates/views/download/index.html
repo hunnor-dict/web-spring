@@ -15,16 +15,16 @@
 
 				<h1 class="mb-5" th:text="#{download.title}"> </h1>
 
-				<section th:replace="views/download/android"> </section>
+				<section th:replace="views/download/android :: android"> </section>
 
-				<section th:replace="views/download/ios"> </section>
-				<section th:replace="views/download/macos"> </section>
+				<section th:replace="views/download/ios :: ios"> </section>
+				<section th:replace="views/download/macos :: macos"> </section>
 
-				<section th:replace="views/download/windows"> </section>
-				<section th:replace="views/download/wp"> </section>
+				<section th:replace="views/download/windows :: windows"> </section>
+				<section th:replace="views/download/wp :: wp"> </section>
 
-				<section th:replace="views/download/ebook"> </section>
-				<section th:replace="views/download/pdf"> </section>
+				<section th:replace="views/download/ebook :: ebook"> </section>
+				<section th:replace="views/download/pdf :: pdf"> </section>
 
 			</main>
 
