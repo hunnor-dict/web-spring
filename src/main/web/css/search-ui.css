@@ -2,6 +2,22 @@ ul.ui-autocomplete li.suggestion {
 	font-style: italic;
 }
 
+#search-delete {
+	display: none;
+}
+
+@supports (-moz-appearance:none) {
+	#search-delete {
+		display: initial;
+	}
+}
+
+@supports (-webkit-touch-callout:none) {
+	#search-delete {
+		display: initial;
+	}
+}
+
 #search-title {
 	font-size: 1.5rem;
 }
