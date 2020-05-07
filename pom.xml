@@ -26,7 +26,7 @@
 		<jacoco.version>0.8.5</jacoco.version>
 		<java.version>13</java.version>
 		<javassist.version>3.27.0-GA</javassist.version>
-		<jquery.version>3.4.1</jquery.version>
+		<jquery.version>3.5.1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
 		<popper.js.version>2.0.2</popper.js.version>
