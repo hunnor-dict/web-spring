@@ -16,7 +16,11 @@
 
 				<div class="alert alert-danger" role="alert" th:if="${term != null and responses == null}" th:text="#{error.title}"> </div>
 
-				<h1 class="mb-3" id="search-title" th:utext="#{search.title}"> </h1>
+				<h1 class="mb-3" id="search-title">
+					<span th:text="${#strings.capitalize('__#{nb}__')}">Norvég</span>
+					<a class="link-hidden" href="/?lang=hu" th:href="@{/?lang=__${lang == 'hu'? 'nb' : 'hu'}__}">&#x21c4;</a>
+					<span th:text="#{hu} + ' ' + #{dictionary}">magyar szótár</span>
+				</h1>
 
 				<form th:replace="views/search/form :: searchForm"> </form>
 
