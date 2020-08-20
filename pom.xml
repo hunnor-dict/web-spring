@@ -20,7 +20,7 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>4.5.0</bootstrap.version>
+		<bootstrap.version>4.5.2</bootstrap.version>
 		<checkstyle.version>3.1.1</checkstyle.version>
 		<font.awesome.version>5.14.0</font.awesome.version>
 		<jacoco.version>0.8.5</jacoco.version>
@@ -30,8 +30,8 @@
 		<minify.version>1.7.6</minify.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<solr.version>8.6.0</solr.version>
-		<spotbugs.version>4.0.0</spotbugs.version>
+		<solr.version>8.6.1</solr.version>
+		<spotbugs.version>4.0.4</spotbugs.version>
 		<thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version>
 	</properties>
 
