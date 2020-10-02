@@ -3,11 +3,10 @@
 
 	<body>
 
-		<div class="card-header switch-container" th:fragment="searchSettings">
-			<span th:text="#{search.view.label}"> </span>:
-			<a href="#" class="link-normal switch-view-inline" th:style="${view != 'tree'} ? 'font-weight: bold'" th:text="#{search.view.inline}"> </a>
+		<div class="card-footer switch-container" th:fragment="searchSettings">
+			<a href="#" class="link-normal switch-view-inline" th:style="${view == 'tree'} ? 'color: #c0c0c0'"><span class="fas fa-align-left"> </span></a>
 			<span th:text="#{search.view.separator}"> </span>
-			<a href="#" class="link-normal switch-view-tree" th:style="${view == 'tree'} ? 'font-weight: bold'" th:text="#{search.view.tree}"> </a>
+			<a href="#" class="link-normal switch-view-tree" th:style="${view != 'tree'} ? 'color: #c0c0c0'"><span class="fas fa-list"> </span></a>
 		</div>
 
 	</body>
