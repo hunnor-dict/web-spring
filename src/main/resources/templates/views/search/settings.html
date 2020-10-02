@@ -4,9 +4,9 @@
 	<body>
 
 		<div class="card-footer switch-container" th:fragment="searchSettings">
-			<a href="#" class="link-normal switch-view-inline" th:style="${view == 'tree'} ? 'color: #c0c0c0'"><span class="fas fa-align-left"> </span></a>
+			<a href="#" class="link-normal switch-view-inline" th:classappend="${view == 'tree'} ? 'inactive'"><span class="fas fa-align-left"> </span></a>
 			<span th:text="#{search.view.separator}"> </span>
-			<a href="#" class="link-normal switch-view-tree" th:style="${view != 'tree'} ? 'color: #c0c0c0'"><span class="fas fa-list"> </span></a>
+			<a href="#" class="link-normal switch-view-tree" th:classappend="${view != 'tree'} ? 'inactive'"><span class="fas fa-list"> </span></a>
 		</div>
 
 	</body>

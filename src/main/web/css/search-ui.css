@@ -1,3 +1,7 @@
+a.inactive span.fas {
+	color: #c0c0c0;
+}
+
 ul.ui-autocomplete li.suggestion {
 	font-style: italic;
 }

@@ -125,20 +125,20 @@ function Switcher() {
 	this.bindSwitches = function() {
 		var _this = this;
 		$(".switch-view-inline").click(function(event) {
-			$(this).css("color", "#212529");
+			$(this).removeClass("inactive");
 			var pSwitch = $(this).closest("div.switch-container"),
 				treeLink = pSwitch.find(".switch-view-tree"),
 				entry = $(this).closest(".entry");
-			treeLink.css("color", "#c0c0c0");
+			treeLink.addClass("inactive");
 			_this.switchEntryToInline(entry);
 			event.preventDefault();
 		});
 		$(".switch-view-tree").click(function(event) {
-			$(this).css("color", "#212529");
+			$(this).removeClass("inactive");
 			var pSwitch = $(this).closest("div.switch-container"),
 				inlineLink = pSwitch.find(".switch-view-inline"),
 				entry = $(this).closest(".entry");
-			inlineLink.css("color", "#c0c0c0");
+			inlineLink.addClass("inactive");
 			_this.switchEntryToTree(entry);
 			event.preventDefault();
 		});
