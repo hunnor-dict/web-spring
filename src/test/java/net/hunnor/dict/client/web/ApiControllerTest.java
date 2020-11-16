@@ -16,17 +16,14 @@ import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(ApiController.class)
 public class ApiControllerTest {
 

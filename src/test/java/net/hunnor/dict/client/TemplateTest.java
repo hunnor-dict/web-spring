@@ -1,10 +1,10 @@
 package net.hunnor.dict.client;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.thymeleaf.dialect.IDialect;
 import org.thymeleaf.spring5.dialect.SpringStandardDialect;
 import org.thymeleaf.testing.templateengine.context.web.SpringWebProcessingContextBuilder;

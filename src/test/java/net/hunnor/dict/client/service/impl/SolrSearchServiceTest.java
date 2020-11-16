@@ -1,10 +1,11 @@
 package net.hunnor.dict.client.service.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doThrow;
 
 import ch.qos.logback.classic.Level;
@@ -24,8 +25,7 @@ import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
 import org.apache.solr.common.SolrInputDocument;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,9 +34,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class SolrSearchServiceTest {
 
@@ -128,11 +126,13 @@ public class SolrSearchServiceTest {
     assertEquals(Long.valueOf(2), counts.get(Language.NB));
   }
 
-  @Test(expected = ServiceException.class)
+  @Test
   public void testCountsError() throws ServiceException, SolrServerException, IOException {
-    doThrow(IOException.class).when(solrClient).query(
-        ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
-    searchService.counts();
+    assertThrows(ServiceException.class, () -> {
+      doThrow(IOException.class).when(solrClient).query(
+          ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
+      searchService.counts();
+    });
   }
 
   // Search for roots, with match in roots
@@ -210,11 +210,13 @@ public class SolrSearchServiceTest {
     assertNotNull(results);
   }
 
-  @Test(expected = ServiceException.class)
+  @Test
   public void testSearchError() throws SolrServerException, IOException, ServiceException {
-    doThrow(IOException.class).when(solrClient).query(
-        ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
-    searchService.search("foo", "roots");
+    assertThrows(ServiceException.class, () -> {
+      doThrow(IOException.class).when(solrClient).query(
+          ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
+      searchService.search("foo", "roots");
+    });
   }
 
   @Test
@@ -280,11 +282,13 @@ public class SolrSearchServiceTest {
     assertTrue(suggestions.isEmpty());
   }
 
-  @Test(expected = ServiceException.class)
+  @Test
   public void testSuggestionsError() throws ServiceException, SolrServerException, IOException {
-    doThrow(IOException.class).when(solrClient).query(
-        ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
-    searchService.suggest("foo");
+    assertThrows(ServiceException.class, () -> {
+      doThrow(IOException.class).when(solrClient).query(
+          ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
+      searchService.suggest("foo");
+    });
   }
 
 }

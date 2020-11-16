@@ -20,16 +20,13 @@ import net.hunnor.dict.client.service.CaptchaService;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(ApplicationController.class)
 public class ApplicationControllerTest {
 

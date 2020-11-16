@@ -1,12 +1,16 @@
 package net.hunnor.dict.client.service;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class ServiceExceptionTest {
 
-  @Test(expected = ServiceException.class)
+  @Test
   public void testException() throws ServiceException {
-    throw new ServiceException();
+    assertThrows(ServiceException.class, () -> {
+      throw new ServiceException();
+    });
   }
 
 }
