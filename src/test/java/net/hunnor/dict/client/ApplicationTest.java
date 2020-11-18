@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
-public class ApplicationTest {
+class ApplicationTest {
 
   private static final String SERVER_PORT = "server.port";
 
   @Test
-  public void contextLoads() {
+  void contextLoads() {
 
     String port = System.getProperty(SERVER_PORT);
     System.setProperty(SERVER_PORT, "0");

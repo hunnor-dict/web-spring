@@ -18,7 +18,7 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @SpringBootTest
-public class GoogleMailerServiceTest {
+class GoogleMailerServiceTest {
 
   @Autowired
   private MailerService mailerService;
@@ -27,7 +27,7 @@ public class GoogleMailerServiceTest {
   private JavaMailSender javaMailSender;
 
   @Test
-  public void testSend() throws ServiceException {
+  void testSend() throws ServiceException {
     assertNotNull(javaMailSender);
     doNothing().when(javaMailSender).send(ArgumentMatchers.any(MimeMessage.class));
     Contrib contrib = new Contrib();
@@ -35,7 +35,7 @@ public class GoogleMailerServiceTest {
   }
 
   @Test
-  public void testSendError() throws ServiceException {
+  void testSendError() throws ServiceException {
     assertThrows(ServiceException.class, () -> {
       doThrow(MailSendException.class).when(javaMailSender)
           .send(ArgumentMatchers.any(MimeMessage.class));

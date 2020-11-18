@@ -17,7 +17,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
-public class RecaptchaServiceTest {
+class RecaptchaServiceTest {
 
   @Autowired
   private CaptchaService captchaService;
@@ -26,7 +26,7 @@ public class RecaptchaServiceTest {
   private RestTemplate restTemplate;
 
   @Test
-  public void testValidationTrue() throws ServiceException {
+  void testValidationTrue() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
         withSuccess("{\"success\":true}", MediaType.APPLICATION_JSON));
@@ -34,7 +34,7 @@ public class RecaptchaServiceTest {
   }
 
   @Test
-  public void testValidationFalse() throws ServiceException {
+  void testValidationFalse() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
         withSuccess("{\"success\":false}", MediaType.APPLICATION_JSON));
@@ -42,7 +42,7 @@ public class RecaptchaServiceTest {
   }
 
   @Test
-  public void testValidationEmptyResponse() throws ServiceException {
+  void testValidationEmptyResponse() throws ServiceException {
     MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
     mockServer.expect(anything()).andRespond(
         withSuccess("", MediaType.APPLICATION_JSON));
@@ -50,7 +50,7 @@ public class RecaptchaServiceTest {
   }
 
   @Test
-  public void testValidationError() throws ServiceException {
+  void testValidationError() throws ServiceException {
     assertThrows(ServiceException.class, () -> {
       MockRestServiceServer mockServer = MockRestServiceServer.createServer(restTemplate);
       mockServer.expect(anything()).andRespond(

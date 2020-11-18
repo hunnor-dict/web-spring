@@ -9,29 +9,29 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(RedirectController.class)
-public class RedirectControllerTest {
+class RedirectControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
 
   @Test
-  public void testMobile() throws Exception {
+  void testMobile() throws Exception {
     mockMvc.perform(get("/m")).andExpect(status().isFound());
   }
 
   @Test
-  public void testNorwegian() throws Exception {
+  void testNorwegian() throws Exception {
     mockMvc.perform(get("/no")).andExpect(status().isFound());
     mockMvc.perform(get("/no/about")).andExpect(status().isFound());
   }
 
   @Test
-  public void testSearch() throws Exception {
+  void testSearch() throws Exception {
     mockMvc.perform(get("/search")).andExpect(status().isFound());
   }
 
   @Test
-  public void testGramm() throws Exception {
+  void testGramm() throws Exception {
     mockMvc.perform(get("/gramm")).andExpect(status().isFound());
     mockMvc.perform(get("/gramm/pron")).andExpect(status().isFound());
   }

@@ -4,24 +4,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class ResultTest {
+class ResultTest {
 
   @Test
-  public void testConstructor() {
+  void testConstructor() {
     Result result = new Result("id", "html");
     assertEquals("id", result.getId());
     assertEquals("html", result.getHtml());
   }
 
   @Test
-  public void testId() {
+  void testId() {
     Result result = new Result();
     result.setId("id");
     assertEquals("id", result.getId());
   }
 
   @Test
-  public void testHtml() {
+  void testHtml() {
     Result result = new Result();
     result.setHtml("html");
     assertEquals("html", result.getHtml());

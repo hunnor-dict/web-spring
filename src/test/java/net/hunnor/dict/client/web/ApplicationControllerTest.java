@@ -28,7 +28,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(ApplicationController.class)
-public class ApplicationControllerTest {
+class ApplicationControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
@@ -43,7 +43,7 @@ public class ApplicationControllerTest {
   private SearchService searchService;
 
   @Test
-  public void testAbout() throws Exception {
+  void testAbout() throws Exception {
     Map<Language, Long> counts = new HashMap<>();
     counts.put(Language.HU, Long.valueOf(1));
     counts.put(Language.NB, Long.valueOf(1));
@@ -55,7 +55,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testAboutSearchError() throws Exception {
+  void testAboutSearchError() throws Exception {
     given(searchService.counts()).willThrow(ServiceException.class);
     mockMvc.perform(get("/about")).andExpect(status().isOk())
     .andExpect(model().attributeDoesNotExist("hu"))
@@ -64,21 +64,21 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testContrib() throws Exception {
+  void testContrib() throws Exception {
     mockMvc.perform(get("/contrib"))
         .andExpect(status().isOk())
         .andExpect(view().name("views/contrib/index"));
   }
 
   @Test
-  public void testContribPost() throws Exception {
+  void testContribPost() throws Exception {
     mockMvc.perform(post("/contrib"))
         .andExpect(status().isOk())
         .andExpect(view().name("views/contrib/index"));
   }
 
   @Test
-  public void testContribCaptchaError() throws Exception {
+  void testContribCaptchaError() throws Exception {
     Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(ArgumentMatchers.any(), ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
@@ -93,7 +93,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testContribCaptchaInvalid() throws Exception {
+  void testContribCaptchaInvalid() throws Exception {
     Contrib contrib = new Contrib("foo", "bar", "baz");
     mockMvc.perform(post("/contrib")
         .param("spelling", contrib.getSpelling())
@@ -106,7 +106,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testContribCaptchaValid() throws Exception {
+  void testContribCaptchaValid() throws Exception {
     Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
@@ -121,7 +121,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testContribMailerError() throws Exception {
+  void testContribMailerError() throws Exception {
     Contrib contrib = new Contrib("foo", "bar", "baz");
     given(captchaService.isResponseValid(
         ArgumentMatchers.any(), ArgumentMatchers.any())).willReturn(true);
@@ -137,28 +137,28 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testCookies() throws Exception {
+  void testCookies() throws Exception {
     mockMvc.perform(get("/cookies"))
         .andExpect(status().isOk())
         .andExpect(view().name("views/cookies/index"));
   }
 
   @Test
-  public void testDownload() throws Exception {
+  void testDownload() throws Exception {
     mockMvc.perform(get("/download"))
         .andExpect(status().isOk())
         .andExpect(view().name("views/download/index"));
   }
 
   @Test
-  public void testSearch() throws Exception {
+  void testSearch() throws Exception {
     mockMvc.perform(get("/"))
         .andExpect(status().isOk())
         .andExpect(view().name("views/search/index"));
   }
 
   @Test
-  public void testSearchEmptyTerm() throws Exception {
+  void testSearchEmptyTerm() throws Exception {
     mockMvc.perform(get("/")
         .param("term", ""))
         .andExpect(status().isOk())
@@ -166,7 +166,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testSearchNonEmptyTerm() throws Exception {
+  void testSearchNonEmptyTerm() throws Exception {
     Map<Language, Response> map = new HashMap<>();
     Response responseHu = new Response();
     responseHu.setResults(new HashSet<>());
@@ -185,7 +185,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testSearchError() throws Exception {
+  void testSearchError() throws Exception {
     given(searchService.search(ArgumentMatchers.any(), ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
     mockMvc.perform(get("/")
@@ -196,7 +196,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testSearchCookiesViewInline() throws Exception {
+  void testSearchCookiesViewInline() throws Exception {
     mockMvc.perform(get("/")
         .cookie(new Cookie("view", "inline")))
         .andExpect(status().isOk())
@@ -205,7 +205,7 @@ public class ApplicationControllerTest {
   }
 
   @Test
-  public void testSearchCookiesViewTree() throws Exception {
+  void testSearchCookiesViewTree() throws Exception {
     mockMvc.perform(get("/")
         .cookie(new Cookie("view", "tree")))
         .andExpect(status().isOk())

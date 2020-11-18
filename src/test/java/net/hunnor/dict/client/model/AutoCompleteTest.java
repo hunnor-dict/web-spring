@@ -6,24 +6,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
-public class AutoCompleteTest {
+class AutoCompleteTest {
 
   @Test
-  public void testValue() {
+  void testValue() {
     Autocomplete autocomplete = new Autocomplete();
     autocomplete.setValue("foo");
     assertEquals("foo", autocomplete.getValue());
   }
 
   @Test
-  public void testPrefix() {
+  void testPrefix() {
     Autocomplete autocomplete = new Autocomplete();
     autocomplete.setPrefix(true);
     assertTrue(autocomplete.isPrefix());
   }
 
   @Test
-  public void testLanguages() {
+  void testLanguages() {
     Autocomplete autocomplete = new Autocomplete();
     autocomplete.setLanguages(new HashSet<>());
     assertEquals(0, autocomplete.getLanguages().size());

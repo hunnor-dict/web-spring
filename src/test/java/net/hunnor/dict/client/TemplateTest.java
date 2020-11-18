@@ -10,10 +10,10 @@ import org.thymeleaf.spring5.dialect.SpringStandardDialect;
 import org.thymeleaf.testing.templateengine.context.web.SpringWebProcessingContextBuilder;
 import org.thymeleaf.testing.templateengine.engine.TestExecutor;
 
-public class TemplateTest {
+class TemplateTest {
 
   @Test
-  public void testViews() {
+  void testViews() {
 
     final TestExecutor executor = new TestExecutor();
 

@@ -25,7 +25,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(ApiController.class)
-public class ApiControllerTest {
+class ApiControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
@@ -34,7 +34,7 @@ public class ApiControllerTest {
   private SearchService searchService;
 
   @Test
-  public void testSuggest() throws Exception {
+  void testSuggest() throws Exception {
     Autocomplete foo = new Autocomplete();
     foo.setValue("foo");
     foo.setPrefix(true);
@@ -63,7 +63,7 @@ public class ApiControllerTest {
   }
 
   @Test
-  public void testSuggestError() throws Exception {
+  void testSuggestError() throws Exception {
     given(searchService.suggest(ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
     mockMvc.perform(get("/suggest")
@@ -73,7 +73,7 @@ public class ApiControllerTest {
   }
 
   @Test
-  public void testSuggestOpensearch() throws Exception {
+  void testSuggestOpensearch() throws Exception {
     Autocomplete foo = new Autocomplete();
     foo.setValue("foo");
     Autocomplete bar = new Autocomplete();
@@ -94,7 +94,7 @@ public class ApiControllerTest {
   }
 
   @Test
-  public void testSuggestOpensearchNullAutocomplete() throws Exception {
+  void testSuggestOpensearchNullAutocomplete() throws Exception {
     given(searchService.suggest(ArgumentMatchers.any()))
         .willReturn(null);
     mockMvc.perform(get("/opensearch/suggest"))
@@ -104,7 +104,7 @@ public class ApiControllerTest {
   }
 
   @Test
-  public void testSuggestOpensearchError() throws Exception {
+  void testSuggestOpensearchError() throws Exception {
     given(searchService.suggest(ArgumentMatchers.any()))
         .willThrow(ServiceException.class);
     mockMvc.perform(get("/opensearch/suggest"))

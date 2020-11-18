@@ -5,17 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
-public class ResponseTest {
+class ResponseTest {
 
   @Test
-  public void testResults() {
+  void testResults() {
     Response response = new Response();
     response.setResults(new HashSet<>());
     assertEquals(0, response.getResults().size());
   }
 
   @Test
-  public void testSuggestions() {
+  void testSuggestions() {
     Response response = new Response();
     response.setSuggestions(new HashSet<>());
     assertEquals(0, response.getSuggestions().size());

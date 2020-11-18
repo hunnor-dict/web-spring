@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class ServiceExceptionTest {
+class ServiceExceptionTest {
 
   @Test
-  public void testException() throws ServiceException {
+  void testException() throws ServiceException {
     assertThrows(ServiceException.class, () -> {
       throw new ServiceException();
     });

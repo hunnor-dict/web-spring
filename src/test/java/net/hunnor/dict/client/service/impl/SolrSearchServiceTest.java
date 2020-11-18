@@ -36,7 +36,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootTest
-public class SolrSearchServiceTest {
+class SolrSearchServiceTest {
 
   @Autowired
   private SearchService searchService;
@@ -119,7 +119,7 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testCounts() throws ServiceException {
+  void testCounts() throws ServiceException {
     Map<Language, Long> counts = searchService.counts();
     assertNotNull(counts);
     assertEquals(Long.valueOf(4), counts.get(Language.HU));
@@ -127,7 +127,7 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testCountsError() throws ServiceException, SolrServerException, IOException {
+  void testCountsError() throws ServiceException, SolrServerException, IOException {
     assertThrows(ServiceException.class, () -> {
       doThrow(IOException.class).when(solrClient).query(
           ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
@@ -137,81 +137,81 @@ public class SolrSearchServiceTest {
 
   // Search for roots, with match in roots
   @Test
-  public void testSearchRootsMatchRoots() throws ServiceException {
+  void testSearchRootsMatchRoots() throws ServiceException {
     Map<Language, Response> results = searchService.search("foo", "roots");
     assertNotNull(results);
   }
 
   // Search for roots, with match in forms
   @Test
-  public void testSearchRootsMatchForms() throws ServiceException {
+  void testSearchRootsMatchForms() throws ServiceException {
     Map<Language, Response> results = searchService.search("qux", "roots");
     assertNotNull(results);
   }
 
   // Search for roots, with no match
   @Test
-  public void testSearchRootsNoMatch() throws ServiceException {
+  void testSearchRootsNoMatch() throws ServiceException {
     Map<Language, Response> results = searchService.search("quux", "roots");
     assertNotNull(results);
   }
 
   // Search for forms, with match in roots
   @Test
-  public void testSearchFormsMatchRoots() throws ServiceException {
+  void testSearchFormsMatchRoots() throws ServiceException {
     Map<Language, Response> results = searchService.search("foo", "forms");
     assertNotNull(results);
   }
 
   // Search for forms, with match in forms
   @Test
-  public void testSearchFormsMatchForms() throws ServiceException {
+  void testSearchFormsMatchForms() throws ServiceException {
     Map<Language, Response> results = searchService.search("qux", "forms");
     assertNotNull(results);
   }
 
   // Search for forms, with no match
   @Test
-  public void testSearchFormsNoMatch() throws ServiceException {
+  void testSearchFormsNoMatch() throws ServiceException {
     Map<Language, Response> results = searchService.search("quux", "forms");
     assertNotNull(results);
   }
 
   // Full search with match in roots match
   @Test
-  public void testSearchFullMatchRoots() throws ServiceException {
+  void testSearchFullMatchRoots() throws ServiceException {
     Map<Language, Response> results = searchService.search("foo", "full");
     assertNotNull(results);
   }
 
   // Full search with match in roots match
   @Test
-  public void testSearchFullMatchForms() throws ServiceException {
+  void testSearchFullMatchForms() throws ServiceException {
     Map<Language, Response> results = searchService.search("qux", "full");
     assertNotNull(results);
   }
 
   // Full search with no match
   @Test
-  public void testSearchFullNoMatch() throws ServiceException {
+  void testSearchFullNoMatch() throws ServiceException {
     Map<Language, Response> results = searchService.search("fooo", "full");
     assertNotNull(results);
   }
 
   @Test
-  public void testHighlightingMismatch() throws ServiceException {
+  void testHighlightingMismatch() throws ServiceException {
     Map<Language, Response> results = searchService.search("corge", "roots");
     assertNotNull(results);
   }
 
   @Test
-  public void testSearchPhrase() throws ServiceException {
+  void testSearchPhrase() throws ServiceException {
     Map<Language, Response> results = searchService.search("foo bar baz", "roots");
     assertNotNull(results);
   }
 
   @Test
-  public void testSearchError() throws SolrServerException, IOException, ServiceException {
+  void testSearchError() throws SolrServerException, IOException, ServiceException {
     assertThrows(ServiceException.class, () -> {
       doThrow(IOException.class).when(solrClient).query(
           ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));
@@ -220,7 +220,7 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testSearchLogging() throws ServiceException {
+  void testSearchLogging() throws ServiceException {
 
     Logger logger = LoggerFactory.getLogger("net.hunnor.dict.client.log.searches");
     ch.qos.logback.classic.Logger logbackLogger = (ch.qos.logback.classic.Logger) logger;
@@ -237,21 +237,21 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testSuggestionsPrefix() throws ServiceException {
+  void testSuggestionsPrefix() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest("fo");
     assertNotNull(suggestions);
     assertEquals(1, suggestions.size());
   }
 
   @Test
-  public void testSuggestionsPrefixMergeLanguages() throws ServiceException {
+  void testSuggestionsPrefixMergeLanguages() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest("ba");
     assertNotNull(suggestions);
     assertEquals(2, suggestions.size());
   }
 
   @Test
-  public void testSuggestionsSuggestion() throws ServiceException {
+  void testSuggestionsSuggestion() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest("bazz");
     assertNotNull(suggestions);
     assertEquals(1, suggestions.size());
@@ -259,7 +259,7 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testSuggestionsSuggestionMergeLanguage() throws ServiceException {
+  void testSuggestionsSuggestionMergeLanguage() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest("barr");
     assertNotNull(suggestions);
     assertEquals(1, suggestions.size());
@@ -267,14 +267,14 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testSuggestionsNull() throws ServiceException {
+  void testSuggestionsNull() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest(null);
     assertNotNull(suggestions);
     assertTrue(suggestions.isEmpty());
   }
 
   @Test
-  public void testSuggestionsLongTerm() throws ServiceException {
+  void testSuggestionsLongTerm() throws ServiceException {
     List<Autocomplete> suggestions = searchService.suggest(
         "1234567890 1234567890 1234567890 1234567890 1234567890"
         + "1234567890 1234567890 1234567890 1234567890 1234567890");
@@ -283,7 +283,7 @@ public class SolrSearchServiceTest {
   }
 
   @Test
-  public void testSuggestionsError() throws ServiceException, SolrServerException, IOException {
+  void testSuggestionsError() throws ServiceException, SolrServerException, IOException {
     assertThrows(ServiceException.class, () -> {
       doThrow(IOException.class).when(solrClient).query(
           ArgumentMatchers.anyString(), ArgumentMatchers.any(SolrQuery.class));

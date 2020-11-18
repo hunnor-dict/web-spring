@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class ContribTest {
+class ContribTest {
 
   @Test
-  public void constructorWithAllFields() {
+  void constructorWithAllFields() {
     Contrib contrib = new Contrib("foo", "bar", "baz");
     assertEquals("foo", contrib.getSpelling());
     assertEquals("bar", contrib.getTrans());
@@ -17,34 +17,34 @@ public class ContribTest {
   }
 
   @Test
-  public void hasNoInputIfEmpty() {
+  void hasNoInputIfEmpty() {
     Contrib contrib = new Contrib();
     assertFalse(contrib.hasInput());
   }
 
   @Test
-  public void hasContentIfHasSpelling() {
+  void hasContentIfHasSpelling() {
     Contrib contrib = new Contrib();
     contrib.setSpelling("foo");
     assertTrue(contrib.hasInput());
   }
 
   @Test
-  public void hasContentIfHasTrans() {
+  void hasContentIfHasTrans() {
     Contrib contrib = new Contrib();
     contrib.setTrans("foo");
     assertTrue(contrib.hasInput());
   }
 
   @Test
-  public void hasContentIfHasComments() {
+  void hasContentIfHasComments() {
     Contrib contrib = new Contrib();
     contrib.setComments("foo");
     assertTrue(contrib.hasInput());
   }
 
   @Test
-  public void hasNoContentIfAllFieldsEmpty() {
+  void hasNoContentIfAllFieldsEmpty() {
     Contrib contrib = new Contrib();
     contrib.setSpelling("");
     contrib.setTrans("");
