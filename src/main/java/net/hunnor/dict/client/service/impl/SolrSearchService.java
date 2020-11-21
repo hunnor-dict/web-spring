@@ -96,7 +96,7 @@ public class SolrSearchService implements SearchService {
     baseQuery.set(CommonParams.ROWS, maxCount);
     baseQuery.set(CommonParams.SORT, "sort asc");
 
-    String escapedTerm = ClientUtils.escapeQueryChars(term);
+    String escapedTerm = ClientUtils.escapeQueryChars(term.trim());
     if (escapedTerm.contains(" ")) {
       escapedTerm = "\"" + escapedTerm + "\"~2";
     }
@@ -228,7 +228,7 @@ public class SolrSearchService implements SearchService {
 
   private Map<Language, QueryResponse> getSuggestions(String term) throws ServiceException {
     Map<Language, QueryResponse> responses = new EnumMap<>(Language.class);
-    String escapedTerm = ClientUtils.escapeQueryChars(term);
+    String escapedTerm = ClientUtils.escapeQueryChars(term.trim());
     for (Language language: Language.values()) {
       SolrQuery solrQuery = new SolrQuery();
       solrQuery.setRequestHandler("/suggest");
