@@ -11,23 +11,6 @@ footer a, footer a:active, footer a:hover, footer a:visited {
 	color: #6c757d;
 }
 
-#navbar-content .navbar-nav .nav-item .nav-link {
-	color: rgba(0, 0, 0, 0.6);
-}
-
-#navbar-content .navbar-nav .nav-item .nav-link:hover {
-	color: rgba(0, 0, 0, 0.9);
-}
-
-#navbar-content .navbar-nav .nav-item.active .nav-link {
-	color: rgba(0, 0, 0, 0.9);
-}
-
-button.btn-primary {
-	background-color: #004590;
-	border-color: #004590;
-}
-
 .flag-icon {
 	background-position: 50%;
 	background-repeat: no-repeat;
