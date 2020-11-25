@@ -24,7 +24,7 @@
 		<checkstyle.version>3.1.1</checkstyle.version>
 		<font.awesome.version>5.15.1</font.awesome.version>
 		<jacoco.version>0.8.5</jacoco.version>
-		<java.version>13</java.version>
+		<java.version>11</java.version>
 		<javassist.version>3.27.0-GA</javassist.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
