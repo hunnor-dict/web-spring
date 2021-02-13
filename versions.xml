@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset comparisonMethod="maven">
+	<rules>
+		<rule groupId="org.webjars" comparisonMethod="maven">
+			<ignoreVersions>
+				<ignoreVersion type="regex">.*-beta[\d]+</ignoreVersion>
+			</ignoreVersions>
+		</rule>
+	</rules>
+</ruleset>

@@ -20,12 +20,13 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>4.5.3</bootstrap.version>
+		<bootstrap.version>4.6.0</bootstrap.version>
 		<checkstyle.version>3.1.1</checkstyle.version>
-		<font.awesome.version>5.15.1</font.awesome.version>
+		<font.awesome.version>5.15.2</font.awesome.version>
 		<jacoco.version>0.8.6</jacoco.version>
 		<java.version>11</java.version>
 		<javassist.version>3.27.0-GA</javassist.version>
+		<jquery.version>3.5.1</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -110,6 +111,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
 			<version>${jquery.ui.version}</version>
 			<exclusions>
@@ -141,6 +147,13 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<configuration>
+					<rulesUri>file://${project.basedir}/versions.xml</rulesUri>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
