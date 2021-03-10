@@ -18,17 +18,36 @@
 					<p>
 						<strong th:text="#{download.app}"> </strong>
 					</p>
-					<p>
-						<a href="https://itunes.apple.com/us/app/hunnor/id1305770091">
-							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
-							<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
-						</a>
-					</p>
-					<p>
-						<em th:text="#{download.app.by.ovitas}"> </em>
-						<br/>
-						<em th:text="#{download.app.by.bristol}"> </em>
-					</p>
+					<div class="justify-content-start mb-3 row">
+						<div class="col-sm-auto">
+							<p>
+								<a href="https://apps.apple.com/app/hunnor/id1535333837" target="_blank">
+									<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
+									<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
+								</a>
+							</p>
+						</div>
+						<div class="col-sm-auto">
+							<img class="app-screenshot" src="/img/ios.app.hunnor.png" th:alt="#{download.app.screenshot}" th:src="@{/img/ios.app.hunnor.png}"/>
+						</div>
+					</div>
+					<div class="justify-content-start mb-3 row">
+						<div class="col-sm-auto">
+							<p>
+								<a href="https://itunes.apple.com/us/app/hunnor/id1305770091" target="_blank">
+									<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.hu.png" th:if="${lang == 'hu'}" th:src="@{/img/app.store.hu.png}"/>
+									<img alt="iOS app on the App Store" class="app-store-icon" src="/img/app.store.nb.png" th:if="${lang == 'nb'}" th:src="@{/img/app.store.nb.png}"/>
+								</a>
+								<br/>
+								<em th:text="#{download.app.by.ovitas}"> </em>
+								<br/>
+								<em th:text="#{download.app.by.bristol}"> </em>
+							</p>
+						</div>
+						<div class="col-sm-auto">
+							<img class="app-screenshot" src="/img/ios.app.ovitas.png" th:alt="#{download.app.screenshot}" th:src="@{/img/ios.app.ovitas.png}"/>
+						</div>
+					</div>
 				</div>
 				<div>
 					<p>
