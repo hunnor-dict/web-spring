@@ -5,9 +5,14 @@
 
 		<footer th:fragment="footer">
 			<hr/>
-			<p class="mb-1 text-center">
+			<p class="mb-2 text-center">
 				<a href="/?lang=hu" th:aria-label="#{page.flag.hu.alt}" th:href="@{/?lang=hu}"><span class="flag-icon flag-icon-hu"> </span></a>
 				<a href="/?lang=nb" th:aria-label="#{page.flag.nb.alt}" th:href="@{/?lang=nb}"><span class="flag-icon flag-icon-no"> </span></a>
+			</p>
+			<p class="mb-2 text-center">
+				<a href="https://www.facebook.com/HunNor.Dict">
+					<img alt="Facebook" src="/img/facebook.72.png" width="36" th:alt="#{facebook.page}" th:src="@{/img/facebook.72.png}"/>
+				</a>
 			</p>
 			<p class="small text-center">
 				<a href="/cookies" th:href="@{/cookies}" th:text="#{cookies.link}"> </a>
