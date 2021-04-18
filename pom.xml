@@ -30,7 +30,7 @@
 		<minify.version>1.7.6</minify.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<solr.version>8.8.1</solr.version>
+		<solr.version>8.8.2</solr.version>
 		<spotbugs.version>4.1.4</spotbugs.version>
 		<thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version>
 	</properties>
