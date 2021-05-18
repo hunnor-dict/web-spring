@@ -19,10 +19,10 @@
 			</div>
 
 			<div class="mb-3">
-				<button aria-controls="keyboard" aria-expanded="false" class="btn btn-secondary" data-target="#keyboard" data-toggle="collapse" type="button" th:attr="aria-label=#{search.keyboard.toggle}">
+				<button aria-controls="keyboard" aria-expanded="false" class="btn btn-secondary" data-bs-target="#keyboard" data-bs-toggle="collapse" type="button" th:attr="aria-label=#{search.keyboard.toggle}">
 					<span class="fas fa-keyboard"> </span>
 				</button>
-				<button aria-controls="settings" aria-expanded="false" class="btn btn-secondary" data-target="#settings" data-toggle="collapse" type="button" th:attr="aria-label=#{search.settings.toggle}">
+				<button aria-controls="settings" aria-expanded="false" class="btn btn-secondary" data-bs-target="#settings" data-bs-toggle="collapse" type="button" th:attr="aria-label=#{search.settings.toggle}">
 					<span class="fas fa-sliders-h"> </span>
 				</button>
 			</div>
@@ -37,14 +37,14 @@
 			</div>
 
 			<div class="collapse" id="settings">
-				<div class="form-group">
+				<div class="mb-3">
 					<select class="form-control" name="match">
 						<option value="roots" th:selected="${match == null or match == '' or match == 'roots'}" th:text="#{search.match.roots}"> </option>
 						<option value="forms" th:selected="${match == 'forms'}" th:text="#{search.match.forms}"> </option>
 						<option value="full" th:selected="${match == 'full'}" th:text="#{search.match.full}"> </option>
 					</select>
 				</div>
-				<div class="form-group">
+				<div class="mb-3">
 					<div class="card">
 						<div class="card-body">
 							<span th:text="#{search.settings.view.label}"> </span>: <a class="link-normal" href="#" id="view-inline" th:style="${view != 'tree'} ? 'font-weight: bold'" th:text="#{search.view.inline}"> </a> | <a class="link-normal" href="#" id="view-tree" th:style="${view == 'tree'} ? 'font-weight: bold'" th:text="#{search.view.tree}"> </a>

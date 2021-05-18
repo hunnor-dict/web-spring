@@ -2,13 +2,27 @@ a.link-normal, a.link-normal:active, a.link-normal:hover, a.link-normal:visited 
 	color: #212529;
 }
 
+a.link-normal, a.link-normal:active, a.link-normal:visited {
+	text-decoration: none;
+}
+
+a.link-normal:hover {
+	text-decoration: underline;
+}
+
 a.link-hidden, a.link-hidden:active, a.link-hidden:hover, a.link-hidden:visited {
 	color: #212529;
 	text-decoration: none;
 }
 
-footer a, footer a:active, footer a:hover, footer a:visited {
+footer a, footer a:active, footer a:visited {
 	color: #6c757d;
+	text-decoration: none;
+}
+
+footer a:hover {
+	color: #6c757d;
+	text-decoration: underline;
 }
 
 .flag-icon {

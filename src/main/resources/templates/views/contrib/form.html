@@ -5,29 +5,29 @@
 
 		<form method="post" th:action="@{/contrib}" th:fragment="contribForm" th:object="${contrib}">
 
-			<div class="form-group">
+			<div class="mb-3">
 				<label for="spelling" th:text="#{contrib.spelling.label} + ':'"> </label>
 				<p class="field-description ml-3" th:text="#{contrib.spelling.description}"> </p>
 				<input class="form-control" name="spelling" type="text" th:field="*{spelling}"/>
 			</div>
 
-			<div class="form-group">
+			<div class="mb-3">
 				<label for="trans" th:text="#{contrib.trans.label} + ':'"> </label>
 				<p class="field-description ml-3" th:text="#{contrib.trans.description}"> </p>
 				<textarea class="form-control" name="trans" rows="5" th:field="*{trans}"></textarea>
 			</div>
 
-			<div class="form-group">
+			<div class="mb-3">
 				<label for="comments" th:text="#{contrib.comments.label} + ':'"> </label>
 				<p class="field-description ml-3" th:text="#{contrib.comments.description}"> </p>
 				<textarea class="form-control" name="comments" rows="5" th:field="*{comments}"></textarea>
 			</div>
 
-			<div class="form-group">
+			<div class="mb-3">
 				<div class="g-recaptcha" data-sitekey="6LclhBITAAAAALvsS2ckvn-EElKG7Kcun-X2LJ8f"> </div>
 			</div>
 
-			<div class="form-group">
+			<div class="mb-3">
 				<button class="btn btn-primary" type="submit" th:text="#{contrib.submit}"> </button>
 			</div>
 
