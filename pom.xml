@@ -21,7 +21,7 @@
 
 	<properties>
 		<bootstrap.version>5.0.1</bootstrap.version>
-		<checkstyle.version>3.1.1</checkstyle.version>
+		<checkstyle.version>3.1.2</checkstyle.version>
 		<font.awesome.version>5.15.3</font.awesome.version>
 		<jacoco.version>0.8.6</jacoco.version>
 		<java.version>11</java.version>
@@ -33,7 +33,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.9.0</solr.version>
-		<spotbugs.version>4.1.4</spotbugs.version>
+		<spotbugs.version>4.2.0</spotbugs.version>
 		<thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version>
 	</properties>
 
