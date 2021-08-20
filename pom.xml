@@ -20,7 +20,7 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>5.0.1</bootstrap.version>
+		<bootstrap.version>5.1.0</bootstrap.version>
 		<checkstyle.version>3.1.2</checkstyle.version>
 		<font.awesome.version>5.15.3</font.awesome.version>
 		<jacoco.version>0.8.6</jacoco.version>
@@ -29,7 +29,7 @@
 		<jquery.version>3.6.0</jquery.version>
 		<jquery.ui.version>1.12.1</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
-		<popper.js.version>2.9.2</popper.js.version>
+		<popper.js.version>2.9.3</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.9.0</solr.version>
