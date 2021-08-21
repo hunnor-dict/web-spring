@@ -1,4 +1,4 @@
-name: Build
+name: Maven Build with Sonar
 on: push
 jobs:
   build:
@@ -11,4 +11,4 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn clean verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=net.hunnor.dict:web-spring -Dsonar.organization=hunnor-dict -Dsonar.login=$SONAR_TOKEN
+        run: mvn verify sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=net.hunnor.dict:web-spring -Dsonar.organization=hunnor-dict -Dsonar.login=$SONAR_TOKEN
