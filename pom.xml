@@ -27,7 +27,7 @@
 		<java.version>11</java.version>
 		<javassist.version>3.28.0-GA</javassist.version>
 		<jquery.version>3.6.0</jquery.version>
-		<jquery.ui.version>1.12.1</jquery.ui.version>
+		<jquery.ui.version>1.13.0</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
 		<popper.js.version>2.9.3</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
