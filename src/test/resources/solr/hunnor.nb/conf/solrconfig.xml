@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config>
-	<luceneMatchVersion>8.10.1</luceneMatchVersion>
+	<luceneMatchVersion>8.11.1</luceneMatchVersion>
 	<requestHandler name="/select" class="solr.SearchHandler" default="true">
 		<lst name="defaults">
 			<str name="echoParams">explicit</str>
