@@ -1,9 +1,9 @@
 package net.hunnor.dict.client.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashSet;
 import org.junit.jupiter.api.Test;
 
 class AutoCompleteTest {
@@ -23,10 +23,16 @@ class AutoCompleteTest {
   }
 
   @Test
+  void testLanguagesEmpty() {
+    Autocomplete autocomplete = new Autocomplete();
+    assertNull(autocomplete.getLanguages());
+  }
+
+  @Test
   void testLanguages() {
     Autocomplete autocomplete = new Autocomplete();
-    autocomplete.setLanguages(new HashSet<>());
-    assertEquals(0, autocomplete.getLanguages().size());
+    autocomplete.addLanguage(Language.HU);
+    assertEquals(1, autocomplete.getLanguages().size());
   }
 
 }

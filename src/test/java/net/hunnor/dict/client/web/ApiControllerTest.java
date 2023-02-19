@@ -9,9 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.service.SearchService;
@@ -38,16 +36,12 @@ class ApiControllerTest {
     Autocomplete foo = new Autocomplete();
     foo.setValue("foo");
     foo.setPrefix(true);
-    Set<Language> fooLanguages = new HashSet<>();
-    fooLanguages.add(Language.HU);
-    foo.setLanguages(fooLanguages);
+    foo.addLanguage(Language.HU);
     Autocomplete bar = new Autocomplete();
     bar.setValue("bar");
     bar.setPrefix(true);
-    Set<Language> barLanguages = new HashSet<>();
-    barLanguages.add(Language.HU);
-    barLanguages.add(Language.NB);
-    bar.setLanguages(barLanguages);
+    bar.addLanguage(Language.HU);
+    bar.addLanguage(Language.NB);
     List<Autocomplete> list = new ArrayList<>();
     list.add(foo);
     list.add(bar);

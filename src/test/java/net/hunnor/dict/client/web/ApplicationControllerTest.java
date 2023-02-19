@@ -10,7 +10,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import javax.servlet.http.Cookie;
 import net.hunnor.dict.client.model.Contrib;
@@ -168,13 +167,9 @@ class ApplicationControllerTest {
   @Test
   void testSearchNonEmptyTerm() throws Exception {
     Map<Language, Response> map = new HashMap<>();
-    Response responseHu = new Response();
-    responseHu.setResults(new HashSet<>());
-    responseHu.setSuggestions(new HashSet<>());
+    Response responseHu = new Response(null);
     map.put(Language.HU, responseHu);
-    Response responseNb = new Response();
-    responseNb.setResults(new HashSet<>());
-    responseNb.setSuggestions(new HashSet<>());
+    Response responseNb = new Response(null);
     map.put(Language.NB, responseNb);
     given(searchService.search(ArgumentMatchers.any(), ArgumentMatchers.any()))
         .willReturn(map);

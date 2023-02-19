@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
@@ -103,11 +100,7 @@ public class SolrSearchService implements SearchService {
 
     Map<Language, Response> responses = new TreeMap<>();
     for (Language language: Language.values()) {
-      Response response = new Response();
-      Set<String> suggestions = new TreeSet<>(collator);
-      response.setSuggestions(suggestions);
-      Set<Result> results = new LinkedHashSet<>();
-      response.setResults(results);
+      Response response = new Response(collator);
       responses.put(language, response);
     }
 
@@ -178,19 +171,18 @@ public class SolrSearchService implements SearchService {
       for (Suggestion suggestion: suggestionList) {
         List<String> alternatives = suggestion.getAlternatives();
         for (String alternative: alternatives) {
-          response.getSuggestions().add(alternative);
+          response.addSuggestion(alternative);
         }
       }
     }
   }
 
   private void getResults(QueryResponse queryResponse, Response response) {
-    Set<Result> resultSet = response.getResults();
     SolrDocumentList solrDocumentList = queryResponse.getResults();
     Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
     for (SolrDocument solrDocument: solrDocumentList) {
       Result result = getResultFromDocument(solrDocument, highlighting);
-      resultSet.add(result);
+      response.addResult(result);
     }
   }
 
@@ -258,13 +250,10 @@ public class SolrSearchService implements SearchService {
         suggestion = new Autocomplete();
         suggestion.setValue(text);
         suggestion.setPrefix(true);
-        Set<Language> languages = new TreeSet<>();
-        languages.add(language);
-        suggestion.setLanguages(languages);
+        suggestion.addLanguage(language);
         suggestions.put(text, suggestion);
       } else {
-        Set<Language> languages = suggestion.getLanguages();
-        languages.add(language);
+        suggestion.addLanguage(language);
       }
     }
   }
@@ -281,13 +270,10 @@ public class SolrSearchService implements SearchService {
           suggestion = new Autocomplete();
           suggestion.setValue(suggestedTerm);
           suggestion.setPrefix(false);
-          Set<Language> languages = new TreeSet<>();
-          languages.add(language);
-          suggestion.setLanguages(languages);
+          suggestion.addLanguage(language);
           suggestions.put(suggestedTerm, suggestion);
         } else {
-          Set<Language> languages = suggestion.getLanguages();
-          languages.add(language);
+          suggestion.addLanguage(language);
         }
       }
     }

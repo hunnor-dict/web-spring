@@ -1,5 +1,6 @@
 package net.hunnor.dict.client.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Autocomplete {
@@ -27,11 +28,18 @@ public class Autocomplete {
   }
 
   public Set<Language> getLanguages() {
-    return languages;
+    return languages == null ? null : new HashSet<>(languages);
   }
 
-  public void setLanguages(Set<Language> languages) {
-    this.languages = languages;
+  /**
+   * Add a language to the language set.
+   * @param language the language to add
+   */
+  public void addLanguage(Language language) {
+    if (languages == null) {
+      languages = new HashSet<>();
+    }
+    languages.add(language);
   }
 
 }

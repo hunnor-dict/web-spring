@@ -23,8 +23,8 @@
 		<bootstrap.version>5.2.0</bootstrap.version>
 		<checkstyle.version>3.1.2</checkstyle.version>
 		<font.awesome.version>6.1.2</font.awesome.version>
-		<jacoco.version>0.8.6</jacoco.version>
-		<java.version>11</java.version>
+		<jacoco.version>0.8.8</jacoco.version>
+		<java.version>17</java.version>
 		<javassist.version>3.28.0-GA</javassist.version>
 		<jquery.version>3.6.1</jquery.version>
 		<jquery.ui.version>1.13.2</jquery.ui.version>
@@ -33,7 +33,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<solr.version>8.11.1</solr.version>
-		<spotbugs.version>4.2.0</spotbugs.version>
+		<spotbugs.version>4.7.3.0</spotbugs.version>
 		<thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version>
 	</properties>
 
