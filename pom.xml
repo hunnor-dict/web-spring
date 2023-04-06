@@ -20,13 +20,13 @@
 	</parent>
 
 	<properties>
-		<bootstrap.version>5.2.0</bootstrap.version>
+		<bootstrap.version>5.2.3</bootstrap.version>
 		<checkstyle.version>3.1.2</checkstyle.version>
-		<font.awesome.version>6.1.2</font.awesome.version>
+		<font.awesome.version>6.4.0</font.awesome.version>
 		<jacoco.version>0.8.8</jacoco.version>
 		<java.version>17</java.version>
 		<!--javassist.version>3.28.0-GA</javassist.version-->
-		<jquery.version>3.6.1</jquery.version>
+		<jquery.version>3.6.4</jquery.version>
 		<jquery.ui.version>1.13.2</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
 		<popper.js.version>2.9.3</popper.js.version>
