@@ -9,9 +9,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import jakarta.servlet.http.Cookie;
 import java.util.HashMap;
 import java.util.Map;
-import javax.servlet.http.Cookie;
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;

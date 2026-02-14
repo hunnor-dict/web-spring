@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},description=#{search.description},activeTab='search'">
 
-	<head th:replace="layout/header :: header">
+	<head th:replace="~{layout/header :: header}">
 	</head>
 
 	<body>
@@ -9,7 +9,7 @@
 		<div class="container">
 
 			<header>
-				<nav th:replace="layout/navigation :: navigation"> </nav>
+				<nav th:replace="~{layout/navigation :: navigation}"> </nav>
 			</header>
 
 			<main>
@@ -22,30 +22,29 @@
 					<span th:text="#{hu} + ' ' + #{dictionary}">magyar szótár</span>
 				</h1>
 
-				<form th:replace="views/search/form :: searchForm"> </form>
+				<form th:replace="~{views/search/form :: searchForm}"> </form>
 
 				<div th:if="${responses != null}" th:with="totalResults = ${responses.get(hu).results.size() + responses.get(nb).results.size()}">
 					<div th:if="${totalResults == 0}" th:with="totalSuggestions = ${responses.get(hu).suggestions.size() + responses.get(nb).suggestions.size()}">
 						<div th:if="${totalSuggestions == 0}">
-							<div th:replace="views/search/no-results :: noResults"> </div>
+							<div th:replace="~{views/search/no-results :: noResults}"> </div>
 						</div>
 						<div th:unless="${totalSuggestions == 0}">
-							<div th:replace="views/search/suggestions :: searchSuggestions"> </div>
+							<div th:replace="~{views/search/suggestions :: searchSuggestions}"> </div>
 						</div>
 					</div>
 					<div th:unless="${totalResults == 0}">
-						<div th:replace="views/search/results :: searchResults"> </div>
+						<div th:replace="~{views/search/results :: searchResults}"> </div>
 					</div>
 				</div>
 
 			</main>
 
-			<footer th:replace="layout/footer :: footer"> </footer>
+			<footer th:replace="~{layout/footer :: footer}"> </footer>
 
 		</div>
 
-		<div th:replace="layout/footer :: scripts"> </div>
-
+		<div th:replace="~{layout/footer :: scripts}"> </div>
 	</body>
 
 </html>

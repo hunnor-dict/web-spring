@@ -1,9 +1,9 @@
 package net.hunnor.dict.client.service.impl;
 
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.Message.RecipientType;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;

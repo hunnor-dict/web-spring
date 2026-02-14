@@ -15,7 +15,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
+		<version>3.0.13</version>
 		<relativePath/>
 	</parent>
 
@@ -32,7 +32,7 @@
 		<popper.js.version>2.9.3</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<solr.version>8.11.1</solr.version>
+		<solr.version>9.10.1</solr.version>
 		<spotbugs.version>4.7.3.0</spotbugs.version>
 		<!--thymeleaf.test.version>3.0.4.RELEASE</thymeleaf.test.version-->
 	</properties>
@@ -88,17 +88,18 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>
+			<version>${solr.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.solr</groupId>
-			<artifactId>solr-core</artifactId>
-			<scope>test</scope>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>

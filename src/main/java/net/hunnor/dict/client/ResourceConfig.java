@@ -18,7 +18,7 @@ public class ResourceConfig implements WebMvcConfigurer {
   @Override
   public final void addResourceHandlers(ResourceHandlerRegistry registry) {
 
-    registry.addResourceHandler("//**")
+    registry.addResourceHandler("/**")
         .addResourceLocations("classpath:/public/")
         .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
         .resourceChain(true)

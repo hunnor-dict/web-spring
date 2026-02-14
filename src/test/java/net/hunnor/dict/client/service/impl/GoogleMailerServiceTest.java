@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMessage;
 import net.hunnor.dict.client.model.Contrib;
 import net.hunnor.dict.client.service.MailerService;
 import net.hunnor.dict.client.service.ServiceException;

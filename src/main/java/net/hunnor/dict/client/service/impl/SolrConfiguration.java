@@ -4,7 +4,7 @@ import java.text.Collator;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
 import org.apache.solr.client.solrj.SolrClient;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.impl.HttpJdkSolrClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class SolrConfiguration {
 
   @Bean
   public SolrClient solrClient() {
-    return new HttpSolrClient.Builder(baseUrl).build();
+    return new HttpJdkSolrClient.Builder(baseUrl).build();
   }
 
   @Bean
