@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},subtitle=#{contrib.title},description=#{contrib.description},activeTab='contrib'">
 
-	<head th:replace="layout/header :: header"> </head>
+	<head th:replace="~{layout/header :: header}"> </head>
 
 	<body>
 
 		<div class="container">
 
 			<header>
-				<nav th:replace="layout/navigation :: navigation"> </nav>
+				<nav th:replace="~{layout/navigation :: navigation}"> </nav>
 			</header>
 
 			<main>
@@ -25,15 +25,15 @@
 
 				<p th:text="#{contrib.info}"> </p>
 
-				<form th:replace="views/contrib/form :: contribForm"> </form>
+				<form th:replace="~{views/contrib/form :: contribForm}"> </form>
 
 			</main>
 
-			<footer th:replace="layout/footer :: footer"> </footer>
+			<footer th:replace="~{layout/footer :: footer}"> </footer>
 
 		</div>
 
-		<div th:replace="layout/footer :: scripts"> </div>
+		<div th:replace="~{layout/footer :: scripts}"> </div>
 
 	</body>
 

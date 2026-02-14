@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="hu" xmlns:th="http://www.thymeleaf.org" th:lang="${lang}" th:with="lang=${#locale.language},subtitle=#{download.title},description=#{download.description},activeTab='download'">
 
-	<head th:replace="layout/header :: header"> </head>
+	<head th:replace="~{layout/header :: header}"> </head>
 
 	<body>
 
 		<div class="container">
 
 			<header>
-				<nav th:replace="layout/navigation :: navigation"> </nav>
+				<nav th:replace="~{layout/navigation :: navigation}"> </nav>
 			</header>
 
 			<main>
 
 				<h1 class="mb-5" th:text="#{download.title}"> </h1>
 
-				<section th:replace="views/download/android :: android"> </section>
+				<section th:replace="~{views/download/android :: android}"> </section>
 
-				<section th:replace="views/download/ios :: ios"> </section>
-				<section th:replace="views/download/macos :: macos"> </section>
+				<section th:replace="~{views/download/ios :: ios}"> </section>
+				<section th:replace="~{views/download/macos :: macos}"> </section>
 
-				<section th:replace="views/download/windows :: windows"> </section>
+				<section th:replace="~{views/download/windows :: windows}"> </section>
 
-				<section th:replace="views/download/ebook :: ebook"> </section>
-				<section th:replace="views/download/pdf :: pdf"> </section>
+				<section th:replace="~{views/download/ebook :: ebook}"> </section>
+				<section th:replace="~{views/download/pdf :: pdf}"> </section>
 
 			</main>
 
-			<footer th:replace="layout/footer :: footer"> </footer>
+			<footer th:replace="~{layout/footer :: footer}"> </footer>
 
 		</div>
 
-		<div th:replace="layout/footer :: scripts"> </div>
+		<div th:replace="~{layout/footer :: scripts}"> </div>
 
 		<script type="text/javascript">
 
