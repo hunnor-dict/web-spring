@@ -89,6 +89,7 @@ public class SolrSearchService implements SearchService {
     baseQuery.set(CommonParams.FIELD, "id,html");
     baseQuery.set(HighlightParams.HIGHLIGHT, true);
     baseQuery.set(HighlightParams.FIELDS, "html");
+    baseQuery.set(HighlightParams.FRAGSIZE, Integer.MAX_VALUE);
     baseQuery.set(CommonParams.OMIT_HEADER, true);
     baseQuery.set(CommonParams.ROWS, maxCount);
     baseQuery.set(CommonParams.SORT, "sort asc");
