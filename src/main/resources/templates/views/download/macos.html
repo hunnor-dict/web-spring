@@ -33,13 +33,13 @@
 								</td>
 								<td>
 									<p>
-										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.apple.hn')}" th:text="#{download.apple} + ' ' + #{download.hungarian.norwegian}"> </a>
+										<a class="link-normal" href="" th:href="${downloadAppleHn}" th:text="#{download.apple} + ' ' + #{download.hungarian.norwegian}"> </a>
 										<br/>
-										<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.apple.nh')}" th:text="#{download.apple} + ' ' + #{download.norwegian.hungarian}"> </a>
+										<a class="link-normal" href="" th:href="${downloadAppleNh}" th:text="#{download.apple} + ' ' + #{download.norwegian.hungarian}"> </a>
 									</p>
 								</td>
 								<td>
-									<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.apple')}" th:text="#{download.installation.instructions}"> </a>
+									<a class="install-instructions" href="" th:href="${downloadManualApple}" th:text="#{download.installation.instructions}"> </a>
 								</td>
 							</tr>
 						</tbody>

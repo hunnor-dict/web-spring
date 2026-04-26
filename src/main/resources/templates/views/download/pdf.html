@@ -15,9 +15,9 @@
 			</div>
 			<div class="card-body collapse" id="pdf">
 				<p>
-					&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.hn')}" th:text="#{download.pdf} + ' ' + #{download.hungarian.norwegian}"> </a>
+					&raquo; <a class="link-normal" href="" th:href="${downloadPdfHn}" th:text="#{download.pdf} + ' ' + #{download.hungarian.norwegian}"> </a>
 					<br/>
-					&raquo; <a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.pdf.nh')}" th:text="#{download.pdf} + ' ' + #{download.norwegian.hungarian}"> </a>
+					&raquo; <a class="link-normal" href="" th:href="${downloadPdfNh}" th:text="#{download.pdf} + ' ' + #{download.norwegian.hungarian}"> </a>
 				</p>
 			</div>
 		</section>

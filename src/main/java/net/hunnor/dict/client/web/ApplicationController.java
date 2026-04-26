@@ -11,6 +11,7 @@ import net.hunnor.dict.client.service.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -43,6 +44,57 @@ public class ApplicationController {
   @Autowired
   private SearchService searchService;
 
+  @Value("${net.hunnor.dict.client.download.lucene:}")
+  private String downloadLucene;
+
+  @Value("${net.hunnor.dict.client.download.sqlite:}")
+  private String downloadSqlite;
+
+  @Value("${net.hunnor.dict.client.download.sqlite.v2:}")
+  private String downloadSqliteV2;
+
+  @Value("${net.hunnor.dict.client.download.stardict.hn:}")
+  private String downloadStardictHn;
+
+  @Value("${net.hunnor.dict.client.download.stardict.nh:}")
+  private String downloadStardictNh;
+
+  @Value("${net.hunnor.dict.client.download.manual.android:}")
+  private String downloadManualAndroid;
+
+  @Value("${net.hunnor.dict.client.download.manual.ios:}")
+  private String downloadManualIos;
+
+  @Value("${net.hunnor.dict.client.download.apple.hn:}")
+  private String downloadAppleHn;
+
+  @Value("${net.hunnor.dict.client.download.apple.nh:}")
+  private String downloadAppleNh;
+
+  @Value("${net.hunnor.dict.client.download.manual.apple:}")
+  private String downloadManualApple;
+
+  @Value("${net.hunnor.dict.client.download.pdf.hn:}")
+  private String downloadPdfHn;
+
+  @Value("${net.hunnor.dict.client.download.pdf.nh:}")
+  private String downloadPdfNh;
+
+  @Value("${net.hunnor.dict.client.download.kindle.nh:}")
+  private String downloadKindleNh;
+
+  @Value("${net.hunnor.dict.client.download.manual.kindle:}")
+  private String downloadManualKindle;
+
+  @Value("${net.hunnor.dict.client.download.pocketbook.hn:}")
+  private String downloadPocketbookHn;
+
+  @Value("${net.hunnor.dict.client.download.pocketbook.nh:}")
+  private String downloadPocketbookNh;
+
+  @Value("${net.hunnor.dict.client.download.manual.pocketbook:}")
+  private String downloadManualPocketbook;
+
   /**
    * Controller method for the About page.
    * @param model the model to pass to the view
@@ -50,6 +102,9 @@ public class ApplicationController {
    */
   @GetMapping(value = "/about")
   public String about(Model model) {
+    model.addAttribute("downloadLucene", downloadLucene);
+    model.addAttribute("downloadSqlite", downloadSqlite);
+    model.addAttribute("downloadSqliteV2", downloadSqliteV2);
     try {
       Map<Language, Long> counts = searchService.counts();
       model.addAttribute("hu", counts.get(Language.HU));
@@ -109,8 +164,27 @@ public class ApplicationController {
     return COOKIES_VIEW;
   }
 
+  /**
+   * Controller method for the download page.
+   * @param model the model to pass to the view
+   * @return the name of the download view
+   */
   @GetMapping(value = "/download")
-  public String download() {
+  public String download(Model model) {
+    model.addAttribute("downloadStardictHn", downloadStardictHn);
+    model.addAttribute("downloadStardictNh", downloadStardictNh);
+    model.addAttribute("downloadManualAndroid", downloadManualAndroid);
+    model.addAttribute("downloadManualIos", downloadManualIos);
+    model.addAttribute("downloadAppleHn", downloadAppleHn);
+    model.addAttribute("downloadAppleNh", downloadAppleNh);
+    model.addAttribute("downloadManualApple", downloadManualApple);
+    model.addAttribute("downloadPdfHn", downloadPdfHn);
+    model.addAttribute("downloadPdfNh", downloadPdfNh);
+    model.addAttribute("downloadKindleNh", downloadKindleNh);
+    model.addAttribute("downloadManualKindle", downloadManualKindle);
+    model.addAttribute("downloadPocketbookHn", downloadPocketbookHn);
+    model.addAttribute("downloadPocketbookNh", downloadPocketbookNh);
+    model.addAttribute("downloadManualPocketbook", downloadManualPocketbook);
     return DOWNLOAD_VIEW;
   }
 

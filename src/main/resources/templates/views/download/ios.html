@@ -72,13 +72,13 @@
 									</td>
 									<td>
 										<p>
-											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.hn')}" th:text="#{download.stardict} + ' ' + #{download.hungarian.norwegian}"> </a>
+											<a class="link-normal" href="" th:href="${downloadStardictHn}" th:text="#{download.stardict} + ' ' + #{download.hungarian.norwegian}"> </a>
 											<br/>
-											<a class="link-normal" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.stardict.nh')}" th:text="#{download.stardict} + ' ' + #{download.norwegian.hungarian}"> </a>
+											<a class="link-normal" href="" th:href="${downloadStardictNh}" th:text="#{download.stardict} + ' ' + #{download.norwegian.hungarian}"> </a>
 										</p>
 									</td>
 									<td>
-										<a class="install-instructions" href="" th:href="${@environment.getProperty('net.hunnor.dict.client.download.manual.ios')}" th:text="#{download.installation.instructions}"> </a>
+										<a class="install-instructions" href="" th:href="${downloadManualIos}" th:text="#{download.installation.instructions}"> </a>
 									</td>
 								</tr>
 							</tbody>
