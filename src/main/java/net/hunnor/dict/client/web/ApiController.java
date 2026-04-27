@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * Controller for API endpoints.
+ */
 @Controller
 public class ApiController {
 
@@ -23,7 +26,8 @@ public class ApiController {
 
   /**
    * Controller method for search suggestions (jQuery).
-   * @param term term the term to return suggestions for
+   *
+   * @param term the term to return suggestions for
    * @return search suggestions in JSON
    */
   @GetMapping(value = "/suggest", produces = {"application/json"})
@@ -40,6 +44,7 @@ public class ApiController {
 
   /**
    * Controller method for search suggestion (OpenSearch).
+   *
    * @param term the term to return suggestions for
    * @return search suggestions in JSON
    */

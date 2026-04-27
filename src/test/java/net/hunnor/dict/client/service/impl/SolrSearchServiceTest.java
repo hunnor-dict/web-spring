@@ -39,7 +39,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 @SpringBootTest
 class SolrSearchServiceTest {
@@ -47,7 +47,7 @@ class SolrSearchServiceTest {
   @Autowired
   private SearchService searchService;
 
-  @MockBean
+  @MockitoBean
   private SolrClient solrClient;
 
   /**

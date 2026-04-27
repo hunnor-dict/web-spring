@@ -13,6 +13,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * Service for verifying Google reCAPTCHA responses.
+ */
 @Service
 public class RecaptchaService implements CaptchaService {
 

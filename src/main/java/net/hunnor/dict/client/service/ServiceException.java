@@ -1,5 +1,8 @@
 package net.hunnor.dict.client.service;
 
+/**
+ * Exception thrown by services in case of errors.
+ */
 public class ServiceException extends Exception {
 
   private static final long serialVersionUID = 8624769933410231739L;

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+/**
+ * Service for sending emails using Gmail.
+ */
 @Service
 public class GoogleMailerService implements MailerService {
 

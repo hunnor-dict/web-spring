@@ -1,5 +1,8 @@
 package net.hunnor.dict.client.model;
 
+/**
+ * Model for a contribution or suggestion to the dictionary.
+ */
 public class Contrib {
 
   private String spelling;
@@ -13,6 +16,7 @@ public class Contrib {
 
   /**
    * Constructor with all fields.
+   *
    * @param spelling value for field spelling
    * @param trans value for field trans
    * @param comments value for field comments

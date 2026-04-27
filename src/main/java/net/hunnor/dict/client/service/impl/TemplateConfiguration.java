@@ -9,6 +9,9 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+/**
+ * Configuration for the Thymeleaf template engine.
+ */
 @Configuration
 public class TemplateConfiguration {
 

@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 @SpringBootTest
 class GoogleMailerServiceTest {
@@ -23,7 +23,7 @@ class GoogleMailerServiceTest {
   @Autowired
   private MailerService mailerService;
 
-  @SpyBean
+  @MockitoSpyBean
   private JavaMailSender javaMailSender;
 
   @Test

@@ -36,6 +36,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for searching the dictionary using Solr.
+ */
 @Service
 public class SolrSearchService implements SearchService {
 
@@ -70,7 +73,7 @@ public class SolrSearchService implements SearchService {
     solrQuery.set(CommonParams.Q, "*:*");
     solrQuery.set(CommonParams.OMIT_HEADER, true);
     solrQuery.set(CommonParams.ROWS, 0);
-    for (Language language: Language.values()) {
+    for (Language language : Language.values()) {
       try {
         QueryResponse queryResponse = solrClient.query(
             (coreNamesPrefix + language).toLowerCase(Locale.ENGLISH), solrQuery);
@@ -100,7 +103,7 @@ public class SolrSearchService implements SearchService {
     }
 
     Map<Language, Response> responses = new TreeMap<>();
-    for (Language language: Language.values()) {
+    for (Language language : Language.values()) {
       Response response = new Response(collator);
       responses.put(language, response);
     }
@@ -143,7 +146,7 @@ public class SolrSearchService implements SearchService {
       Map<Language, Response> responses,
       SolrQuery solrQuery) throws ServiceException {
     boolean hasResults = false;
-    for (Language language: Language.values()) {
+    for (Language language : Language.values()) {
       Response response = responses.get(language);
       try {
         String coreName = (coreNamesPrefix + language).toLowerCase(Locale.ENGLISH);
@@ -169,9 +172,9 @@ public class SolrSearchService implements SearchService {
     SpellCheckResponse spellCheckResponse = queryResponse.getSpellCheckResponse();
     if (spellCheckResponse != null) {
       List<Suggestion> suggestionList = spellCheckResponse.getSuggestions();
-      for (Suggestion suggestion: suggestionList) {
+      for (Suggestion suggestion : suggestionList) {
         List<String> alternatives = suggestion.getAlternatives();
-        for (String alternative: alternatives) {
+        for (String alternative : alternatives) {
           response.addSuggestion(alternative);
         }
       }
@@ -181,7 +184,7 @@ public class SolrSearchService implements SearchService {
   private void getResults(QueryResponse queryResponse, Response response) {
     SolrDocumentList solrDocumentList = queryResponse.getResults();
     Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
-    for (SolrDocument solrDocument: solrDocumentList) {
+    for (SolrDocument solrDocument : solrDocumentList) {
       Result result = getResultFromDocument(solrDocument, highlighting);
       response.addResult(result);
     }
@@ -207,11 +210,11 @@ public class SolrSearchService implements SearchService {
     Map<String, Autocomplete> suggestions = new TreeMap<>(collator);
     if (term != null && term.length() <= suggestionsMaxLength) {
       Map<Language, QueryResponse> responses = getSuggestions(term);
-      for (Language language: Language.values()) {
+      for (Language language : Language.values()) {
         getTermsFromResponse(language, responses.get(language), suggestions);
       }
       if (suggestions.isEmpty()) {
-        for (Language language: Language.values()) {
+        for (Language language : Language.values()) {
           getSuggestionsFromResponse(language, responses.get(language), suggestions);
         }
       }
@@ -222,7 +225,7 @@ public class SolrSearchService implements SearchService {
   private Map<Language, QueryResponse> getSuggestions(String term) throws ServiceException {
     Map<Language, QueryResponse> responses = new EnumMap<>(Language.class);
     String escapedTerm = ClientUtils.escapeQueryChars(term.trim());
-    for (Language language: Language.values()) {
+    for (Language language : Language.values()) {
       SolrQuery solrQuery = new SolrQuery();
       solrQuery.setRequestHandler("/suggest");
       solrQuery.set(CommonParams.Q, escapedTerm);
@@ -244,7 +247,7 @@ public class SolrSearchService implements SearchService {
       Language language, QueryResponse queryResponse, Map<String, Autocomplete> suggestions) {
     TermsResponse termsResponse = queryResponse.getTermsResponse();
     List<Term> terms = termsResponse.getTerms("spellings");
-    for (Term term: terms) {
+    for (Term term : terms) {
       String text = term.getTerm();
       Autocomplete suggestion = suggestions.get(text);
       if (suggestion == null) {
@@ -263,9 +266,9 @@ public class SolrSearchService implements SearchService {
       Language language, QueryResponse queryResponse, Map<String, Autocomplete> suggestions) {
     SuggesterResponse suggesterResponse = queryResponse.getSuggesterResponse();
     Map<String, List<String>> suggestionMap = suggesterResponse.getSuggestedTerms();
-    for (Entry<String, List<String>> suggestionEntry: suggestionMap.entrySet()) {
+    for (Entry<String, List<String>> suggestionEntry : suggestionMap.entrySet()) {
       List<String> suggestionList = suggestionEntry.getValue();
-      for (String suggestedTerm: suggestionList) {
+      for (String suggestedTerm : suggestionList) {
         Autocomplete suggestion = suggestions.get(suggestedTerm);
         if (suggestion == null) {
           suggestion = new Autocomplete();

@@ -11,6 +11,9 @@ import org.springframework.web.servlet.resource.CssLinkResourceTransformer;
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 import org.springframework.web.servlet.resource.VersionResourceResolver;
 
+/**
+ * Configuration class for static resources.
+ */
 @Configuration
 @EnableWebMvc
 public class ResourceConfig implements WebMvcConfigurer {

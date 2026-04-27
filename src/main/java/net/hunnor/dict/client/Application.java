@@ -12,16 +12,25 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+/**
+ * Main application class.
+ */
 @SpringBootApplication
 @PropertySource({"classpath:application.properties", "classpath:hunnor.properties"})
 public class Application implements WebMvcConfigurer {
 
+  /**
+   * Main method to run the Spring Boot application.
+   *
+   * @param args command line arguments
+   */
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
 
   /**
    * Locale resolver with default locale set to Hungarian.
+   *
    * @return the locale resolver
    */
   @Bean
@@ -33,6 +42,7 @@ public class Application implements WebMvcConfigurer {
 
   /**
    * Locale change interceptor listening to request parameter 'lang'.
+   *
    * @return the locale change interceptor
    */
   @Bean

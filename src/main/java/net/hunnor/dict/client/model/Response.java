@@ -5,6 +5,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * Response model for search results and suggestions.
+ */
 public class Response {
 
   private Set<Result> results;
@@ -22,6 +25,7 @@ public class Response {
 
   /**
    * Add a result to the result set.
+   *
    * @param result the result to add
    */
   public void addResult(Result result) {
@@ -37,6 +41,7 @@ public class Response {
 
   /**
    * Add a suggestion to the suggestion set.
+   *
    * @param suggestion the suggestion to add
    */
   public void addSuggestion(String suggestion) {

@@ -1,5 +1,8 @@
 package net.hunnor.dict.client.model;
 
+/**
+ * Model for a search result.
+ */
 public class Result {
 
   private String id;

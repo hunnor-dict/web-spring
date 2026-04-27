@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Controller for main application pages.
+ */
 @Controller
 public class ApplicationController {
 
@@ -97,6 +100,7 @@ public class ApplicationController {
 
   /**
    * Controller method for the About page.
+   *
    * @param model the model to pass to the view
    * @return the name of the About view
    */
@@ -123,6 +127,7 @@ public class ApplicationController {
 
   /**
    * Controller method for the suggestions page.
+   *
    * @param contrib the suggestion being processed
    * @param captchaResponse response from the CAPTCHA validation service
    * @param model the model to pass to the view
@@ -166,6 +171,7 @@ public class ApplicationController {
 
   /**
    * Controller method for the download page.
+   *
    * @param model the model to pass to the view
    * @return the name of the download view
    */
@@ -190,6 +196,7 @@ public class ApplicationController {
 
   /**
    * Controller method for the main page with the search interface.
+   *
    * @param term the term to search for
    * @param match the way matching should be performed
    * @param model the model to pass to the view

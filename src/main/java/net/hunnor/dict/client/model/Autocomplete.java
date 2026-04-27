@@ -3,6 +3,9 @@ package net.hunnor.dict.client.model;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Model for an autocomplete suggestion for a search query.
+ */
 public class Autocomplete {
 
   private String value;
@@ -33,6 +36,7 @@ public class Autocomplete {
 
   /**
    * Add a language to the language set.
+   *
    * @param language the language to add
    */
   public void addLanguage(Language language) {

@@ -6,6 +6,9 @@ import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
 import net.hunnor.dict.client.model.Response;
 
+/**
+ * Service interface for searching the dictionary.
+ */
 public interface SearchService {
 
   public Map<Language, Long> counts() throws ServiceException;

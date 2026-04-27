@@ -1,9 +1,9 @@
-FROM maven:3.9-eclipse-temurin-17 as maven
+FROM maven:3.9-eclipse-temurin-25 as maven
 COPY . /opt/hunnor-dict/web-spring
 WORKDIR /opt/hunnor-dict/web-spring
 RUN mvn verify
 
-FROM eclipse-temurin:17
+FROM eclipse-temurin:25
 RUN groupadd --system hunnor && \
 	useradd --system --gid hunnor hunnor && \
 	mkdir /hunnor && \

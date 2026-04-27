@@ -7,6 +7,9 @@ import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * MCP server component.
+ */
 @Component
 public class McpService {
 
@@ -18,6 +21,7 @@ public class McpService {
 
   /**
    * MCP tool method for looking up a word in the HunNor dictionary.
+   *
    * @param word the word to look up
    * @return a JSON string containing the search results, or an error message if the lookup fails
    */
