@@ -1,11 +1,11 @@
 package net.hunnor.dict.client.service.mcp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import net.hunnor.dict.client.service.SearchService;
 import org.springaicommunity.mcp.annotation.McpTool;
 import org.springaicommunity.mcp.annotation.McpToolParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * MCP server component.
