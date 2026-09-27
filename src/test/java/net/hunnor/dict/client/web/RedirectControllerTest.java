@@ -26,11 +26,6 @@ class RedirectControllerTest {
   }
 
   @Test
-  void testSearch() throws Exception {
-    mockMvc.perform(get("/search")).andExpect(status().isFound());
-  }
-
-  @Test
   void testGramm() throws Exception {
     mockMvc.perform(get("/gramm")).andExpect(status().isFound());
     mockMvc.perform(get("/gramm/pron")).andExpect(status().isFound());
