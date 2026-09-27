@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Controller
 public class RedirectController {
 
-  @GetMapping(value = {"/m", "/m/*", "/no", "/no/*", "/search", "/gramm", "/gramm/*"})
+  @GetMapping(value = {"/m", "/m/*", "/no", "/no/*", "/gramm", "/gramm/*"})
   public final String redirect() {
     return UrlBasedViewResolver.REDIRECT_URL_PREFIX + "/";
   }
