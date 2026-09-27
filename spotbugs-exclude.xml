@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+	<!-- ObjectMapper is an injected shared service, not mutable data; defensive copy is not applicable. -->
+	<Match>
+		<Class name="net.hunnor.dict.client.service.mcp.McpService" />
+		<Field name="objectMapper" />
+		<Bug pattern="EI_EXPOSE_REP2" />
+	</Match>
+</FindBugsFilter>

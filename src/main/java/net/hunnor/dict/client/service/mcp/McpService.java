@@ -1,9 +1,8 @@
 package net.hunnor.dict.client.service.mcp;
 
 import net.hunnor.dict.client.service.SearchService;
-import org.springaicommunity.mcp.annotation.McpTool;
-import org.springaicommunity.mcp.annotation.McpToolParam;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ai.mcp.annotation.McpTool;
+import org.springframework.ai.mcp.annotation.McpToolParam;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
 
@@ -13,11 +12,14 @@ import tools.jackson.databind.ObjectMapper;
 @Component
 public class McpService {
 
-  @Autowired
-  private SearchService searchService;
+  public McpService(SearchService searchService, ObjectMapper objectMapper) {
+    this.searchService = searchService;
+    this.objectMapper = objectMapper;
+  }
 
-  @Autowired
-  private ObjectMapper objectMapper;
+  private final SearchService searchService;
+
+  private final ObjectMapper objectMapper;
 
   /**
    * MCP tool method for looking up a word in the HunNor dictionary.
