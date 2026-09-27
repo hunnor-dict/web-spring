@@ -10,7 +10,6 @@ import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,14 +37,27 @@ public class ApplicationController {
 
   private static final String SEARCH_VIEW = "views/search/index";
 
-  @Autowired
-  private CaptchaService captchaService;
+  private final CaptchaService captchaService;
 
-  @Autowired
-  private MailerService mailerService;
+  private final MailerService mailerService;
 
-  @Autowired
-  private SearchService searchService;
+  private final SearchService searchService;
+
+  /**
+   * Constructor for dependency injection.
+   *
+   * @param captchaService the CAPTCHA validation service
+   * @param mailerService the email sending service
+   * @param searchService the search service
+   */
+  public ApplicationController(
+      CaptchaService captchaService,
+      MailerService mailerService,
+      SearchService searchService) {
+    this.captchaService = captchaService;
+    this.mailerService = mailerService;
+    this.searchService = searchService;
+  }
 
   @Value("${net.hunnor.dict.client.download.lucene:}")
   private String downloadLucene;
