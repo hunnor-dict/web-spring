@@ -46,31 +46,134 @@ function Searcher() {
 	}
 
 	this.bindSuggest = function() {
-		var _this = this;
-		if (this.searchInput.length > 0) {
-			this.searchInput.autocomplete({
-				minLength: 2,
-				select: function(event, element) {
-					_this.searchInput.val(element.item.value);
-					_this.searchForm.submit();
-				},
-				open: function(event, element) {
-					$(".ui-autocomplete").off("menufocus");
-				},
-				source: this.suggestUrl
-			}).data("ui-autocomplete")._renderItem = function(ul, item) {
-				var div = $("<div>"),
-					li =  $("<li>");
-				div.addClass("ui-menu-item-wrapper");
-				div.text(item.value);
-				li.addClass("ui-menu-item");
-				if (!item.prefix) {
-					li.addClass("suggestion");
-				}
-				div.appendTo(li);
-				return li.appendTo(ul);
+		var input = this.searchInput.get(0),
+			form = this.searchForm.get(0),
+			list = document.getElementById("search-suggestions"),
+			controller = null,
+			requestId = 0,
+			results = [],
+			activeIndex = -1,
+			_this = this;
+		if (input == null || form == null || list == null) {
+			return;
+		}
+		function closeList() {
+			list.hidden = true;
+			list.replaceChildren();
+			results = [];
+			input.setAttribute("aria-expanded", "false");
+			input.removeAttribute("aria-activedescendant");
+			activeIndex = -1;
+		}
+		function cancelRequest() {
+			requestId++;
+			if (controller !== null) {
+				controller.abort();
+				controller = null;
 			}
 		}
+		function activate(index) {
+			var options = list.querySelectorAll('[role="option"]');
+			activeIndex = index;
+			options.forEach(function(option, optionIndex) {
+				var active = optionIndex === activeIndex;
+				option.setAttribute("aria-selected", active ? "true" : "false");
+				option.classList.toggle("active", active);
+			});
+			if (activeIndex >= 0) {
+				input.setAttribute("aria-activedescendant", options[activeIndex].id);
+				options[activeIndex].scrollIntoView({block: "nearest"});
+			}
+		}
+		function select(result) {
+			input.value = result.value;
+			closeList();
+			form.requestSubmit();
+		}
+		input.addEventListener("input", function() {
+			var term = input.value,
+				currentRequest = ++requestId;
+			if (controller !== null) {
+				controller.abort();
+				controller = null;
+			}
+			closeList();
+			results = [];
+			if (term.length < 2) {
+				return;
+			}
+			controller = new AbortController();
+			fetch(_this.suggestUrl + "?term=" + encodeURIComponent(term), {signal: controller.signal})
+				.then(function(response) {
+					if (!response.ok) {
+						throw new Error("Suggestion request failed");
+					}
+					return response.json();
+				})
+				.then(function(items) {
+					if (currentRequest !== requestId || input.value !== term || !Array.isArray(items)) {
+						return;
+					}
+					controller = null;
+					results = items;
+					items.forEach(function(result, index) {
+						var option = document.createElement("div");
+						option.id = "search-suggestion-" + index;
+						option.className = "search-suggestion";
+						option.setAttribute("role", "option");
+						option.setAttribute("aria-selected", "false");
+						option.textContent = result.value;
+						if (!result.prefix) {
+						option.classList.add("suggestion");
+						}
+						option.addEventListener("mousedown", function(event) {
+							event.preventDefault();
+						});
+						option.addEventListener("click", function() {
+							select(result);
+						});
+						option.addEventListener("mouseenter", function() {
+							activate(index);
+						});
+						list.append(option);
+					});
+					if (items.length > 0) {
+						list.hidden = false;
+						input.setAttribute("aria-expanded", "true");
+					}
+				}, function(error) {
+					if (error.name !== "AbortError") {
+						console.error("Suggestion request failed", error);
+					}
+				});
+		});
+		input.addEventListener("keydown", function(event) {
+			if (results.length === 0) {
+				return;
+			}
+			if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+				event.preventDefault();
+				var direction = event.key === "ArrowDown" ? 1 : -1,
+					next = activeIndex + direction;
+				if (next < 0) {
+					next = results.length - 1;
+				} else if (next >= results.length) {
+					next = 0;
+				}
+				activate(next);
+			} else if (event.key === "Enter" && activeIndex >= 0) {
+				event.preventDefault();
+				select(results[activeIndex]);
+			} else if (event.key === "Escape") {
+				event.preventDefault();
+				cancelRequest();
+				closeList();
+			}
+		});
+		input.addEventListener("blur", function() {
+			cancelRequest();
+			closeList();
+		});
 	};
 
 	this.focusInput = function() {

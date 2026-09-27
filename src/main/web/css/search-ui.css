@@ -2,7 +2,39 @@ a.inactive span.fas {
 	color: #c0c0c0;
 }
 
-ul.ui-autocomplete li.suggestion {
+.search-autocomplete {
+	flex: 1 1 auto;
+	min-width: 0;
+	position: relative;
+}
+
+.search-suggestions:not([hidden]) {
+	background: var(--bs-body-bg, #fff);
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: .25rem;
+	box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15);
+	color: var(--bs-body-color, #212529);
+	left: 0;
+	max-height: 16rem;
+	overflow-y: auto;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	z-index: 1050;
+}
+
+.search-suggestion {
+	cursor: pointer;
+	padding: .375rem .75rem;
+}
+
+.search-suggestion.active,
+.search-suggestion:hover {
+	background: var(--bs-primary, #0d6efd);
+	color: var(--bs-white, #fff);
+}
+
+.search-suggestion.suggestion {
 	font-style: italic;
 }
 

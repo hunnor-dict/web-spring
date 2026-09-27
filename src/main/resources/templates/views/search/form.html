@@ -6,7 +6,10 @@
 		<form id="search-form" th:fragment="searchForm">
 
 			<div class="input-group mb-3">
-				<input autocapitalize="none" class="form-control" id="search-term" name="term" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
+				<div class="search-autocomplete">
+					<input aria-autocomplete="list" aria-controls="search-suggestions" aria-expanded="false" autocapitalize="none" class="form-control" id="search-term" name="term" role="combobox" type="search" th:attr="aria-label=#{search.field.label}" th:value="${term}"/>
+					<div aria-label="Search suggestions" class="search-suggestions" id="search-suggestions" role="listbox" hidden> </div>
+				</div>
 				<div class="input-group-append">
 					<button class="btn btn-secondary" id="search-delete" type="button" th:attr="aria-label=#{search.clear.button}">
 						<span class="fas fa-times-circle"> </span>

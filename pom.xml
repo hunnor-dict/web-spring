@@ -27,7 +27,6 @@
 		<java.version>25</java.version>
 		<!--javassist.version>3.28.0-GA</javassist.version-->
 		<jquery.version>3.6.4</jquery.version>
-		<jquery.ui.version>1.13.2</jquery.ui.version>
 		<minify.version>1.7.6</minify.version>
 		<popper.js.version>2.9.3</popper.js.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -113,17 +112,6 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
 			<version>${jquery.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery-ui</artifactId>
-			<version>${jquery.ui.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.webjars</groupId>
-					<artifactId>jquery</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 
