@@ -14,11 +14,9 @@
 				</h2>
 			</div>
 			<div class="card-body collapse" id="pdf">
-				<p>
-					&raquo; <a class="link-normal" href="" th:href="${downloadPdfHn}" th:text="#{download.pdf} + ' ' + #{download.hungarian.norwegian}"> </a>
-					<br/>
-					&raquo; <a class="link-normal" href="" th:href="${downloadPdfNh}" th:text="#{download.pdf} + ' ' + #{download.norwegian.hungarian}"> </a>
-				</p>
+				<p th:if="${lang != 'nb'}">A PDF export 2026 január óta nem frissül.
+                    Ha szükséged van rá, az <a class="link-normal" href="https://github.com/hunnor-dict/export-ant"><span class="badge bg-light text-dark border">export-ant</span></a> repository kódjával generálhatod az XML exportból.</p>
+				<p th:if="${lang == 'nb'}">PDF-eksporten har ikke blitt oppdatert siden januar 2026. Hvis du trenger den, kan du generere den fra XML-eksporten med koden i <a class="link-normal" href="https://github.com/hunnor-dict/export-ant"><span class="badge bg-light text-dark border">export-ant</span></a>-repoet.</p>
 			</div>
 		</section>
 

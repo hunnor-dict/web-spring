@@ -77,12 +77,6 @@ public class ApplicationController {
   @Value("${net.hunnor.dict.client.download.manual.apple:}")
   private String downloadManualApple;
 
-  @Value("${net.hunnor.dict.client.download.pdf.hn:}")
-  private String downloadPdfHn;
-
-  @Value("${net.hunnor.dict.client.download.pdf.nh:}")
-  private String downloadPdfNh;
-
   @Value("${net.hunnor.dict.client.download.kindle.nh:}")
   private String downloadKindleNh;
 
@@ -184,8 +178,6 @@ public class ApplicationController {
     model.addAttribute("downloadAppleHn", downloadAppleHn);
     model.addAttribute("downloadAppleNh", downloadAppleNh);
     model.addAttribute("downloadManualApple", downloadManualApple);
-    model.addAttribute("downloadPdfHn", downloadPdfHn);
-    model.addAttribute("downloadPdfNh", downloadPdfNh);
     model.addAttribute("downloadKindleNh", downloadKindleNh);
     model.addAttribute("downloadManualKindle", downloadManualKindle);
     model.addAttribute("downloadPocketbookHn", downloadPocketbookHn);
