@@ -9,9 +9,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import net.hunnor.dict.client.model.Autocomplete;
 import net.hunnor.dict.client.model.Language;
+import net.hunnor.dict.client.model.Response;
+import net.hunnor.dict.client.model.Result;
 import net.hunnor.dict.client.service.SearchService;
 import net.hunnor.dict.client.service.ServiceException;
 import org.junit.jupiter.api.Test;
@@ -105,6 +109,25 @@ class ApiControllerTest {
         .andExpect(status().isOk())
         .andExpect(content().contentType(
             MediaType.parseMediaType("application/x-suggestions+json")));
+  }
+
+  @Test
+  void testSearch() throws Exception {
+    Response response = new Response(null);
+    response.addResult(new Result("foo-1", "<b>foo</b>"));
+    response.addSuggestion("foobar");
+    Map<Language, Response> results = new HashMap<>();
+    results.put(Language.HU, response);
+    given(searchService.search(ArgumentMatchers.any(), ArgumentMatchers.any()))
+        .willReturn(results);
+    mockMvc.perform(get("/search")
+        .param("term", "foo")
+        .param("match", "roots"))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.HU.results[0].id", equalTo("foo-1")))
+        .andExpect(jsonPath("$.HU.results[0].html", equalTo("<b>foo</b>")))
+        .andExpect(jsonPath("$.HU.suggestions[0]", equalTo("foobar")));
   }
 
 }
